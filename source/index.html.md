@@ -17,19 +17,129 @@ includes:
 search: true
 ---
 
-# Lender Partner Process
+# Introduction
 
 Tech Integration involves partner exposing “Get a Loan” option on their platform. Interested agents of the partner click on the option and are exposed to an application form. Fields of the form exposed; can be customised. The applications are then processed internally by CF.
 
 For Partners opting for PayLater product, can do a bunch of other things like creating a drawdown; verifying the tranche etc with integration.
 
-The integration process is further described below.
-
-# Introduction
-
 The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.
 
+# Acquisition
+
+Coming Soon
+
+## Acquisition(Big Loans)
+
+Coming Soon
+
+## APIs
+
+Coming Soon
+
+# Acquisition on Checkout Screen or Register Screen(Small loans)
+
+Coming Soon
+
+## APIs
+
+Coming Soon
+
+## WebRedirection
+
+Coming Soon
+
+## SDKs
+
+Coming Soon
+
+# Sharing of Token(In case of offline acquisition[FS App])
+
+Coming Soon
+
+# Handshake
+
+Coming Soon
+
+## Token Status
+
+Coming Soon
+
+# Agent/Profile activation notification
+
+Coming Soon
+
+## Disbursal
+
+Coming Soon
+
+## Specific for Paylater( PL/IPL/BPL/IBPL) Product
+
+Coming Soon
+
+### Create a Block
+
+Coming Soon
+
+### Tranche creation/Charge creation/Disbursal Creation
+
+Coming Soon
+
+### OTP acceptance
+
+Coming Soon
+
+### Fetch remaining amount in a Block
+
+Coming Soon
+
+### Remove remaining amount in a Block
+
+Coming Soon
+
+### Agent Info
+
+Coming Soon
+
+## Disbursal Notification to the Partner
+
+Coming Soon
+
+## Tranche rejection notification to the partner
+
+Coming Soon
+
+## Disbursal API
+
+Coming Soon
+
+# Repayment
+
+Coming Soon
+
+## Get Repayments to be made at Partner Level
+
+Coming Soon
+
+## Get Repayments to be made at Agent Level
+
+Coming Soon
+
+## Repayment API
+
+Coming Soon
+
+## Repayment Reminder API
+
+Coming Soon
+
+## Agent Status Notification - Active/Suspended
+
+Coming Soon
+
 # Authentication
+
+Coming Soon
 
 > To authorize, use this code:
 
