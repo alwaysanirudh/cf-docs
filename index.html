@@ -222,10 +222,83 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#lender-partner-process" class="toc-h1 toc-link" data-title="lender-partner-process">Lender Partner Process</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+            <a href="#acquisition" class="toc-h1 toc-link" data-title="acquisition">Acquisition</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#acquisition-big-loans" class="toc-h2 toc-link" data-title="acquisition-big-loans">Acquisition(Big Loans)</a>
+                  </li>
+                  <li>
+                    <a href="#apis" class="toc-h2 toc-link" data-title="apis">APIs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#acquisition-on-checkout-screen-or-register-screen-small-loans" class="toc-h1 toc-link" data-title="acquisition-on-checkout-screen-or-register-screen-small-loans">Acquisition on Checkout Screen or Register Screen(Small loans)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#apis-2" class="toc-h2 toc-link" data-title="apis">APIs</a>
+                  </li>
+                  <li>
+                    <a href="#webredirection" class="toc-h2 toc-link" data-title="webredirection">WebRedirection</a>
+                  </li>
+                  <li>
+                    <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sharing-of-token-in-case-of-offline-acquisition-fs-app" class="toc-h1 toc-link" data-title="sharing-of-token-in-case-of-offline-acquisition-fs-app">Sharing of Token(In case of offline acquisition[FS App])</a>
+          </li>
+          <li>
+            <a href="#handshake" class="toc-h1 toc-link" data-title="handshake">Handshake</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#token-status" class="toc-h2 toc-link" data-title="token-status">Token Status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#agent-profile-activation-notification" class="toc-h1 toc-link" data-title="agent-profile-activation-notification">Agent/Profile activation notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#disbursal" class="toc-h2 toc-link" data-title="disbursal">Disbursal</a>
+                  </li>
+                  <li>
+                    <a href="#specific-for-paylater-pl-ipl-bpl-ibpl-product" class="toc-h2 toc-link" data-title="specific-for-paylater-pl-ipl-bpl-ibpl-product">Specific for Paylater( PL/IPL/BPL/IBPL) Product</a>
+                  </li>
+                  <li>
+                    <a href="#disbursal-notification-to-the-partner" class="toc-h2 toc-link" data-title="disbursal-notification-to-the-partner">Disbursal Notification to the Partner</a>
+                  </li>
+                  <li>
+                    <a href="#tranche-rejection-notification-to-the-partner" class="toc-h2 toc-link" data-title="tranche-rejection-notification-to-the-partner">Tranche rejection notification to the partner</a>
+                  </li>
+                  <li>
+                    <a href="#disbursal-api" class="toc-h2 toc-link" data-title="disbursal-api">Disbursal API</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#repayment" class="toc-h1 toc-link" data-title="repayment">Repayment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-repayments-to-be-made-at-partner-level" class="toc-h2 toc-link" data-title="get-repayments-to-be-made-at-partner-level">Get Repayments to be made at Partner Level</a>
+                  </li>
+                  <li>
+                    <a href="#get-repayments-to-be-made-at-agent-level" class="toc-h2 toc-link" data-title="get-repayments-to-be-made-at-agent-level">Get Repayments to be made at Agent Level</a>
+                  </li>
+                  <li>
+                    <a href="#repayment-api" class="toc-h2 toc-link" data-title="repayment-api">Repayment API</a>
+                  </li>
+                  <li>
+                    <a href="#repayment-reminder-api" class="toc-h2 toc-link" data-title="repayment-reminder-api">Repayment Reminder API</a>
+                  </li>
+                  <li>
+                    <a href="#agent-status-notification-active-suspended" class="toc-h2 toc-link" data-title="agent-status-notification-active-suspended">Agent Status Notification - Active/Suspended</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
@@ -256,15 +329,71 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='lender-partner-process'>Lender Partner Process</h1>
+        <h1 id='introduction'>Introduction</h1>
 <p>Tech Integration involves partner exposing “Get a Loan” option on their platform. Interested agents of the partner click on the option and are exposed to an application form. Fields of the form exposed; can be customised. The applications are then processed internally by CF.</p>
 
 <p>For Partners opting for PayLater product, can do a bunch of other things like creating a drawdown; verifying the tranche etc with integration.</p>
 
-<p>The integration process is further described below.</p>
-<h1 id='introduction'>Introduction</h1>
 <p>The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.</p>
+<h1 id='acquisition'>Acquisition</h1>
+<p>Coming Soon</p>
+<h2 id='acquisition-big-loans'>Acquisition(Big Loans)</h2>
+<p>Coming Soon</p>
+<h2 id='apis'>APIs</h2>
+<p>Coming Soon</p>
+<h1 id='acquisition-on-checkout-screen-or-register-screen-small-loans'>Acquisition on Checkout Screen or Register Screen(Small loans)</h1>
+<p>Coming Soon</p>
+<h2 id='apis-2'>APIs</h2>
+<p>Coming Soon</p>
+<h2 id='webredirection'>WebRedirection</h2>
+<p>Coming Soon</p>
+<h2 id='sdks'>SDKs</h2>
+<p>Coming Soon</p>
+<h1 id='sharing-of-token-in-case-of-offline-acquisition-fs-app'>Sharing of Token(In case of offline acquisition[FS App])</h1>
+<p>Coming Soon</p>
+<h1 id='handshake'>Handshake</h1>
+<p>Coming Soon</p>
+<h2 id='token-status'>Token Status</h2>
+<p>Coming Soon</p>
+<h1 id='agent-profile-activation-notification'>Agent/Profile activation notification</h1>
+<p>Coming Soon</p>
+<h2 id='disbursal'>Disbursal</h2>
+<p>Coming Soon</p>
+<h2 id='specific-for-paylater-pl-ipl-bpl-ibpl-product'>Specific for Paylater( PL/IPL/BPL/IBPL) Product</h2>
+<p>Coming Soon</p>
+<h3 id='create-a-block'>Create a Block</h3>
+<p>Coming Soon</p>
+<h3 id='tranche-creation-charge-creation-disbursal-creation'>Tranche creation/Charge creation/Disbursal Creation</h3>
+<p>Coming Soon</p>
+<h3 id='otp-acceptance'>OTP acceptance</h3>
+<p>Coming Soon</p>
+<h3 id='fetch-remaining-amount-in-a-block'>Fetch remaining amount in a Block</h3>
+<p>Coming Soon</p>
+<h3 id='remove-remaining-amount-in-a-block'>Remove remaining amount in a Block</h3>
+<p>Coming Soon</p>
+<h3 id='agent-info'>Agent Info</h3>
+<p>Coming Soon</p>
+<h2 id='disbursal-notification-to-the-partner'>Disbursal Notification to the Partner</h2>
+<p>Coming Soon</p>
+<h2 id='tranche-rejection-notification-to-the-partner'>Tranche rejection notification to the partner</h2>
+<p>Coming Soon</p>
+<h2 id='disbursal-api'>Disbursal API</h2>
+<p>Coming Soon</p>
+<h1 id='repayment'>Repayment</h1>
+<p>Coming Soon</p>
+<h2 id='get-repayments-to-be-made-at-partner-level'>Get Repayments to be made at Partner Level</h2>
+<p>Coming Soon</p>
+<h2 id='get-repayments-to-be-made-at-agent-level'>Get Repayments to be made at Agent Level</h2>
+<p>Coming Soon</p>
+<h2 id='repayment-api'>Repayment API</h2>
+<p>Coming Soon</p>
+<h2 id='repayment-reminder-api'>Repayment Reminder API</h2>
+<p>Coming Soon</p>
+<h2 id='agent-status-notification-active-suspended'>Agent Status Notification - Active/Suspended</h2>
+<p>Coming Soon</p>
 <h1 id='authentication'>Authentication</h1>
+<p>Coming Soon</p>
+
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
