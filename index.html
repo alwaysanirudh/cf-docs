@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,10 +222,13 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
           <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+          </li>
+          <li>
             <a href="#acquisition" class="toc-h1 toc-link" data-title="acquisition">Acquisition</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#acquisition-big-loans" class="toc-h2 toc-link" data-title="acquisition-big-loans">Acquisition(Big Loans)</a>
+                    <a href="#acquisition-2" class="toc-h2 toc-link" data-title="acquisition">Acquisition</a>
                   </li>
                   <li>
                     <a href="#apis" class="toc-h2 toc-link" data-title="apis">APIs</a>
@@ -236,13 +236,13 @@
               </ul>
           </li>
           <li>
-            <a href="#acquisition-on-checkout-screen-or-register-screen-small-loans" class="toc-h1 toc-link" data-title="acquisition-on-checkout-screen-or-register-screen-small-loans">Acquisition on Checkout Screen or Register Screen(Small loans)</a>
+            <a href="#checkout-register-acquisition" class="toc-h1 toc-link" data-title="checkout-register-acquisition">Checkout/Register - Acquisition</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#apis-2" class="toc-h2 toc-link" data-title="apis">APIs</a>
                   </li>
                   <li>
-                    <a href="#webredirection" class="toc-h2 toc-link" data-title="webredirection">WebRedirection</a>
+                    <a href="#web-redirection" class="toc-h2 toc-link" data-title="web-redirection">Web Redirection</a>
                   </li>
                   <li>
                     <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
@@ -250,7 +250,7 @@
               </ul>
           </li>
           <li>
-            <a href="#sharing-of-token-in-case-of-offline-acquisition-fs-app" class="toc-h1 toc-link" data-title="sharing-of-token-in-case-of-offline-acquisition-fs-app">Sharing of Token(In case of offline acquisition[FS App])</a>
+            <a href="#token-sharing-offline" class="toc-h1 toc-link" data-title="token-sharing-offline">Token Sharing - Offline</a>
           </li>
           <li>
             <a href="#handshake" class="toc-h1 toc-link" data-title="handshake">Handshake</a>
@@ -261,19 +261,19 @@
               </ul>
           </li>
           <li>
-            <a href="#agent-profile-activation-notification" class="toc-h1 toc-link" data-title="agent-profile-activation-notification">Agent/Profile activation notification</a>
+            <a href="#agent-profile-activation" class="toc-h1 toc-link" data-title="agent-profile-activation">Agent/Profile activation</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#disbursal" class="toc-h2 toc-link" data-title="disbursal">Disbursal</a>
                   </li>
                   <li>
-                    <a href="#specific-for-paylater-pl-ipl-bpl-ibpl-product" class="toc-h2 toc-link" data-title="specific-for-paylater-pl-ipl-bpl-ibpl-product">Specific for Paylater( PL/IPL/BPL/IBPL) Product</a>
+                    <a href="#paylater-pl-ipl-bpl-ibpl" class="toc-h2 toc-link" data-title="paylater-pl-ipl-bpl-ibpl">Paylater( PL/IPL/BPL/IBPL)</a>
                   </li>
                   <li>
-                    <a href="#disbursal-notification-to-the-partner" class="toc-h2 toc-link" data-title="disbursal-notification-to-the-partner">Disbursal Notification to the Partner</a>
+                    <a href="#disbursal-notification" class="toc-h2 toc-link" data-title="disbursal-notification">Disbursal Notification</a>
                   </li>
                   <li>
-                    <a href="#tranche-rejection-notification-to-the-partner" class="toc-h2 toc-link" data-title="tranche-rejection-notification-to-the-partner">Tranche rejection notification to the partner</a>
+                    <a href="#tranche-rejection-notification" class="toc-h2 toc-link" data-title="tranche-rejection-notification">Tranche rejection notification</a>
                   </li>
                   <li>
                     <a href="#disbursal-api" class="toc-h2 toc-link" data-title="disbursal-api">Disbursal API</a>
@@ -284,16 +284,16 @@
             <a href="#repayment" class="toc-h1 toc-link" data-title="repayment">Repayment</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-repayments-to-be-made-at-partner-level" class="toc-h2 toc-link" data-title="get-repayments-to-be-made-at-partner-level">Get Repayments to be made at Partner Level</a>
+                    <a href="#repayments-partner" class="toc-h2 toc-link" data-title="repayments-partner">Repayments - Partner</a>
                   </li>
                   <li>
-                    <a href="#get-repayments-to-be-made-at-agent-level" class="toc-h2 toc-link" data-title="get-repayments-to-be-made-at-agent-level">Get Repayments to be made at Agent Level</a>
+                    <a href="#repayments-agent" class="toc-h2 toc-link" data-title="repayments-agent">Repayments - Agent</a>
                   </li>
                   <li>
-                    <a href="#repayment-api" class="toc-h2 toc-link" data-title="repayment-api">Repayment API</a>
+                    <a href="#repayment-2" class="toc-h2 toc-link" data-title="repayment">Repayment</a>
                   </li>
                   <li>
-                    <a href="#repayment-reminder-api" class="toc-h2 toc-link" data-title="repayment-reminder-api">Repayment Reminder API</a>
+                    <a href="#repayment-reminder" class="toc-h2 toc-link" data-title="repayment-reminder">Repayment Reminder</a>
                   </li>
                   <li>
                     <a href="#agent-status-notification-active-suspended" class="toc-h2 toc-link" data-title="agent-status-notification-active-suspended">Agent Status Notification - Active/Suspended</a>
@@ -301,29 +301,49 @@
               </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="kittens">Kittens</a>
+            <a href="#master-key-reference" class="toc-h1 toc-link" data-title="master-key-reference">Master Key Reference</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="get-all-kittens">Get All Kittens</a>
+                    <a href="#application-in-progess-statuses" class="toc-h2 toc-link" data-title="application-in-progess-statuses">Application In Progess Statuses</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="get-a-specific-kitten">Get a Specific Kitten</a>
+                    <a href="#application-types" class="toc-h2 toc-link" data-title="application-types">Application Types</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="delete-a-specific-kitten">Delete a Specific Kitten</a>
+                    <a href="#business-address-types" class="toc-h2 toc-link" data-title="business-address-types">Business Address Types</a>
+                  </li>
+                  <li>
+                    <a href="#business-industry-types" class="toc-h2 toc-link" data-title="business-industry-types">Business Industry Types</a>
+                  </li>
+                  <li>
+                    <a href="#perfios-methods" class="toc-h2 toc-link" data-title="perfios-methods">Perfios Methods</a>
+                  </li>
+                  <li>
+                    <a href="#pd-contexts" class="toc-h2 toc-link" data-title="pd-contexts">PD Contexts</a>
+                  </li>
+                  <li>
+                    <a href="#individual-employment-types" class="toc-h2 toc-link" data-title="individual-employment-types">Individual Employment Types</a>
+                  </li>
+                  <li>
+                    <a href="#loan-product-types" class="toc-h2 toc-link" data-title="loan-product-types">Loan Product Types</a>
+                  </li>
+                  <li>
+                    <a href="#individual-business-relationship-types" class="toc-h2 toc-link" data-title="individual-business-relationship-types">Individual Business Relationship Types</a>
+                  </li>
+                  <li>
+                    <a href="#individual-marital-statuses" class="toc-h2 toc-link" data-title="individual-marital-statuses">Individual Marital Statuses</a>
+                  </li>
+                  <li>
+                    <a href="#individual-poi-types" class="toc-h2 toc-link" data-title="individual-poi-types">Individual POI Types</a>
+                  </li>
+                  <li>
+                    <a href="#bank-account-contexts" class="toc-h2 toc-link" data-title="bank-account-contexts">Bank Account Contexts</a>
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
-          </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://www.capitalfloat.com/'>Capital Float</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -335,293 +355,671 @@
 <p>For Partners opting for PayLater product, can do a bunch of other things like creating a drawdown; verifying the tranche etc with integration.</p>
 
 <p>The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -H <span class="s2">"Content-type: application/json"</span> -X POST &lt;URL&gt;/cf/user/token -d <span class="s1">'{"client_id": "&lt;CLIENT_ID&gt;", "client_secret": "&lt;CLIENT_SECRET&gt;"}'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57ed301af04bf35b40f255feb5ef469ab2f046aff14"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>To make a REST API call, you must include request headers including the Authorization header with an access token.</p>
+
+<p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> in the request body to acquire an access token.</p>
+
+<p>The authorisation server issues an access token in exchange for your <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.</p>
+
+<p>You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.</p>
+
+<p><code>Authorization: &lt;YOUR_TOKEN&gt;</code></p>
+
+<aside class="notice">
+You must replace <code>YOUR_TOKEN</code> with your access token.
+</aside>
 <h1 id='acquisition'>Acquisition</h1>
 <p>Coming Soon</p>
-<h2 id='acquisition-big-loans'>Acquisition(Big Loans)</h2>
+<h2 id='acquisition-2'>Acquisition</h2>
 <p>Coming Soon</p>
 <h2 id='apis'>APIs</h2>
 <p>Coming Soon</p>
-<h1 id='acquisition-on-checkout-screen-or-register-screen-small-loans'>Acquisition on Checkout Screen or Register Screen(Small loans)</h1>
+<h1 id='checkout-register-acquisition'>Checkout/Register - Acquisition</h1>
 <p>Coming Soon</p>
 <h2 id='apis-2'>APIs</h2>
 <p>Coming Soon</p>
-<h2 id='webredirection'>WebRedirection</h2>
+<h2 id='web-redirection'>Web Redirection</h2>
 <p>Coming Soon</p>
 <h2 id='sdks'>SDKs</h2>
 <p>Coming Soon</p>
-<h1 id='sharing-of-token-in-case-of-offline-acquisition-fs-app'>Sharing of Token(In case of offline acquisition[FS App])</h1>
+<h1 id='token-sharing-offline'>Token Sharing - Offline</h1>
 <p>Coming Soon</p>
 <h1 id='handshake'>Handshake</h1>
 <p>Coming Soon</p>
 <h2 id='token-status'>Token Status</h2>
 <p>Coming Soon</p>
-<h1 id='agent-profile-activation-notification'>Agent/Profile activation notification</h1>
+<h1 id='agent-profile-activation'>Agent/Profile activation</h1>
 <p>Coming Soon</p>
 <h2 id='disbursal'>Disbursal</h2>
 <p>Coming Soon</p>
-<h2 id='specific-for-paylater-pl-ipl-bpl-ibpl-product'>Specific for Paylater( PL/IPL/BPL/IBPL) Product</h2>
+<h2 id='paylater-pl-ipl-bpl-ibpl'>Paylater( PL/IPL/BPL/IBPL)</h2>
 <p>Coming Soon</p>
 <h3 id='create-a-block'>Create a Block</h3>
 <p>Coming Soon</p>
-<h3 id='tranche-creation-charge-creation-disbursal-creation'>Tranche creation/Charge creation/Disbursal Creation</h3>
+<h3 id='tranche-charge-disbursal'>Tranche / Charge / Disbursal</h3>
 <p>Coming Soon</p>
 <h3 id='otp-acceptance'>OTP acceptance</h3>
 <p>Coming Soon</p>
-<h3 id='fetch-remaining-amount-in-a-block'>Fetch remaining amount in a Block</h3>
+<h3 id='block-balance'>Block Balance</h3>
 <p>Coming Soon</p>
-<h3 id='remove-remaining-amount-in-a-block'>Remove remaining amount in a Block</h3>
+<h3 id='remove-block-balance'>Remove Block Balance</h3>
 <p>Coming Soon</p>
 <h3 id='agent-info'>Agent Info</h3>
 <p>Coming Soon</p>
-<h2 id='disbursal-notification-to-the-partner'>Disbursal Notification to the Partner</h2>
+<h2 id='disbursal-notification'>Disbursal Notification</h2>
 <p>Coming Soon</p>
-<h2 id='tranche-rejection-notification-to-the-partner'>Tranche rejection notification to the partner</h2>
+<h2 id='tranche-rejection-notification'>Tranche rejection notification</h2>
 <p>Coming Soon</p>
 <h2 id='disbursal-api'>Disbursal API</h2>
 <p>Coming Soon</p>
 <h1 id='repayment'>Repayment</h1>
 <p>Coming Soon</p>
-<h2 id='get-repayments-to-be-made-at-partner-level'>Get Repayments to be made at Partner Level</h2>
+<h2 id='repayments-partner'>Repayments - Partner</h2>
 <p>Coming Soon</p>
-<h2 id='get-repayments-to-be-made-at-agent-level'>Get Repayments to be made at Agent Level</h2>
+<h2 id='repayments-agent'>Repayments - Agent</h2>
 <p>Coming Soon</p>
-<h2 id='repayment-api'>Repayment API</h2>
+<h2 id='repayment-2'>Repayment</h2>
 <p>Coming Soon</p>
-<h2 id='repayment-reminder-api'>Repayment Reminder API</h2>
+<h2 id='repayment-reminder'>Repayment Reminder</h2>
 <p>Coming Soon</p>
 <h2 id='agent-status-notification-active-suspended'>Agent Status Notification - Active/Suspended</h2>
 <p>Coming Soon</p>
-<h1 id='authentication'>Authentication</h1>
-<p>Coming Soon</p>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"kittn"</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s2">"meowmeowmeow"</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"kittn"</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s2">"meowmeowmeow"</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h1 id='master-key-reference'>Master Key Reference</h1>
+<p>This section contains the references to all master keys which will be used throughout all API requests.</p>
+<h2 id='application-in-progess-statuses'>Application In Progess Statuses</h2>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>id</th>
+<th>label</th>
+<th>name</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>0</td>
+<td>Start</td>
+<td>START</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>100</td>
+<td>Page 1</td>
+<td>PAGE_ONE</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Consent sms sent</td>
+<td>CONSENT_SMS_SENT</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Business Page</td>
+<td>BUSINESS_PAGE</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>Financials Page</td>
+<td>FINANCIALS</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>Promoter/partner</td>
+<td>PROMOTER_PARTNER</td>
+</tr>
+<tr>
+<td>4000</td>
+<td>Customer/Supplier</td>
+<td>CUSTOMER_SUPPLIER</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>Documents</td>
+<td>DOCUMENTS</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"kittn"</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s2">"meowmeowmeow"</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h2 id='application-types'>Application Types</h2>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>id</th>
+<th>label</th>
+<th>name</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>100</td>
+<td>Loan</td>
+<td>LOAN</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Parnter on-boarding</td>
+<td>PARTNER_ON_BOARDING</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Lender on-boarding</td>
+<td>LENDER_ON_BOARDING</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"kittn"</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s2">"meowmeowmeow"</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h2 id='business-address-types'>Business Address Types</h2>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>id</th>
+<th>label</th>
+<th>name</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>2000</td>
+<td>Operating Address</td>
+<td>OPERATING</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>Factory Address</td>
+<td>FACTORY</td>
+</tr>
+<tr>
+<td>4000</td>
+<td>Registered Address</td>
+<td>REGISTERED</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>Sales Office</td>
+<td>SALES_OFFICE</td>
+</tr>
+<tr>
+<td>6000</td>
+<td>eKyc</td>
+<td>EKYC</td>
+</tr>
+<tr>
+<td>7000</td>
+<td>Others</td>
+<td>OTHERS</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h2 id='business-industry-types'>Business Industry Types</h2>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>id</th>
+<th>label</th>
+<th>name</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>1</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Auto Service Centres</td>
+<td>Auto Service Centres</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ayurvedic Clinics/Alternative Medicines</td>
+<td>Ayurvedic Clinics/Alternative Medicines</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bars/Gambling Business/Massage Parlours/Beauty Parlours</td>
+<td>Bars/Gambling Business/Massage Parlours/Beauty Parlours</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Building material Suppliers/Builder/ Building Contractors</td>
+<td>Building material Suppliers/Builder/ Building Contractors</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Cable Operators/Video Library Owners/Video Parlours</td>
+<td>Cable Operators/Video Library Owners/Video Parlours</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cold Storage</td>
+<td>Cold Storage</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Cyber Cafes</td>
+<td>Cyber Cafes</td>
+</tr>
+<tr>
+<td>9</td>
+<td>DSA, Verification Agencies/Collection Agencies/Repossession Agencies</td>
+<td>DSA, Verification Agencies/Collection Agencies/Repossession Agencies</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Non IATA Approved Travel Agents</td>
+<td>Non IATA Approved Travel Agents</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Finance Companies/Pvt Money Lenders</td>
+<td>Finance Companies/Pvt Money Lenders</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Firms/Companies dealing in Chit funds/Nidhi/ Money lending</td>
+<td>Firms/Companies dealing in Chit funds/Nidhi/ Money lending</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Labour Contractors</td>
+<td>Labour Contractors</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Manpower Consultants/Placement Agencies</td>
+<td>Manpower Consultants/Placement Agencies</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Motor Training Schools</td>
+<td>Motor Training Schools</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Mining/Oil Drilling and Refining Business</td>
+<td>Mining/Oil Drilling and Refining Business</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Real Estate Agents/Brokers</td>
+<td>Real Estate Agents/Brokers</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Security Agencies</td>
+<td>Security Agencies</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Stock Brokers</td>
+<td>Stock Brokers</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Transport Operators with less than 5 Trucks</td>
+<td>Transport Operators with less than 5 Trucks</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Vendors that Provide Service to Capital Float</td>
+<td>Vendors that Provide Service to Capital Float</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Waste Merchants</td>
+<td>Waste Merchants</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Commodity traders (agriculture, metal etc...)</td>
+<td>Commodity traders (agriculture, metal etc...)</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Real Estate developers</td>
+<td>Real Estate developers</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Jewellers</td>
+<td>Jewellers</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Steel traders &amp; manufacturing (including forging and rolling mills)</td>
+<td>Steel traders &amp; manufacturing (including forging and rolling mills)</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Solar panel traders and manufacturing</td>
+<td>Solar panel traders and manufacturing</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Educational Institute</td>
+<td>Educational Institute</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Others</td>
+<td>Others</td>
+</tr>
+</tbody></table>
+<h2 id='perfios-methods'>Perfios Methods</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Perfios - Bank</td>
+<td>PERFIOS_BY_BANK_CREDENTIALS</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Perfios - PDF</td>
+<td>PERFIOS_BY_PDF</td>
+</tr>
+</tbody></table>
+<h2 id='pd-contexts'>PD Contexts</h2>
+<table><thead>
+<tr>
+<th>pd_context</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NA</td>
+</tr>
+<tr>
+<td>LOW_LOW</td>
+</tr>
+<tr>
+<td>LOW_HIGH</td>
+</tr>
+<tr>
+<td>HIGH_HIGH</td>
+</tr>
+<tr>
+<td>HIGH_LOW</td>
+</tr>
+</tbody></table>
+<h2 id='individual-employment-types'>Individual Employment Types</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Not mentioned</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Self employed</td>
+<td>SELF_EMPLOYED</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Salaried</td>
+<td>SALARIED</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Professional</td>
+<td>PROFESSIONAL</td>
+</tr>
+</tbody></table>
+<h2 id='loan-product-types'>Loan Product Types</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>UBL</td>
+<td>UBL</td>
+</tr>
+<tr>
+<td>200</td>
+<td>MCA</td>
+<td>MCA</td>
+</tr>
+<tr>
+<td>300</td>
+<td>PL</td>
+<td>PL</td>
+</tr>
+<tr>
+<td>310</td>
+<td>PL+</td>
+<td>PLP</td>
+</tr>
+<tr>
+<td>320</td>
+<td>iPL</td>
+<td>IPL</td>
+</tr>
+<tr>
+<td>330</td>
+<td>bPL</td>
+<td>BPL</td>
+</tr>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>IF</td>
+<td>IF</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>SCL</td>
+<td>SCL</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>600</td>
+<td>BS</td>
+<td>BS</td>
+</tr>
+<tr>
+<td>700</td>
+<td>DR</td>
+<td>DR</td>
+</tr>
+<tr>
+<td>800</td>
+<td>TL</td>
+<td>TL</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Veh</td>
+<td>VH</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>ECOM</td>
+<td>ECOM</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>FF</td>
+<td>FF</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>AB</td>
+<td>AB</td>
+</tr>
+</tbody></table>
+<h2 id='individual-business-relationship-types'>Individual Business Relationship Types</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Manager</td>
+<td>MANAGER</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Promoter</td>
+<td>PROMOTER</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Director</td>
+<td>DIRECTOR</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Trustee</td>
+<td>TRUSTEE</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Proprietor</td>
+<td>PROPRIETOR</td>
+</tr>
+<tr>
+<td>600</td>
+<td>Partner</td>
+<td>PARTNER</td>
+</tr>
+</tbody></table>
+<h2 id='individual-marital-statuses'>Individual Marital Statuses</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Married</td>
+<td>MARRIED</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Single</td>
+<td>UNMARRIED</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Divorced</td>
+<td>DIVORCED</td>
+</tr>
+<tr>
+<td>300</td>
+<td>other</td>
+<td>OTHER</td>
+</tr>
+</tbody></table>
+<h2 id='individual-poi-types'>Individual POI Types</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>100</td>
+<td>Pan</td>
+<td>PAN</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Aadhaar</td>
+<td>AADHAAR</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Driving License</td>
+<td>DRIVING_LICENSE</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Passport</td>
+<td>PASSPORT</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Ration Card</td>
+<td>RATION_CARD</td>
+</tr>
+<tr>
+<td>600</td>
+<td>Voter id</td>
+<td>VOTER_ID</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>MRN</td>
+<td>DR_REG_NO</td>
+</tr>
+<tr>
+<td>2000</td>
+<td>Taxi Permit</td>
+<td>TAXI_PERMIT</td>
+</tr>
+</tbody></table>
+<h2 id='bank-account-contexts'>Bank Account Contexts</h2>
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Not defined</td>
+<td>NONE</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Disbursal Account</td>
+<td>DISBURSAL_ACCOUNT</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Repayment Account</td>
+<td>REPAYMENT_ACCOUNT</td>
 </tr>
 </tbody></table>
 
@@ -629,9 +1027,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
