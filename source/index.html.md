@@ -3,16 +3,12 @@ title: Capital Float API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://www.capitalfloat.com/'>Capital Float</a>
 
 includes:
-  - errors
+  - master_values
 
 search: true
 ---
@@ -25,11 +21,43 @@ For Partners opting for PayLater product, can do a bunch of other things like cr
 
 The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.
 
+# Authentication
+
+> Request:
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl -H "Content-type: application/json" -X POST <URL>/cf/user/token -d '{"client_id": "<CLIENT_ID>", "client_secret": "<CLIENT_SECRET>"}'
+```
+
+> Response:
+
+```json
+{
+  "access_token": "57ed301af04bf35b40f255feb5ef469ab2f046aff14",
+  "expires_in": 7200
+}
+```
+
+To make a REST API call, you must include request headers including the Authorization header with an access token.
+
+To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of `CLIENT_ID` and `CLIENT_SECRET` for your app for both the sandbox and live environments. Then, you pass the `CLIENT_ID` and `CLIENT_SECRET` in the request body to acquire an access token.
+
+The authorisation server issues an access token in exchange for your `CLIENT_ID` and `CLIENT_SECRET`. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.
+
+You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.
+
+`Authorization: <YOUR_TOKEN>`
+
+<aside class="notice">
+You must replace <code>YOUR_TOKEN</code> with your access token.
+</aside>
+
 # Acquisition
 
 Coming Soon
 
-## Acquisition(Big Loans)
+## Acquisition
 
 Coming Soon
 
@@ -37,7 +65,7 @@ Coming Soon
 
 Coming Soon
 
-# Acquisition on Checkout Screen or Register Screen(Small loans)
+# Checkout/Register - Acquisition
 
 Coming Soon
 
@@ -45,7 +73,7 @@ Coming Soon
 
 Coming Soon
 
-## WebRedirection
+## Web Redirection
 
 Coming Soon
 
@@ -53,7 +81,7 @@ Coming Soon
 
 Coming Soon
 
-# Sharing of Token(In case of offline acquisition[FS App])
+# Token Sharing - Offline
 
 Coming Soon
 
@@ -65,7 +93,7 @@ Coming Soon
 
 Coming Soon
 
-# Agent/Profile activation notification
+# Agent/Profile activation
 
 Coming Soon
 
@@ -73,7 +101,7 @@ Coming Soon
 
 Coming Soon
 
-## Specific for Paylater( PL/IPL/BPL/IBPL) Product
+## Paylater( PL/IPL/BPL/IBPL)
 
 Coming Soon
 
@@ -81,7 +109,7 @@ Coming Soon
 
 Coming Soon
 
-### Tranche creation/Charge creation/Disbursal Creation
+### Tranche / Charge / Disbursal
 
 Coming Soon
 
@@ -89,11 +117,11 @@ Coming Soon
 
 Coming Soon
 
-### Fetch remaining amount in a Block
+### Block Balance
 
 Coming Soon
 
-### Remove remaining amount in a Block
+### Remove Block Balance
 
 Coming Soon
 
@@ -101,11 +129,11 @@ Coming Soon
 
 Coming Soon
 
-## Disbursal Notification to the Partner
+## Disbursal Notification
 
 Coming Soon
 
-## Tranche rejection notification to the partner
+## Tranche rejection notification
 
 Coming Soon
 
@@ -117,236 +145,22 @@ Coming Soon
 
 Coming Soon
 
-## Get Repayments to be made at Partner Level
+## Repayments - Partner
 
 Coming Soon
 
-## Get Repayments to be made at Agent Level
+## Repayments - Agent
 
 Coming Soon
 
-## Repayment API
+## Repayment
 
 Coming Soon
 
-## Repayment Reminder API
+## Repayment Reminder
 
 Coming Soon
 
 ## Agent Status Notification - Active/Suspended
 
 Coming Soon
-
-# Authentication
-
-Coming Soon
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require("kittn");
-
-let api = kittn.authorize("meowmeowmeow");
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require("kittn");
-
-let api = kittn.authorize("meowmeowmeow");
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-| Parameter    | Default | Description                                                                      |
-| ------------ | ------- | -------------------------------------------------------------------------------- |
-| include_cats | false   | If set to true, the result will also include cats.                               |
-| available    | true    | If set to false, the result will include kittens that have already been adopted. |
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require("kittn");
-
-let api = kittn.authorize("meowmeowmeow");
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-| Parameter | Description                      |
-| --------- | -------------------------------- |
-| ID        | The ID of the kitten to retrieve |
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require("kittn");
-
-let api = kittn.authorize("meowmeowmeow");
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted": ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-| Parameter | Description                    |
-| --------- | ------------------------------ |
-| ID        | The ID of the kitten to delete |
