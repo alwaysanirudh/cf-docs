@@ -225,7 +225,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#acquisition" class="toc-h1 toc-link" data-title="acquisition">Acquisition</a>
+            <a href="#acquisition-via-api" class="toc-h1 toc-link" data-title="acquisition-via-api">Acquisition via API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
@@ -236,11 +236,8 @@
               </ul>
           </li>
           <li>
-            <a href="#checkout-register-acquisition" class="toc-h1 toc-link" data-title="checkout-register-acquisition">Checkout/Register - Acquisition</a>
+            <a href="#checkout-financing" class="toc-h1 toc-link" data-title="checkout-financing">Checkout Financing</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#apis" class="toc-h2 toc-link" data-title="apis">APIs</a>
-                  </li>
                   <li>
                     <a href="#web-redirection" class="toc-h2 toc-link" data-title="web-redirection">Web Redirection</a>
                   </li>
@@ -250,33 +247,39 @@
               </ul>
           </li>
           <li>
-            <a href="#token-sharing-offline" class="toc-h1 toc-link" data-title="token-sharing-offline">Token Sharing - Offline</a>
-          </li>
-          <li>
-            <a href="#handshake" class="toc-h1 toc-link" data-title="handshake">Handshake</a>
+            <a href="#token-sharing" class="toc-h1 toc-link" data-title="token-sharing">Token Sharing</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#acqisition-done-via-api" class="toc-h2 toc-link" data-title="acqisition-done-via-api">Acqisition done via API</a>
+                  </li>
+                  <li>
+                    <a href="#acqisition-done-via-fs-app" class="toc-h2 toc-link" data-title="acqisition-done-via-fs-app">Acqisition done via FS App</a>
+                  </li>
                   <li>
                     <a href="#token-status" class="toc-h2 toc-link" data-title="token-status">Token Status</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#agent-profile-activation" class="toc-h1 toc-link" data-title="agent-profile-activation">Agent/Profile activation</a>
+            <a href="#disbursal" class="toc-h1 toc-link" data-title="disbursal">Disbursal</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#disbursal" class="toc-h2 toc-link" data-title="disbursal">Disbursal</a>
+                    <a href="#block-amount" class="toc-h2 toc-link" data-title="block-amount">Block Amount</a>
                   </li>
                   <li>
-                    <a href="#paylater-pl-ipl-bpl-ibpl" class="toc-h2 toc-link" data-title="paylater-pl-ipl-bpl-ibpl">Paylater( PL/IPL/BPL/IBPL)</a>
+                    <a href="#otp-confirmation" class="toc-h2 toc-link" data-title="otp-confirmation">OTP Confirmation</a>
                   </li>
                   <li>
-                    <a href="#disbursal-notification" class="toc-h2 toc-link" data-title="disbursal-notification">Disbursal Notification</a>
+                    <a href="#create-tranche" class="toc-h2 toc-link" data-title="create-tranche">Create Tranche</a>
                   </li>
                   <li>
-                    <a href="#tranche-rejection-notification" class="toc-h2 toc-link" data-title="tranche-rejection-notification">Tranche rejection notification</a>
+                    <a href="#remove-block-amount" class="toc-h2 toc-link" data-title="remove-block-amount">Remove Block Amount</a>
                   </li>
                   <li>
-                    <a href="#disbursal-api" class="toc-h2 toc-link" data-title="disbursal-api">Disbursal API</a>
+                    <a href="#fetch-block-balance" class="toc-h2 toc-link" data-title="fetch-block-balance">Fetch Block Balance</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-borrower-details" class="toc-h2 toc-link" data-title="fetch-borrower-details">Fetch Borrower Details</a>
                   </li>
               </ul>
           </li>
@@ -404,7 +407,7 @@ curl -X POST <span class="se">\</span>
 <aside class="notice">
 You must replace <code>YOUR_TOKEN</code> with your access token.
 </aside>
-<h1 id='acquisition'>Acquisition</h1><h2 id='create-user'>Create User</h2>
+<h1 id='acquisition-via-api'>Acquisition via API</h1><h2 id='create-user'>Create User</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -1492,44 +1495,282 @@ curl-X POST <span class="se">\</span>
 <td>Applicant’s repayment bank IFSC code</td>
 </tr>
 </tbody></table>
-<h1 id='checkout-register-acquisition'>Checkout/Register - Acquisition</h1>
-<p>Coming Soon</p>
-<h2 id='apis'>APIs</h2>
+<h1 id='checkout-financing'>Checkout Financing</h1>
 <p>Coming Soon</p>
 <h2 id='web-redirection'>Web Redirection</h2>
 <p>Coming Soon</p>
 <h2 id='sdks'>SDKs</h2>
 <p>Coming Soon</p>
-<h1 id='token-sharing-offline'>Token Sharing - Offline</h1>
-<p>Coming Soon</p>
-<h1 id='handshake'>Handshake</h1>
-<p>Coming Soon</p>
+<h1 id='token-sharing'>Token Sharing</h1><h2 id='acqisition-done-via-api'>Acqisition done via API</h2>
+<p>Refer the acquisition API section.</p>
+
+<p>Post API:
+Payload:
+{
+&quot;x_partner_token&quot;: &quot;3c62880548592b9366a186df2253e993da9cc7dabbd7b8d70c021232&quot;,
+&quot;amount_sanctioned&quot;: &quot;100000&quot;,
+&quot;final_approval&quot;: true,
+&quot;loan_duration_type&quot;: &quot;days&quot;,
+&quot;interest_frequency&quot;: &quot;yearly&quot;,
+&quot;interest_type&quot;: &quot;reducing&quot;,
+&quot;interest&quot;: &quot;18&quot;,
+&quot;duration&quot;: &quot;360&quot;
+&quot;verified_customer_ref_id&quot;: &quot;ABCD1234512222&quot;
+}
+Response expected:
+{“status”:”1”,”msg”:””}
+Notes:
+If final_approval is True then the case has been disbursed and x_partner_token will contain the token in
+this case
+If final_approval is False then the case has been rejected</p>
+<h2 id='acqisition-done-via-fs-app'>Acqisition done via FS App</h2>
+<p>To Receive the Tokens:
+The following is a generic format with which we can share the Token.
+We have a handshake id generated by us. This will be used in the communication till we get the
+verified_customer_reference_id from your system. Once confirmed we will use the
+verified_customer_reference_id to send the token.</p>
+
+<p><strong>Handshake</strong></p>
+
+<p>Handshake initiation &amp; Confirmation (The customer ref search API)</p>
+
+<p>Request Payload:
+{
+&quot;handshake_id&quot;: &quot;4b816c58-2bd3-46cb-aefa-d431dd03608a&quot;,
+&quot;captured_customer_ref_id&quot;: &quot;ABCD1234512222&quot;,
+&quot;customer_attrs&quot;: {
+&quot;email&quot;: &quot;a@B.com&quot;,
+&quot;phone&quot;: &quot;1234543212&quot;,
+&quot;customer_name&quot;: &quot;test name&quot;,
+&quot;business_name&quot;: &quot;test biz&quot;,
+&quot;resi_address&quot;: &quot;test resi add&quot;,
+&quot;resi_pincode&quot;: &quot;1111&quot;,
+&quot;resi_city&quot;: &quot;bangalore&quot;,
+&quot;biz_address&quot;: &quot;asasassa&quot;,
+&quot;biz_pincode&quot;: &quot;123456&quot;,
+&quot;biz_city&quot;: &quot;bangalore&quot;
+},
+&quot;async_result_callback_url&quot;:&quot;CF_URL_where_partner_will_post_the_response_incase_it_cant_give_respo
+nse_in_sync&quot;,
+&quot;token_callback_url&quot;:&quot;Optional now . Dynamic url for sending token per user case. You can send this as
+harcoded one Will be used in future&quot;
+}
+Response (In case it&#39;s instantaneously ) / Post on (async_result_callback_url) :
+{
+&quot;status&quot;: &quot;1&quot;,
+&quot;captured_customer_ref_id&quot;: &quot;ABCD1234512222&quot;,
+&quot;verified_customer_ref_id&quot;: &quot;ABCD1234512222&quot;,
+&quot;handshake_id&quot;: &quot;4b816c58-2bd3-46cb-aefa-d431dd03608a&quot;,
+&quot;msg&quot;: &quot;&quot;,
+&quot;customer_data&quot;:{
+&quot;email&quot;: &quot;a@BC.com&quot;,
+&quot;phone&quot;: &quot;1234543212&quot;,
+&quot;customer_name&quot;: &quot;test name verified&quot;,
+&quot;business_name&quot;: &quot;test biz verified&quot;,
+&quot;resi_address&quot;: &quot;test resi add verified&quot;,
+&quot;resi_pincode&quot;: &quot;1111&quot;,
+&quot;resi_city&quot;: &quot;&quot;,
+&quot;biz_address&quot;: &quot;&quot;,
+&quot;biz_address&quot;: &quot;asasassa&quot;,
+&quot;biz_city&quot;: &quot;&quot;
+}
+}
+Notes:
+1)Status codes
+&lt; 0 → Is an error
+1 → Is reponse is giving in sync i.e instantaneously
+2 → Response will be posted to “async_result_callback_url”</p>
+
+<ol>
+<li>verified_customer_ref_id is the verified id and sent by partners . It will be used for further
+communication.</li>
+</ol>
 <h2 id='token-status'>Token Status</h2>
 <p>Coming Soon</p>
-<h1 id='agent-profile-activation'>Agent/Profile activation</h1>
-<p>Coming Soon</p>
-<h2 id='disbursal'>Disbursal</h2>
-<p>Coming Soon</p>
-<h2 id='paylater-pl-ipl-bpl-ibpl'>Paylater( PL/IPL/BPL/IBPL)</h2>
-<p>Coming Soon</p>
-<h3 id='create-a-block'>Create a Block</h3>
-<p>Coming Soon</p>
-<h3 id='tranche-charge-disbursal'>Tranche / Charge / Disbursal</h3>
-<p>Coming Soon</p>
-<h3 id='otp-acceptance'>OTP acceptance</h3>
-<p>Coming Soon</p>
-<h3 id='block-balance'>Block Balance</h3>
-<p>Coming Soon</p>
-<h3 id='remove-block-balance'>Remove Block Balance</h3>
-<p>Coming Soon</p>
-<h3 id='agent-info'>Agent Info</h3>
-<p>Coming Soon</p>
-<h2 id='disbursal-notification'>Disbursal Notification</h2>
-<p>Coming Soon</p>
-<h2 id='tranche-rejection-notification'>Tranche rejection notification</h2>
-<p>Coming Soon</p>
-<h2 id='disbursal-api'>Disbursal API</h2>
-<p>Coming Soon</p>
+<h1 id='disbursal'>Disbursal</h1><h2 id='block-amount'>Block Amount</h2>
+<p>/cf/paylater/block
+{
+&quot;orderID&quot; : &quot;string&quot;,
+&quot;amount&quot;: &quot;3748973.97&quot;
+}
+Response :
+(success)
+{
+&quot;status&quot;: 1,
+&quot;orderID&quot; : &quot;string&quot;,
+&quot;message&quot;: &quot;&quot;
+}
+//use the orderID in this response to create tranche from this block
+(fail)
+{
+&quot;status&quot;: -1,
+&quot;message&quot;: &quot;&quot;
+}</p>
+<h2 id='otp-confirmation'>OTP Confirmation</h2>
+<p>When a request to create a block is triggered, the otp is being sent via sms and email .
+<strong>Verify OTP at block level</strong></p>
+
+<p>/cf/paylater/verify_block_otp
+RequestBody:
+{
+&quot;orderID&quot; : &quot;13&quot;,
+&quot;otp&quot;:&quot;1234&quot;
+}
+on success:
+{&#39;status&#39;: 1, &#39;message&#39;: &#39;Success&#39;}
+Error status codes :
+{&quot;status&quot;: -9, &quot;message&quot; :&quot;OTP not matching&quot;}
+{&quot;status&quot;: -13, &quot;message&quot; :&quot;Block not found&quot;}
+<strong>Resend OTP</strong></p>
+
+<p>/cf/paylater/resend_block_otp
+RequestBody :
+{
+&quot;orderID&quot; : &quot;13&quot;
+}
+on Success:
+{&quot;status&quot;: &quot;1&quot;, &quot;message&quot;: &quot;Sent OTP successfully&quot;}</p>
+<h2 id='create-tranche'>Create Tranche</h2>
+<p>/cf/paylater/createtranchevendor
+{
+&quot;amount&quot;: &quot;88558&quot;,
+&quot;orderID&quot;: &quot;string&quot;,
+&quot;suborderID&quot;: &quot;string&quot;
+}
+Response:
+(success)
+{
+&quot;status&quot;: 1,
+&quot;trancheID&quot;: &quot;string&quot;,
+&quot;message&quot;: &quot;&quot;
+}
+//Use this trancheID for reference to this tranche
+(fail)
+{
+&quot;status&quot;: -1,
+&quot;message&quot;: &quot;&quot;
+}</p>
+<h2 id='remove-block-amount'>Remove Block Amount</h2>
+<p>/cf/paylater/cancel
+{
+&quot;orderID&quot;: &quot;string&quot;,
+&quot;amount&quot;: &quot;3748973.97&quot;
+}
+Response :
+(success)
+{
+&quot;status&quot;: 1,
+&quot;message&quot;: &quot;&quot;
+}
+(fail)
+{
+&quot;status&quot;: -1,
+&quot;message&quot;: &quot;&quot;
+}</p>
+<h2 id='fetch-block-balance'>Fetch Block Balance</h2>
+<p>/cf/paylater/bal
+{
+&quot;orderID&quot;: &quot;string&quot;
+}
+Response :
+{
+&quot;status&quot;: 1,
+&quot;orderID&quot;: &quot;string&quot;,
+&quot;balance&quot;: &quot;&quot;
+}</p>
+<h2 id='fetch-borrower-details'>Fetch Borrower Details</h2>
+<p>/cf/paylater/agent_info</p>
+
+<p>Request:</p>
+
+<p>{
+&quot;email&quot;: &quot;testcapitalfloat@gmail.com&quot;
+}</p>
+
+<p>Response:
+{
+&quot;sresp&quot;: {
+&quot;overdueFees&quot;: 0,
+&quot;amountNotPaidAfterDueDate&quot;: 0,
+&quot;otpNotVerified&quot;: 0,
+&quot;agentProfiles&quot;: [
+{
+&quot;emailId&quot;: &quot;t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com&quot;,
+&quot;roi&quot;: 13,
+&quot;settledAmountTillDate&quot;: 0,
+&quot;settledTranches&quot;: [],
+&quot;delayedTranches&quot;: [
+{
+&quot;emailId&quot;: &quot;t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com&quot;,
+&quot;totalDelinquentAmount&quot;: &quot;145152.862215278&quot;,
+&quot;trancheId&quot;: &quot;cce5f578-d7d8-4b80-939a-9f50a5f29061&quot;,
+&quot;dpd&quot;: 25,
+&quot;payments&quot;: [],
+&quot;dueAmt&quot;: {
+&quot;charges&quot;: 3636.189999999973,
+&quot;total&quot;: 145152.8622152778,
+&quot;interest&quot;: 1516.67,
+&quot;principal&quot;: 140000
+},
+&quot;totalFeesDue&quot;: 0,
+&quot;agentId&quot;: null,
+&quot;invoiceUrls&quot;: [
+{
+&quot;caption&quot;: &quot;1234&quot;,
+&quot;thumbnailURL&quot;: &quot;https://docs-generic.s3-us-west-2.amazonaws.com/testcapitalfloatgmailcom/paylater/d016bad6-527e-484a-b069-afb23563779d/cce5f578-d7d8-4b80-939a-9f50a5f29061/1499879473493_thumbnail.jpg&quot;
+}
+],
+&quot;dueDate&quot;: &quot;8/12/2017 12:00:00 AM&quot;
+}
+],
+&quot;sanctionId&quot;: &quot;d016bad6-527e-484a-b069-afb23563779d&quot;,
+&quot;requestedTranches&quot;: [],
+&quot;pendingTranchesForFunding&quot;: 0,
+&quot;penaltyInterestPa&quot;: &quot;37.0&quot;,
+&quot;nachStatus&quot;: &quot;Rejected&quot;,
+&quot;dueDateOfNextTranche&quot;: null,
+&quot;expiryDate&quot;: &quot;2018-10-05&quot;,
+&quot;expectedIr&quot;: &quot;13&quot;,
+&quot;totalLimitUtilized&quot;: 140000,
+&quot;isOnHold&quot;: &quot;Active&quot;,
+&quot;overdueFees&quot;: 0,
+&quot;lan&quot;: &quot;BAN17E00575&quot;,
+&quot;amountNotPaidAfterDueDate&quot;: 145152.8622152778,
+&quot;otpNotVerified&quot;: 0,
+&quot;availableLimit&quot;: 716543,
+&quot;creditLimit&quot;: 876543,
+&quot;overdueInterest&quot;: 1516.67,
+&quot;creationDate&quot;: &quot;2017-07-12&quot;,
+&quot;repaymentCycle&quot;: 30,
+&quot;isActive&quot;: true,
+&quot;activeBlockedAmount&quot;: 10000,
+&quot;overduePrincipal&quot;: 140000,
+&quot;dpd&quot;: 25,
+&quot;onHoldReason&quot;: &quot;-&quot;,
+&quot;overdueCharges&quot;: 3636.189999999973,
+&quot;dueTranches&quot;: []
+}
+],
+&quot;pendingTranchesForFunding&quot;: 0,
+&quot;agent&quot;: {
+&quot;city&quot;: null,
+&quot;name&quot;: &quot;Deepak Elec Pvt Ltd&quot;,
+&quot;country&quot;: null,
+&quot;phone&quot;: null,
+&quot;agent_id&quot;: null,
+&quot;email&quot;: null
+},
+&quot;settledAmountTillDate&quot;: 145152.8622152778,
+&quot;dpd&quot;: 25,
+&quot;cfBankIfsc&quot;: &quot;RATN0000156&quot;,
+&quot;overduePrincipal&quot;: 140000,
+&quot;overdueCharges&quot;: 3636.189999999973,
+&quot;overdueInterest&quot;: 1516.67,
+&quot;cfBankAcctNo&quot;: &quot;VACAFLT08483&quot;,
+&quot;cfBankName&quot;: &quot;RBL&quot;
+},
+&quot;status&quot;: 1
+}</p>
 <h1 id='repayment'>Repayment</h1>
 <p>Coming Soon</p>
 <h2 id='repayments-partner'>Repayments - Partner</h2>
@@ -1537,9 +1778,11 @@ curl-X POST <span class="se">\</span>
 <h2 id='repayments-agent'>Repayments - Agent</h2>
 <p>Coming Soon</p>
 <h2 id='repayment-2'>Repayment</h2>
-<p>Coming Soon</p>
+<p><URL>/vendordashboard/get_repayment_info?trancheId=&lt;&gt;</p>
+
+<p>Response:</p>
 <h2 id='repayment-reminder'>Repayment Reminder</h2>
-<p>Coming Soon</p>
+<p>http://54.201.23.67/cf/vendordashboard/get_repayment_info</p>
 <h2 id='agent-status-notification-active-suspended'>Agent Status Notification - Active/Suspended</h2>
 <p>Coming Soon</p>
 <h1 id='master-key-reference'>Master Key Reference</h1>
