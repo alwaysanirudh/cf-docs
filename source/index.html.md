@@ -12,7 +12,6 @@ includes:
   - acquisition
   - checkout
   - token_sharing
-  - handshake
   - agent_profile
   - repayment
   - master_values

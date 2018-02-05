@@ -12,11 +12,13 @@ Coming Soon
 
 ## Repayment
 
-Coming Soon
+<URL>/vendordashboard/get_repayment_info?trancheId=<>
+
+Response:
 
 ## Repayment Reminder
 
-Coming Soon
+http://54.201.23.67/cf/vendordashboard/get_repayment_info
 
 ## Agent Status Notification - Active/Suspended
 

@@ -1,8 +1,4 @@
-# Checkout Acquisition
-
-Coming Soon
-
-## APIs
+# Checkout Financing
 
 Coming Soon
 

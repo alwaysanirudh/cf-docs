@@ -1,4 +1,4 @@
-# Acquisition
+# Acquisition via API
 
 ## Create User
 
