@@ -5,7 +5,6 @@
 > Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl -X POST \
   <URL>/users/create_user \
   -H "Content-type: application/json"  \
