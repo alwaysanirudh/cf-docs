@@ -6,7 +6,10 @@
 curl -X POST \
   <URL>/users/token \
   -H "Content-type: application/json" \
-  -d '{"client_id": "<CLIENT_ID>", "client_secret": "<CLIENT_SECRET>"}'
+  -d '{
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 > Response:

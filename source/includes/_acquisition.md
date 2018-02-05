@@ -9,7 +9,12 @@ curl -X POST \
   <URL>/users/create_user \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
-  -d '{"email": "string", "phone": "string", "username": "string", "city", "string"}'
+  -d '{
+    "email": "string",
+    "phone": "string",
+    "username": "string",
+    "city", "string"
+  }'
 ```
 
 `POST <URL>/users/create_user`
@@ -28,7 +33,6 @@ curl -X POST \
 > Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl-X POST \
   <URL>/apps/details/applications \
   -H "Content-type: application/json"  \
