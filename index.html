@@ -217,7 +217,7 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc" class="toc-list-h1">
+      <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
           </li>
@@ -344,7 +344,7 @@
                   </li>
               </ul>
           </li>
-      </div>
+      </ul>
         <ul class="toc-footer">
             <li><a href='https://www.capitalfloat.com/'>Capital Float</a></li>
         </ul>
@@ -362,8 +362,7 @@
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl -X POST <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   &lt;URL&gt;/users/token <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{"client_id": "&lt;CLIENT_ID&gt;", "client_secret": "&lt;CLIENT_SECRET&gt;"}'</span>
@@ -411,8 +410,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl -X POST <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
   &lt;URL&gt;/users/create_user <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
