@@ -10,7 +10,7 @@ toc_footers:
 includes:
   - authentication
   - acquisition
-  - checkout_register
+  - checkout
   - token_sharing
   - handshake
   - agent_profile

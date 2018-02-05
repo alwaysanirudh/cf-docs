@@ -1,4 +1,4 @@
-# Checkout/Register - Acquisition
+# Checkout Acquisition
 
 Coming Soon
 
