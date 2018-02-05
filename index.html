@@ -228,10 +228,10 @@
             <a href="#acquisition" class="toc-h1 toc-link" data-title="acquisition">Acquisition</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#acquisition-2" class="toc-h2 toc-link" data-title="acquisition">Acquisition</a>
+                    <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
                   </li>
                   <li>
-                    <a href="#apis" class="toc-h2 toc-link" data-title="apis">APIs</a>
+                    <a href="#create-application" class="toc-h2 toc-link" data-title="create-application">Create Application</a>
                   </li>
               </ul>
           </li>
@@ -239,7 +239,7 @@
             <a href="#checkout-register-acquisition" class="toc-h1 toc-link" data-title="checkout-register-acquisition">Checkout/Register - Acquisition</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#apis-2" class="toc-h2 toc-link" data-title="apis">APIs</a>
+                    <a href="#apis" class="toc-h2 toc-link" data-title="apis">APIs</a>
                   </li>
                   <li>
                     <a href="#web-redirection" class="toc-h2 toc-link" data-title="web-redirection">Web Redirection</a>
@@ -360,7 +360,10 @@
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl -H <span class="s2">"Content-type: application/json"</span> -X POST &lt;URL&gt;/cf/user/token -d <span class="s1">'{"client_id": "&lt;CLIENT_ID&gt;", "client_secret": "&lt;CLIENT_SECRET&gt;"}'</span>
+curl -X POST <span class="se">\</span>
+  &lt;URL&gt;/users/token <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{"client_id": "&lt;CLIENT_ID&gt;", "client_secret": "&lt;CLIENT_SECRET&gt;"}'</span>
 </code></pre>
 <blockquote>
 <p>Response:</p>
@@ -370,6 +373,24 @@ curl -H <span class="s2">"Content-type: application/json"</span> -X POST &lt;URL
   </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><code>POST &lt;URL&gt;/users/token</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>client_id</td>
+<td>Client ID shared with you</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>Client Secret shared with you</td>
+</tr>
+</tbody></table>
+
 <p>To make a REST API call, you must include request headers including the Authorization header with an access token.</p>
 
 <p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> in the request body to acquire an access token.</p>
@@ -378,20 +399,1095 @@ curl -H <span class="s2">"Content-type: application/json"</span> -X POST &lt;URL
 
 <p>You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.</p>
 
-<p><code>Authorization: &lt;YOUR_TOKEN&gt;</code></p>
+<p><code>Authorization: YOUR_TOKEN</code></p>
 
 <aside class="notice">
 You must replace <code>YOUR_TOKEN</code> with your access token.
 </aside>
-<h1 id='acquisition'>Acquisition</h1>
-<p>Coming Soon</p>
-<h2 id='acquisition-2'>Acquisition</h2>
-<p>Coming Soon</p>
-<h2 id='apis'>APIs</h2>
-<p>Coming Soon</p>
+<h1 id='acquisition'>Acquisition</h1><h2 id='create-user'>Create User</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X POST <span class="se">\</span>
+  &lt;URL&gt;/users/create_user <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{"email": "string", "phone": "string", "username": "string", "city", "string"}'</span>
+</code></pre>
+<p><code>POST &lt;URL&gt;/users/create_user</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>User&#39;s email</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>User&#39;s phone</td>
+</tr>
+<tr>
+<td>username</td>
+<td>User&#39;s username</td>
+</tr>
+<tr>
+<td>city</td>
+<td>User&#39;s current city</td>
+</tr>
+</tbody></table>
+<h2 id='create-application'>Create Application</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl-X POST <span class="se">\</span>
+  &lt;URL&gt;/apps/details/applications <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "bank_accounts": [
+      {
+        "acc_context": 0,
+        "acc_holder_name": "string",
+        "acc_id": 0,
+        "acc_no": "string",
+        "acc_type": "string",
+        "app_id": "string",
+        "bank_name": "string",
+        "branch": "string",
+        "entry_code": 0,
+        "ifsc_code": "string"
+      }
+    ],
+    "business_details": [
+      {
+        "address_list": [
+          {
+            "address": "string",
+            "address_id": 0,
+            "address_owner": "string",
+            "address_type": 0,
+            "app_id": "string",
+            "city": "string",
+            "contact_list": [
+              {
+                "address_id": 0,
+                "app_id": "string",
+                "contact_context": 0,
+                "contact_id": 0,
+                "contact_information": "string",
+                "contact_type": 0,
+                "entity_id": 0,
+                "entity_type": 0
+              }
+            ],
+            "country": 0,
+            "district": "string",
+            "entity_id": 0,
+            "entity_type": 0,
+            "is_active": 0,
+            "is_fi_needed": 0,
+            "landmark": "string",
+            "latitude": 0,
+            "longitude": 0,
+            "occupancy_start_date": "2018-02-05",
+            "ownership_type": 0,
+            "pincode": 0,
+            "post_office": "string",
+            "state": "string"
+          }
+        ],
+        "app_id": "string",
+        "application_context": 0,
+        "business_id": 0,
+        "business_profile": "string",
+        "ca_number": "string",
+        "cibil_request_id": "string",
+        "contacts_list": [
+          {
+            "address_id": 0,
+            "app_id": "string",
+            "contact_context": 0,
+            "contact_id": 0,
+            "contact_information": "string",
+            "contact_type": 0,
+            "entity_id": 0,
+            "entity_type": 0
+          }
+        ],
+        "incorporation_date": "2018-02-05",
+        "industry_type": 0,
+        "kyc_status": 0,
+        "main_product_category": 0,
+        "nature_of_business": 0,
+        "operate_as": 0,
+        "operation_start_date": "2018-02-05",
+        "poi_list": [
+          {
+            "app_id": "string",
+            "created_time": 0,
+            "entity_id": 0,
+            "entity_type": 0,
+            "id_information": "string",
+            "id_type": 0,
+            "last_modified_time": 0,
+            "poi_id": 0
+          }
+        ],
+        "registered_name": "string",
+        "services_provided": [
+          0
+        ]
+      }
+    ],
+    "business_financials": {
+      "app_id": "string",
+      "auto_loan": 0,
+      "base_year": 0,
+      "home_loan": 0,
+      "id": 0,
+      "loan_against_property": 0,
+      "monthly_emi_obligations": 0,
+      "odcc_limit": 0,
+      "outstanding_loan_amount": 0,
+      "personal_loan": 0,
+      "profit_prev_year": 0,
+      "profit_this_year": 0,
+      "turnover_prev_year": 0,
+      "turnover_this_year": 0,
+      "unsecured_loan": 0
+    },
+    "ecosystem_details": [
+      {
+        "app_id": "string",
+        "branch_code": "string",
+        "customer_id": "string",
+        "ecosystem_id": 0,
+        "ecosystem_xns_list": [
+          {
+            "app_id": "string",
+            "base_month": 0,
+            "base_month_minus_1": 0,
+            "base_month_minus_10": 0,
+            "base_month_minus_11": 0,
+            "base_month_minus_12": 0,
+            "base_month_minus_2": 0,
+            "base_month_minus_3": 0,
+            "base_month_minus_4": 0,
+            "base_month_minus_5": 0,
+            "base_month_minus_6": 0,
+            "base_month_minus_7": 0,
+            "base_month_minus_8": 0,
+            "base_month_minus_9": 0,
+            "ecosystem_id": 0,
+            "months_of_data": 0,
+            "xn_type": 0,
+            "xns_id": 0
+          }
+        ],
+        "is_verified": 0,
+        "partner_id": 0,
+        "partner_name": "string",
+        "password": "string",
+        "payment_cycle": 0,
+        "rating": "string",
+        "return_percentage": 0,
+        "start_date": "2018-02-05",
+        "type": 0,
+        "url": "string",
+        "username": "string",
+        "wallet_number": "string"
+      }
+    ],
+    "fund_use_details": [
+      {
+        "app_id": "string",
+        "end_use_id": 0,
+        "estimated_cost": 0,
+        "loan_amount_required": 0,
+        "service_attributes_jsonb": {
+          "array": true,
+          "big_decimal": true,
+          "big_integer": true,
+          "binary": true,
+          "boolean": true,
+          "container_node": true,
+          "double": true,
+          "float": true,
+          "floating_point_number": true,
+          "int": true,
+          "integral_number": true,
+          "long": true,
+          "missing_node": true,
+          "node_type": "ARRAY",
+          "null": true,
+          "number": true,
+          "object": true,
+          "pojo": true,
+          "short": true,
+          "textual": true,
+          "value_node": true
+        },
+        "usage_type": 0
+      }
+    ],
+    "individual_details": [
+      {
+        "address_list": [
+          {
+            "address": "string",
+            "address_id": 0,
+            "address_owner": "string",
+            "address_type": 0,
+            "app_id": "string",
+            "city": "string",
+            "contact_list": [
+              {
+                "address_id": 0,
+                "app_id": "string",
+                "contact_context": 0,
+                "contact_id": 0,
+                "contact_information": "string",
+                "contact_type": 0,
+                "entity_id": 0,
+                "entity_type": 0
+              }
+            ],
+            "country": 0,
+            "district": "string",
+            "entity_id": 0,
+            "entity_type": 0,
+            "is_active": 0,
+            "is_fi_needed": 0,
+            "landmark": "string",
+            "latitude": 0,
+            "longitude": 0,
+            "occupancy_start_date": "2018-02-05",
+            "ownership_type": 0,
+            "pincode": 0,
+            "post_office": "string",
+            "state": "string"
+          }
+        ],
+        "app_id": "string",
+        "application_context": 0,
+        "birth_date": "2018-02-05",
+        "bu_relationship_type": 0,
+        "bu_share_percent": 0,
+        "business_id": 0,
+        "cibil_consent_flag": 0,
+        "cibil_consent_mode": 0,
+        "cibil_request_id": "string",
+        "contacts_list": [
+          {
+            "address_id": 0,
+            "app_id": "string",
+            "contact_context": 0,
+            "contact_id": 0,
+            "contact_information": "string",
+            "contact_type": 0,
+            "entity_id": 0,
+            "entity_type": 0
+          }
+        ],
+        "employer_name": "string",
+        "employment_type": 0,
+        "father_name": "string",
+        "first_name": "string",
+        "gender": 0,
+        "individual_id": 0,
+        "individual_relationship_type": 0,
+        "kyc_mode": 0,
+        "kyc_status": 0,
+        "last_name": "string",
+        "marital_status": 0,
+        "mother_name": "string",
+        "poi_list": [
+          {
+            "app_id": "string",
+            "created_time": 0,
+            "entity_id": 0,
+            "entity_type": 0,
+            "id_information": "string",
+            "id_type": 0,
+            "last_modified_time": 0,
+            "poi_id": 0
+          }
+        ],
+        "qualification": 0,
+        "work_ex": 0
+      }
+    ],
+    "loan_offer_output": {
+      "status": "string",
+      "offer": {}
+    },
+    "metadata": {
+      "app_id": "string",
+      "app_request_id": "string",
+      "app_source_name": "string",
+      "application_lifecycle_id": 0,
+      "application_segment": 0,
+      "application_type": 0,
+      "created_time": 0,
+      "fin_calc_year": "2018-02-05",
+      "hub_or_spoke": 0,
+      "in_process_status": 0,
+      "is_archived": 0,
+      "is_fs": 0,
+      "is_perfios": 0,
+      "last_modified_time": 0,
+      "misc_jsonb": {},
+      "pd_context": 0,
+      "pd_type": 0,
+      "previous_application_id": "string",
+      "product_type": 0,
+      "sl_no": 0,
+      "source_attributes_jsonb": {},
+      "status": 0,
+      "tags": [
+        0
+      ],
+      "third_party_reference_id": "string",
+      "version": "string"
+    },
+    "renewal_response": {
+      "app_id": {
+        "id_new": "string",
+        "id_old": "string"
+      },
+      "business_id_change_list": [
+        {
+          "id_new": "string",
+          "id_old": "string"
+        }
+      ],
+      "individual_id_change_list": [
+        {
+          "id_new": "string",
+          "id_old": "string"
+        }
+      ]
+    },
+    "user_pool_details_models": [
+      {
+        "name": "string",
+        "pool_context": 0,
+        "pool_id": 0,
+        "user_id": 0,
+        "user_pool_id": 0,
+        "username": "string"
+      }
+    ]
+  }'</span>
+</code></pre>
+<p><code>POST &lt;URL&gt;/apps/details/applications</code></p>
+
+<p><strong>Application Metadata</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>uuid</td>
+<td>App ID auto generated by Capital Float</td>
+</tr>
+<tr>
+<td>app_request_id</td>
+<td>string</td>
+<td>The Reference ID at your end for posting the application to Capital Float.</td>
+</tr>
+<tr>
+<td>app_source_name</td>
+<td>string</td>
+<td>Source of the application. Refer Master</td>
+</tr>
+<tr>
+<td>application_lifecycle_id</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>aapplication_segment</td>
+<td>integer</td>
+<td>Application Segment (example: Individual/Business). Refer Master.</td>
+</tr>
+<tr>
+<td>application_type</td>
+<td>integer</td>
+<td>Type of application. Refer Master</td>
+</tr>
+<tr>
+<td>created_time</td>
+<td>integer</td>
+<td>Creation time for application</td>
+</tr>
+<tr>
+<td>fin_calc_year</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>hub_or_spoke</td>
+<td>integer</td>
+<td>Whether the Application is for a Hub or a Spoke location w.r.t. Capital Float</td>
+</tr>
+<tr>
+<td>in_process_status</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>is_archived</td>
+<td>integer</td>
+<td>Flag indicating whether the Application is archived</td>
+</tr>
+<tr>
+<td>is_fs</td>
+<td>integer</td>
+<td>Flag indicating whether the Application is on FS App</td>
+</tr>
+<tr>
+<td>is_perfios</td>
+<td>integer</td>
+<td>Flag indicating whether Perfios auto scraping was opted for by the applicant</td>
+</tr>
+<tr>
+<td>last_modified_time</td>
+<td>integer</td>
+<td>Last modified timestamp for Application</td>
+</tr>
+<tr>
+<td>pd_context</td>
+<td>integer</td>
+<td>Context of Personal Discussion</td>
+</tr>
+<tr>
+<td>pd_type</td>
+<td>integer</td>
+<td>Type of Personal Discussion</td>
+</tr>
+<tr>
+<td>previous_application_id</td>
+<td>string</td>
+<td>Parent application ID for the application</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td>integer</td>
+<td>Type of Capital Float product associated with the Application. Refer Master.</td>
+</tr>
+<tr>
+<td>sl_no</td>
+<td>integer</td>
+<td>Application serial number. Auto generated at Capital Float.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>integer</td>
+<td>Current application status</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>Tags for the application</td>
+</tr>
+<tr>
+<td>third_party_reference_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>Business Details</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>business_id</td>
+<td>integer</td>
+<td>Business entity Id, auto generated at Capital Float</td>
+</tr>
+<tr>
+<td>address_list</td>
+<td>array</td>
+<td>List of business address objects</td>
+</tr>
+<tr>
+<td>application_context</td>
+<td>integer</td>
+<td>Context of association of the business with the application. Refer Master.</td>
+</tr>
+<tr>
+<td>business_profile</td>
+<td>string</td>
+<td>Information about business</td>
+</tr>
+<tr>
+<td>ca_number</td>
+<td>string</td>
+<td>Chartered Accountant number associated with the business</td>
+</tr>
+<tr>
+<td>cibil_request_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>contacts_list</td>
+<td>array</td>
+<td>List of business contact objects</td>
+</tr>
+<tr>
+<td>incorporation_date</td>
+<td>date</td>
+<td>Incorporation date of the business</td>
+</tr>
+<tr>
+<td>industry_type</td>
+<td>integer</td>
+<td>Industry type of the business. Refer Master</td>
+</tr>
+<tr>
+<td>kyc_status</td>
+<td>integer</td>
+<td>Mode of KYC. Refer Master</td>
+</tr>
+<tr>
+<td>main_product_category</td>
+<td>integer</td>
+<td>Main product category of the business. Refer Master</td>
+</tr>
+<tr>
+<td>nature_of_business</td>
+<td>integer</td>
+<td>Nature of business. Refer Master</td>
+</tr>
+<tr>
+<td>operate_as</td>
+<td>integer</td>
+<td>Business entity type. Refer Master</td>
+</tr>
+<tr>
+<td>operation_start_date</td>
+<td>date</td>
+<td>Operation start date of business</td>
+</tr>
+<tr>
+<td>poi_list</td>
+<td>array</td>
+<td>List of business proof of identity objects</td>
+</tr>
+<tr>
+<td>registered_name</td>
+<td>string</td>
+<td>Name of Business Entity</td>
+</tr>
+<tr>
+<td>services_provided</td>
+<td>array</td>
+<td>List of Services provided. Refer master keys</td>
+</tr>
+</tbody></table>
+
+<p><strong>Business Financials</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>Id of the financials, auto generated at Capital Float</td>
+</tr>
+<tr>
+<td>auto_loan</td>
+<td>float</td>
+<td>Amount of auto loan take by the applicant</td>
+</tr>
+<tr>
+<td>base_year</td>
+<td>integer</td>
+<td>Base year for financial data</td>
+</tr>
+<tr>
+<td>home_loan</td>
+<td>integer</td>
+<td>Amount of home loan take by the applicant</td>
+</tr>
+<tr>
+<td>loan_against_property</td>
+<td>integer</td>
+<td>Amount of loan against property take by the applicant</td>
+</tr>
+<tr>
+<td>monthly_emi_obligations</td>
+<td>integer</td>
+<td>Monthly EMI obligations for the applicant</td>
+</tr>
+<tr>
+<td>odcc_limit</td>
+<td>integer</td>
+<td>OD/CC limit for the applicant</td>
+</tr>
+<tr>
+<td>outstanding_loan_amount</td>
+<td>integer</td>
+<td>Outstanding amount of loan for the applicant</td>
+</tr>
+<tr>
+<td>personal_loan</td>
+<td>integer</td>
+<td>Amount of personal loan take by the applicant</td>
+</tr>
+<tr>
+<td>profit_prev_year</td>
+<td>integer</td>
+<td>Base -1 year profit for the applicant</td>
+</tr>
+<tr>
+<td>profit_this_year</td>
+<td>integer</td>
+<td>Base year profit for the applicant</td>
+</tr>
+<tr>
+<td>turnover_prev_year</td>
+<td>integer</td>
+<td>Base -1 year turnover for the applicant</td>
+</tr>
+<tr>
+<td>turnover_this_year</td>
+<td>integer</td>
+<td>Base year turnover for the applicant</td>
+</tr>
+<tr>
+<td>unsecured_loan</td>
+<td>integer</td>
+<td>Amount of unsecured loan taken by the applicant</td>
+</tr>
+</tbody></table>
+
+<p><strong>Ecosystem Details</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ecosystem_id</td>
+<td>integer</td>
+<td>Ecosystem ID , auto generated at Capital Float</td>
+</tr>
+<tr>
+<td>branch_code</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>ecosystem_xns_list</td>
+<td>array</td>
+<td>List of ecosystem transaction objects</td>
+</tr>
+<tr>
+<td>is_verified</td>
+<td>integer</td>
+<td>Flag indicating whether Ecosystem details for the applicant are verified</td>
+</tr>
+<tr>
+<td>partner_id</td>
+<td>integer</td>
+<td>ID of the Partner against which ecosystem details are to be mapped</td>
+</tr>
+<tr>
+<td>partner_name</td>
+<td>string</td>
+<td>Name of the partner against which ecosystem details are to be mapped</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>payment_cycle</td>
+<td>integer</td>
+<td>Payment cycle of the applicant with the partner</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>string</td>
+<td>Rating of the applicant with the partner</td>
+</tr>
+<tr>
+<td>return_percentage</td>
+<td>integer</td>
+<td>Return percentage of the applicant on partner’s ecosytem</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>date</td>
+<td>Relationship start date between Applicant and Partner</td>
+</tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>Type of Partner. Refer Master.</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>Applicant’s URL with the partner</td>
+</tr>
+<tr>
+<td>username</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>wallet_number</td>
+<td>string</td>
+<td>Wallet number of the applicant with the partner</td>
+</tr>
+</tbody></table>
+
+<p><strong>Ecosystem Transactions</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>xns_id</td>
+<td>integer</td>
+<td>ID of the Transaction auto generated by Capital Float</td>
+</tr>
+<tr>
+<td>xn_type</td>
+<td>integer</td>
+<td>Transaction type. Refer Master</td>
+</tr>
+<tr>
+<td>base_month</td>
+<td>integer</td>
+<td>Base month against which Ecosystem transaction are to be stored</td>
+</tr>
+<tr>
+<td>base_month_minus_1</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -1</td>
+</tr>
+<tr>
+<td>base_month_minus_10</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -10</td>
+</tr>
+<tr>
+<td>base_month_minus_11</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -11</td>
+</tr>
+<tr>
+<td>base_month_minus_12</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -12</td>
+</tr>
+<tr>
+<td>base_month_minus_2</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -2</td>
+</tr>
+<tr>
+<td>base_month_minus_3</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -3</td>
+</tr>
+<tr>
+<td>base_month_minus_4</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -4</td>
+</tr>
+<tr>
+<td>base_month_minus_5</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -5</td>
+</tr>
+<tr>
+<td>base_month_minus_6</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -6</td>
+</tr>
+<tr>
+<td>base_month_minus_7</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -7</td>
+</tr>
+<tr>
+<td>base_month_minus_8</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -8</td>
+</tr>
+<tr>
+<td>base_month_minus_9</td>
+<td>integer</td>
+<td>Ecosystem transaction value for Base Month -9</td>
+</tr>
+<tr>
+<td>months_of_data</td>
+<td>integer</td>
+<td>Number of months of Ecosystem Transactions data</td>
+</tr>
+</tbody></table>
+
+<p><strong>Fund Use Details</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>end_use_id</td>
+<td>integer</td>
+<td>End Use ID Auto Generated at Capital Float</td>
+</tr>
+<tr>
+<td>estimated_cost</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>loan_amount_required</td>
+<td>integer</td>
+<td>Loan amount required by the applicant</td>
+</tr>
+<tr>
+<td>usage_type</td>
+<td>integer</td>
+<td>Type of Funds Use. Refer Master.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Individual&#39;s Details</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>individual_id</td>
+<td>integer</td>
+<td>Individual ID auto generated by Capital Float</td>
+</tr>
+<tr>
+<td>application_context</td>
+<td>integer</td>
+<td>Context of association of the individual with the application. Refer Master.</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>date</td>
+<td>Date of Birth of the Individual</td>
+</tr>
+<tr>
+<td>business_id</td>
+<td>integer</td>
+<td>Business Entity ID against which this individual is to be mapped</td>
+</tr>
+<tr>
+<td>bu_relationship_type</td>
+<td>integer</td>
+<td>Relationship of the individual with the Business Entitiy</td>
+</tr>
+<tr>
+<td>bu_share_percent</td>
+<td>integer</td>
+<td>Percentage shareholding of the individual with the Business Entity</td>
+</tr>
+<tr>
+<td>cibil_consent_flag</td>
+<td>integer</td>
+<td>Flag indicating CIBIL consent given by customer</td>
+</tr>
+<tr>
+<td>cibil_consent_mode</td>
+<td>integer</td>
+<td>Mode of CIBIL consent. Refer master.</td>
+</tr>
+<tr>
+<td>cibil_request_id</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>contacts_list</td>
+<td>array</td>
+<td>List of individual&#39;s contacts</td>
+</tr>
+<tr>
+<td>employer_name</td>
+<td>string</td>
+<td>Name of the Employer for the Individual</td>
+</tr>
+<tr>
+<td>employment_type</td>
+<td>integer</td>
+<td>Type of Employment. Refer Master.</td>
+</tr>
+<tr>
+<td>father_name</td>
+<td>string</td>
+<td>Father’s Name for Individual</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>string</td>
+<td>First Name of the Individual</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>integer</td>
+<td>Gender of the Individual</td>
+</tr>
+<tr>
+<td>individual_relationship_type</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>kyc_status</td>
+<td>integer</td>
+<td>KYC status for the Individual. Refer Master.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>string</td>
+<td>Last name of the Individual.</td>
+</tr>
+<tr>
+<td>marital_status</td>
+<td>integer</td>
+<td>Marital Status of the Individual.</td>
+</tr>
+<tr>
+<td>mother_name</td>
+<td>string</td>
+<td>Mother’s Name for Individual.</td>
+</tr>
+<tr>
+<td>poi_list</td>
+<td>array</td>
+<td>List of business proof of identity objects</td>
+</tr>
+<tr>
+<td>qualification</td>
+<td>integer</td>
+<td>Qualification of the individual. Refer Master.</td>
+</tr>
+<tr>
+<td>work_ex</td>
+<td>integer</td>
+<td>Work Experience of the individual</td>
+</tr>
+</tbody></table>
+
+<p><strong>Bank Details</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>acc_id</td>
+<td>integer</td>
+<td>Auto generated account ID at Capital Float</td>
+</tr>
+<tr>
+<td>acc_context</td>
+<td>integer</td>
+<td>Applicant’s usage of account at Capital Float. Refer Master</td>
+</tr>
+<tr>
+<td>acc_holder_name</td>
+<td>string</td>
+<td>Applicant’s account name</td>
+</tr>
+<tr>
+<td>acc_no</td>
+<td>string</td>
+<td>Applicant’s account number</td>
+</tr>
+<tr>
+<td>acc_type</td>
+<td>string</td>
+<td>Applicant’s account type. Refer Master</td>
+</tr>
+<tr>
+<td>bank_name</td>
+<td>string</td>
+<td>Applicant’s repayment bank name</td>
+</tr>
+<tr>
+<td>branch</td>
+<td>string</td>
+<td>Applicant’s repayment bank branch name</td>
+</tr>
+<tr>
+<td>entry_code</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>ifsc_code</td>
+<td>string</td>
+<td>Applicant’s repayment bank IFSC code</td>
+</tr>
+</tbody></table>
 <h1 id='checkout-register-acquisition'>Checkout/Register - Acquisition</h1>
 <p>Coming Soon</p>
-<h2 id='apis-2'>APIs</h2>
+<h2 id='apis'>APIs</h2>
 <p>Coming Soon</p>
 <h2 id='web-redirection'>Web Redirection</h2>
 <p>Coming Soon</p>
