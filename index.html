@@ -273,6 +273,14 @@
                   </li>
                   <li>
                     <a href="#otp-confirmation" class="toc-h2 toc-link" data-title="otp-confirmation">OTP Confirmation</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#verify-block-otp" class="toc-h3 toc-link" data-title="Disbursal">Verify Block OTP</a>
+                          </li>
+                          <li>
+                            <a href="#resend-otp" class="toc-h3 toc-link" data-title="Disbursal">Resend OTP</a>
+                          </li>
+                      </ul>
                   </li>
                   <li>
                     <a href="#create-tranche" class="toc-h2 toc-link" data-title="create-tranche">Create Tranche</a>
@@ -1620,189 +1628,280 @@ If <code>final_approval</code> is False then the case has been rejected
 <h2 id='token-status'>Token Status</h2>
 <p>Coming Soon</p>
 <h1 id='disbursal'>Disbursal</h1><h2 id='block-amount'>Block Amount</h2>
-<p>/cf/paylater/block
-{
-&quot;orderID&quot; : &quot;string&quot;,
-&quot;amount&quot;: &quot;3748973.97&quot;
-}
-Response :
-(success)
-{
-&quot;status&quot;: 1,
-&quot;orderID&quot; : &quot;string&quot;,
-&quot;message&quot;: &quot;&quot;
-}
-//use the orderID in this response to create tranche from this block
-(fail)
-{
-&quot;status&quot;: -1,
-&quot;message&quot;: &quot;&quot;
-}</p>
-<h2 id='otp-confirmation'>OTP Confirmation</h2>
-<p>When a request to create a block is triggered, the otp is being sent via sms and email .
-<strong>Verify OTP at block level</strong></p>
-
-<p>/cf/paylater/verify_block_otp
-RequestBody:
-{
-&quot;orderID&quot; : &quot;13&quot;,
-&quot;otp&quot;:&quot;1234&quot;
-}
-on success:
-{&#39;status&#39;: 1, &#39;message&#39;: &#39;Success&#39;}
-Error status codes :
-{&quot;status&quot;: -9, &quot;message&quot; :&quot;OTP not matching&quot;}
-{&quot;status&quot;: -13, &quot;message&quot; :&quot;Block not found&quot;}
-<strong>Resend OTP</strong></p>
-
-<p>/cf/paylater/resend_block_otp
-RequestBody :
-{
-&quot;orderID&quot; : &quot;13&quot;
-}
-on Success:
-{&quot;status&quot;: &quot;1&quot;, &quot;message&quot;: &quot;Sent OTP successfully&quot;}</p>
-<h2 id='create-tranche'>Create Tranche</h2>
-<p>/cf/paylater/createtranchevendor
-{
-&quot;amount&quot;: &quot;88558&quot;,
-&quot;orderID&quot;: &quot;string&quot;,
-&quot;suborderID&quot;: &quot;string&quot;
-}
-Response:
-(success)
-{
-&quot;status&quot;: 1,
-&quot;trancheID&quot;: &quot;string&quot;,
-&quot;message&quot;: &quot;&quot;
-}
-//Use this trancheID for reference to this tranche
-(fail)
-{
-&quot;status&quot;: -1,
-&quot;message&quot;: &quot;&quot;
-}</p>
-<h2 id='remove-block-amount'>Remove Block Amount</h2>
-<p>/cf/paylater/cancel
-{
-&quot;orderID&quot;: &quot;string&quot;,
-&quot;amount&quot;: &quot;3748973.97&quot;
-}
-Response :
-(success)
-{
-&quot;status&quot;: 1,
-&quot;message&quot;: &quot;&quot;
-}
-(fail)
-{
-&quot;status&quot;: -1,
-&quot;message&quot;: &quot;&quot;
-}</p>
-<h2 id='fetch-block-balance'>Fetch Block Balance</h2>
-<p>/cf/paylater/bal
-{
-&quot;orderID&quot;: &quot;string&quot;
-}
-Response :
-{
-&quot;status&quot;: 1,
-&quot;orderID&quot;: &quot;string&quot;,
-&quot;balance&quot;: &quot;&quot;
-}</p>
-<h2 id='fetch-borrower-details'>Fetch Borrower Details</h2>
-<p>/cf/paylater/agent_info</p>
-
+<blockquote>
 <p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/block <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "orderID" : "string",
+    "amount": "3748973.97"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
 
-<p>{
-&quot;email&quot;: &quot;testcapitalfloat@gmail.com&quot;
-}</p>
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p>Response:
-{
-&quot;sresp&quot;: {
-&quot;overdueFees&quot;: 0,
-&quot;amountNotPaidAfterDueDate&quot;: 0,
-&quot;otpNotVerified&quot;: 0,
-&quot;agentProfiles&quot;: [
-{
-&quot;emailId&quot;: &quot;t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com&quot;,
-&quot;roi&quot;: 13,
-&quot;settledAmountTillDate&quot;: 0,
-&quot;settledTranches&quot;: [],
-&quot;delayedTranches&quot;: [
-{
-&quot;emailId&quot;: &quot;t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com&quot;,
-&quot;totalDelinquentAmount&quot;: &quot;145152.862215278&quot;,
-&quot;trancheId&quot;: &quot;cce5f578-d7d8-4b80-939a-9f50a5f29061&quot;,
-&quot;dpd&quot;: 25,
-&quot;payments&quot;: [],
-&quot;dueAmt&quot;: {
-&quot;charges&quot;: 3636.189999999973,
-&quot;total&quot;: 145152.8622152778,
-&quot;interest&quot;: 1516.67,
-&quot;principal&quot;: 140000
-},
-&quot;totalFeesDue&quot;: 0,
-&quot;agentId&quot;: null,
-&quot;invoiceUrls&quot;: [
-{
-&quot;caption&quot;: &quot;1234&quot;,
-&quot;thumbnailURL&quot;: &quot;https://docs-generic.s3-us-west-2.amazonaws.com/testcapitalfloatgmailcom/paylater/d016bad6-527e-484a-b069-afb23563779d/cce5f578-d7d8-4b80-939a-9f50a5f29061/1499879473493_thumbnail.jpg&quot;
-}
-],
-&quot;dueDate&quot;: &quot;8/12/2017 12:00:00 AM&quot;
-}
-],
-&quot;sanctionId&quot;: &quot;d016bad6-527e-484a-b069-afb23563779d&quot;,
-&quot;requestedTranches&quot;: [],
-&quot;pendingTranchesForFunding&quot;: 0,
-&quot;penaltyInterestPa&quot;: &quot;37.0&quot;,
-&quot;nachStatus&quot;: &quot;Rejected&quot;,
-&quot;dueDateOfNextTranche&quot;: null,
-&quot;expiryDate&quot;: &quot;2018-10-05&quot;,
-&quot;expectedIr&quot;: &quot;13&quot;,
-&quot;totalLimitUtilized&quot;: 140000,
-&quot;isOnHold&quot;: &quot;Active&quot;,
-&quot;overdueFees&quot;: 0,
-&quot;lan&quot;: &quot;BAN17E00575&quot;,
-&quot;amountNotPaidAfterDueDate&quot;: 145152.8622152778,
-&quot;otpNotVerified&quot;: 0,
-&quot;availableLimit&quot;: 716543,
-&quot;creditLimit&quot;: 876543,
-&quot;overdueInterest&quot;: 1516.67,
-&quot;creationDate&quot;: &quot;2017-07-12&quot;,
-&quot;repaymentCycle&quot;: 30,
-&quot;isActive&quot;: true,
-&quot;activeBlockedAmount&quot;: 10000,
-&quot;overduePrincipal&quot;: 140000,
-&quot;dpd&quot;: 25,
-&quot;onHoldReason&quot;: &quot;-&quot;,
-&quot;overdueCharges&quot;: 3636.189999999973,
-&quot;dueTranches&quot;: []
-}
-],
-&quot;pendingTranchesForFunding&quot;: 0,
-&quot;agent&quot;: {
-&quot;city&quot;: null,
-&quot;name&quot;: &quot;Deepak Elec Pvt Ltd&quot;,
-&quot;country&quot;: null,
-&quot;phone&quot;: null,
-&quot;agent_id&quot;: null,
-&quot;email&quot;: null
-},
-&quot;settledAmountTillDate&quot;: 145152.8622152778,
-&quot;dpd&quot;: 25,
-&quot;cfBankIfsc&quot;: &quot;RATN0000156&quot;,
-&quot;overduePrincipal&quot;: 140000,
-&quot;overdueCharges&quot;: 3636.189999999973,
-&quot;overdueInterest&quot;: 1516.67,
-&quot;cfBankAcctNo&quot;: &quot;VACAFLT08483&quot;,
-&quot;cfBankName&quot;: &quot;RBL&quot;
-},
-&quot;status&quot;: 1
-}</p>
+</span><span class="err">#</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">orderID</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">create</span><span class="w"> </span><span class="err">tranche</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">block</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Fail</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/block</code></p>
+<h2 id='otp-confirmation'>OTP Confirmation</h2>
+<p>When a request to create a block is triggered, the otp is being sent via sms and email .</p>
+<h3 id='verify-block-otp'>Verify Block OTP</h3>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/verify_block_otp <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "orderID" : "13",
+    "otp":"1234"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">On</span><span class="w"> </span><span class="err">Success</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">codes</span><span class="w"> </span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-9</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP not matching"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-13</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Block not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/verify_block_otp</code></p>
+<h3 id='resend-otp'>Resend OTP</h3>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/resend_block_otp <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "orderID" : "13"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">On</span><span class="w"> </span><span class="err">Success</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sent OTP successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/resend_block_otp</code></p>
+<h2 id='create-tranche'>Create Tranche</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/createtranchevendor <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "amount": "88558",
+    "orderID": "string",
+    "suborderID": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"trancheID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">trancheID</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">reference</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">tranche</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/createtranchevendor</code></p>
+<h2 id='remove-block-amount'>Remove Block Amount</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/cancel <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "orderID": "string",
+    "amount": "3748973.97"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/cancel</code></p>
+<h2 id='fetch-block-balance'>Fetch Block Balance</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/bal <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "orderID": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/bal</code></p>
+<h2 id='fetch-borrower-details'>Fetch Borrower Details</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/agent_info <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "email": "testcapitalfloat@gmail.com"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"sresp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"overdueFees"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amountNotPaidAfterDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"otpNotVerified"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"agentProfiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"roi"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"settledAmountTillDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"settledTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"delayedTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"totalDelinquentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145152.862215278"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trancheId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cce5f578-d7d8-4b80-939a-9f50a5f29061"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"dueAmt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516.67</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"principal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"totalFeesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"agentId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"invoiceUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"thumbnailURL"</span><span class="p">:</span><span class="w">
+                  </span><span class="s2">"https://docs-generic.s3-us-west-2.amazonaws.com/testcapitalfloatgmailcom/paylater/d016bad6-527e-484a-b069-afb23563779d/cce5f578-d7d8-4b80-939a-9f50a5f29061/1499879473493_thumbnail.jpg"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8/12/2017 12:00:00 AM"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"sanctionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d016bad6-527e-484a-b069-afb23563779d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"requestedTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"pendingTranchesForFunding"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"penaltyInterestPa"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nachStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dueDateOfNextTranche"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expiryDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"expectedIr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"totalLimitUtilized"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isOnHold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdueFees"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAN17E00575"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amountNotPaidAfterDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"otpNotVerified"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"availableLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">716543</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creditLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">876543</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdueInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516.67</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-12"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"repaymentCycle"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"activeBlockedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overduePrincipal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"onHoldReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dueTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"pendingTranchesForFunding"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deepak Elec Pvt Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"agent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"settledAmountTillDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cfBankIfsc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RATN0000156"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"overduePrincipal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"overdueInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516.67</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VACAFLT08483"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cfBankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RBL"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/agent_info</code></p>
 <h1 id='repayment'>Repayment</h1>
 <p>Coming Soon</p>
 <h2 id='repayments-partner'>Repayments - Partner</h2>
