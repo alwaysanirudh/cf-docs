@@ -4,7 +4,7 @@
 
 ```shell
 curl -X POST \
-  <URL>/users/token \
+  {{url}}/users/token \
   -H "Content-type: application/json" \
   -d '{
     "client_id": "<CLIENT_ID>",
@@ -21,7 +21,7 @@ curl -X POST \
 }
 ```
 
-`POST <URL>/users/token`
+`POST {{url}}/users/token`
 
 | Parameter     | Description                   |
 | ------------- | ----------------------------- |

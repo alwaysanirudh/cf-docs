@@ -6,18 +6,18 @@
 
 ```shell
 curl -X POST \
-  <URL>/users/create_user \
+  {{url}}/users/create_user \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "email": "string",
     "phone": "string",
     "username": "string",
-    "city", "string"
+    "city": "string"
   }'
 ```
 
-`POST <URL>/users/create_user`
+`POST {{url}}/users/create_user`
 
 **Parameters**
 
@@ -34,7 +34,7 @@ curl -X POST \
 
 ```shell
 curl-X POST \
-  <URL>/apps/details/applications \
+  {{url}}/apps/details/applications \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -375,7 +375,7 @@ curl-X POST \
   }'
 ```
 
-`POST <URL>/apps/details/applications`
+`POST {{url}}/apps/details/applications`
 
 **Application Metadata**
 
