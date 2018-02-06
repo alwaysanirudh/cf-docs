@@ -15,11 +15,13 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 > Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl -X POST \
-  <URL>/users/token \
+  {{url}}/users/token \
   -H "Content-type: application/json" \
-  -d '{"client_id": "<CLIENT_ID>", "client_secret": "<CLIENT_SECRET>"}'
+  -d '{
+    "client_id": "<CLIENT_ID>",
+    "client_secret": "<CLIENT_SECRET>"
+  }'
 ```
 
 > Response:
@@ -31,7 +33,7 @@ curl -X POST \
 }
 ```
 
-`POST <URL>/users/token`
+`POST {{url}}/users/token`
 
 | Parameter     | Description                   |
 | ------------- | ----------------------------- |

@@ -12,7 +12,7 @@ includes:
   - acquisition
   - checkout
   - token_sharing
-  - agent_profile
+  - disbursal
   - repayment
   - master_values
 

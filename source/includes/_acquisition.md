@@ -6,15 +6,19 @@ A user is created on Capital Float's system prior to applying for a loan applica
 > Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl -X POST \
-  <URL>/users/create_user \
+  {{url}}/users/create_user \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
-  -d '{"email": "string", "phone": "string", "username": "string", "city", "string"}'
+  -d '{
+    "email": "string",
+    "phone": "string",
+    "username": "string",
+    "city": "string"
+  }'
 ```
 
-`POST <URL>/users/create_user`
+`POST {{url}}/users/create_user`
 
 **Parameters**
 
@@ -31,9 +35,8 @@ Post user creation, the user can now apply for a loan. The loan application is a
 > Request:
 
 ```shell
-# With shell, you can just pass the correct header with each request
 curl-X POST \
-  <URL>/apps/details/applications \
+  {{url}}/apps/details/applications \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -374,7 +377,7 @@ curl-X POST \
   }'
 ```
 
-`POST <URL>/apps/details/applications`
+`POST {{url}}/apps/details/applications`
 
 **Application Metadata**
 
