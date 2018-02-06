@@ -1,6 +1,7 @@
 # Acquisition via API
 
 ## Create User
+A user is created on Capital Float's system prior to applying for a loan application
 
 > Request:
 
@@ -25,6 +26,7 @@ curl -X POST \
 | city     | string | User's current city |
 
 ## Create Application
+Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.
 
 > Request:
 

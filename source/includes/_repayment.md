@@ -1,24 +1,30 @@
 # Repayment
+Using these API's, you can check the status of an upcoming payment
 
-Coming Soon
-
-## Repayments - Partner
+<!-- ## Repayments - Partner
 
 Coming Soon
 
 ## Repayments - Agent
 
 Coming Soon
-
+ -->
 ## Repayment
 
-<URL>/vendordashboard/get_repayment_info?trancheId=<>
+```shell
+Type: GET
+URL: 
 
-Response:
+/vendordashboard/get_repayment_info?trancheId=<>
+```
 
 ## Repayment Reminder
 
+```shell
+Type: GET
+URL:
 http://54.201.23.67/cf/vendordashboard/get_repayment_info
+```
 
 ## Agent Status Notification - Active/Suspended
 

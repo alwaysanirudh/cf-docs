@@ -1,12 +1,23 @@
 # Disbursal
+Use these set of API's for tranche related actions for PayLater profiles only.
+
+<aside>
+	These are not applicable for loan types such as UBL, MCA and Consumer
+</aside>
 
 ## Block Amount
+Blocking an amount is similar to adding an item into your check out cart. Using this API, you can block an amount on the line of the borrower. This will reduce the available limit of the borrower
 
+```shell
+Request:
 /cf/paylater/block
 {
 "orderID" : "string",
 "amount": "3748973.97"
 }
+```
+
+```shell
 Response :
 (success)
 {
@@ -20,41 +31,61 @@ Response :
 "status": -1,
 "message": ""
 }
+```
 
-## OTP Confirmation
+## OTP Confirmation on a block
 
-When a request to create a block is triggered, the otp is being sent via sms and email .
+When a request to create a block is triggered, an OTP is sent to the borrower's registered email and phone number for verification
+
 **Verify OTP at block level**
 
+```shell
+Request:
 /cf/paylater/verify_block_otp
 RequestBody:
 {
 "orderID" : "13",
 "otp":"1234"
 }
-on success:
+```
+
+```shell
+Respone:
 {'status': 1, 'message': 'Success'}
 Error status codes :
 {"status": -9, "message" :"OTP not matching"}
 {"status": -13, "message" :"Block not found"}
+```
+
 **Resend OTP**
 
+```shell
+Request:
 /cf/paylater/resend_block_otp
 RequestBody :
 {
 "orderID" : "13"
 }
-on Success:
+```
+
+```shell
+Response:
 {"status": "1", "message": "Sent OTP successfully"}
+```
 
 ## Create Tranche
 
+```shell
+Request:
 /cf/paylater/createtranchevendor
 {
 "amount": "88558",
 "orderID": "string",
 "suborderID": "string"
 }
+```
+
+```shell
 Response:
 (success)
 {
@@ -68,14 +99,20 @@ Response:
 "status": -1,
 "message": ""
 }
+```
 
 ## Remove Block Amount
 
+```shell
+Request:
 /cf/paylater/cancel
 {
 "orderID": "string",
 "amount": "3748973.97"
 }
+```
+
+```shell
 Response :
 (success)
 {
@@ -87,22 +124,31 @@ Response :
 "status": -1,
 "message": ""
 }
+```
 
 ## Fetch Block Balance
 
+```shell
+Request:
 /cf/paylater/bal
 {
 "orderID": "string"
 }
+```
+
+```shell
 Response :
 {
 "status": 1,
 "orderID": "string",
 "balance": ""
 }
+```
 
 ## Fetch Borrower Details
 
+```shell
+URL:
 /cf/paylater/agent_info
 
 Request:
@@ -110,7 +156,9 @@ Request:
 {
 "email": "testcapitalfloat@gmail.com"
 }
+```
 
+```shell
 Response:
 {
 "sresp": {
@@ -119,13 +167,13 @@ Response:
 "otpNotVerified": 0,
 "agentProfiles": [
 {
-"emailId": "t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com",
+"emailId": "testcapitalfloat@gmail.com",
 "roi": 13,
 "settledAmountTillDate": 0,
 "settledTranches": [],
 "delayedTranches": [
 {
-"emailId": "t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com",
+"emailId": "testcapitalfloat@gmail.com",
 "totalDelinquentAmount": "145152.862215278",
 "trancheId": "cce5f578-d7d8-4b80-939a-9f50a5f29061",
 "dpd": 25,
@@ -195,3 +243,4 @@ Response:
 },
 "status": 1
 }
+```
