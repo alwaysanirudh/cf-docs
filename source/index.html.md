@@ -9,8 +9,8 @@ toc_footers:
 
 includes:
   - authentication
-  - acquisition
   - checkout
+  - acquisition
   - token_sharing
   - disbursal
   - repayment
