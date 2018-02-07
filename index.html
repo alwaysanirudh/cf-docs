@@ -225,17 +225,6 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#acquisition-via-api" class="toc-h1 toc-link" data-title="acquisition-via-api">Acquisition via API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
-                  </li>
-                  <li>
-                    <a href="#create-application" class="toc-h2 toc-link" data-title="create-application">Create Application</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#checkout-financing" class="toc-h1 toc-link" data-title="checkout-financing">Checkout Financing</a>
               <ul class="toc-list-h2">
                   <li>
@@ -243,6 +232,17 @@
                   </li>
                   <li>
                     <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#acquisition-via-api" class="toc-h1 toc-link" data-title="acquisition-via-api">Acquisition via API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
+                  </li>
+                  <li>
+                    <a href="#create-application" class="toc-h2 toc-link" data-title="create-application">Create Application</a>
                   </li>
               </ul>
           </li>
@@ -300,19 +300,10 @@
             <a href="#repayment" class="toc-h1 toc-link" data-title="repayment">Repayment</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#repayments-partner" class="toc-h2 toc-link" data-title="repayments-partner">Repayments - Partner</a>
-                  </li>
-                  <li>
-                    <a href="#repayments-agent" class="toc-h2 toc-link" data-title="repayments-agent">Repayments - Agent</a>
-                  </li>
-                  <li>
-                    <a href="#repayment-2" class="toc-h2 toc-link" data-title="repayment">Repayment</a>
+                    <a href="#repayment-info" class="toc-h2 toc-link" data-title="repayment-info">Repayment Info</a>
                   </li>
                   <li>
                     <a href="#repayment-reminder" class="toc-h2 toc-link" data-title="repayment-reminder">Repayment Reminder</a>
-                  </li>
-                  <li>
-                    <a href="#agent-status-notification-active-suspended" class="toc-h2 toc-link" data-title="agent-status-notification-active-suspended">Agent Status Notification - Active/Suspended</a>
                   </li>
               </ul>
           </li>
@@ -372,6 +363,18 @@
 
 <p>The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.</p>
 <h1 id='authentication'>Authentication</h1>
+<p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> in the request body to acquire an access token.</p>
+
+<p>The authorisation server issues an access token in exchange for your <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.</p>
+
+<p>You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.</p>
+
+<p><code>Authorization: YOUR_TOKEN</code></p>
+
+<aside class="notice">
+You must replace <code>YOUR_TOKEN</code> with your access token.
+</aside>
+
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -410,19 +413,15 @@
 </tbody></table>
 
 <p>To make a REST API call, you must include request headers including the Authorization header with an access token.</p>
-
-<p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> in the request body to acquire an access token.</p>
-
-<p>The authorisation server issues an access token in exchange for your <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.</p>
-
-<p>You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.</p>
-
-<p><code>Authorization: YOUR_TOKEN</code></p>
-
-<aside class="notice">
-You must replace <code>YOUR_TOKEN</code> with your access token.
-</aside>
+<h1 id='checkout-financing'>Checkout Financing</h1>
+<p>Coming Soon</p>
+<h2 id='web-redirection'>Web Redirection</h2>
+<p>Coming Soon</p>
+<h2 id='sdks'>SDKs</h2>
+<p>Coming Soon</p>
 <h1 id='acquisition-via-api'>Acquisition via API</h1><h2 id='create-user'>Create User</h2>
+<p>A user is created on Capital Float&#39;s system prior to applying for a loan application</p>
+
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -470,6 +469,8 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </tr>
 </tbody></table>
 <h2 id='create-application'>Create Application</h2>
+<p>Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.</p>
+
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -1513,12 +1514,6 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>Applicant’s repayment bank IFSC code</td>
 </tr>
 </tbody></table>
-<h1 id='checkout-financing'>Checkout Financing</h1>
-<p>Coming Soon</p>
-<h2 id='web-redirection'>Web Redirection</h2>
-<p>Coming Soon</p>
-<h2 id='sdks'>SDKs</h2>
-<p>Coming Soon</p>
 <h1 id='token-sharing'>Token Sharing</h1><h2 id='acqisition-done-via-api'>Acqisition done via API</h2>
 <blockquote>
 <p>Request</p>
@@ -1543,9 +1538,9 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"
-}
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Refer the <a href="#acquisition-via-api">acquisition via API</a> section.</p>
 
@@ -1567,7 +1562,7 @@ If <code>final_approval</code> is False then the case has been rejected
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl-X POST <span class="se">\</span>
   <span class="o">{{</span>url<span class="o">}}</span>/handshake/token <span class="se">\</span>
-  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Content-type: application/json'</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "handshake_id": "4b816c58-2bd3-46cb-aefa-d431dd03608a",
@@ -1612,6 +1607,8 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Handshake initiation &amp; Confirmation (The customer reference search API)</p>
+
+<p><code>POST {{url}}/handshake/token</code></p>
 
 <p><strong>Notes:</strong></p>
 
@@ -1903,17 +1900,102 @@ If <code>final_approval</code> is False then the case has been rejected
 </span></code></pre>
 <p><code>POST {{url}}/paylater/agent_info</code></p>
 <h1 id='repayment'>Repayment</h1>
-<p>Coming Soon</p>
-<h2 id='repayments-partner'>Repayments - Partner</h2>
-<p>Coming Soon</p>
-<h2 id='repayments-agent'>Repayments - Agent</h2>
-<p>Coming Soon</p>
-<h2 id='repayment-2'>Repayment</h2>
-<p><code>POST {{url}}/vendordashboard/get_repayment_info?trancheId=&lt;&gt;</code></p>
-<h2 id='repayment-reminder'>Repayment Reminder</h2>
+<p>Using these API&#39;s, you can check the status of an upcoming payment</p>
+<h2 id='repayment-info'>Repayment Info</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/vendordashboard/get_repayment_info <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "agentEmails": ["testcapitalf.loat@gmail.com"]
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"sresp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"profiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"lan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAN17R00186"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"interestDue"</span><span class="p">:</span><span class="w"> </span><span class="mf">8666.67</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cfAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zen Lefin Private Limited"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"trancheId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a89f142-fe57-471c-a1fc-3a5d4e4a63b8"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"invoiceNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cycleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amountTransferred"</span><span class="p">:</span><span class="w"> </span><span class="mi">650000</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"feesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="mf">743561.49</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"principalDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">650000</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-07-2017"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cfBankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RBL"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"chargesDue"</span><span class="p">:</span><span class="w"> </span><span class="mf">84894.82</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VACAFLT07926A"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amountDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">743561.49</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"chargesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cfBankIfsc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RATN0000156"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amountPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"feesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"principalPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"chequeBounceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"disbursedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">650000</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"interestPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"debitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-06-2017"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Industries Pvt Ltd2017-06-01 16:16:45.399"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9966553315"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"agent_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testcapitalf.loat@gmail.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This API provides tranche level details for an agent or for all the agents depending upon the data passed in Request. To receive to response for a specific agent, pass agent e-mail in the request. If no e-mail has been entered, the api will return tranche level details for all the agents.</p>
+
 <p><code>POST {{url}}/vendordashboard/get_repayment_info</code></p>
-<h2 id='agent-status-notification-active-suspended'>Agent Status Notification - Active/Suspended</h2>
-<p>Coming Soon</p>
+<h2 id='repayment-reminder'>Repayment Reminder</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/vendordashboard/get_due_date_amount <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "tranche_id": ""
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"sresp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"dueAmount"</span><span class="p">:</span><span class="w"> </span><span class="mf">261768.52</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-15"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides outstanding/delinquent amount of the borrower at tranche level.</p>
+
+<p><code>POST {{url}}/vendordashboard/get_due_date_amount</code></p>
 <h1 id='master-key-reference'>Master Key Reference</h1>
 <p>This section contains the references to all master keys which will be used throughout all API requests.</p>
 <h2 id='application-in-progess-statuses'>Application In Progess Statuses</h2>
