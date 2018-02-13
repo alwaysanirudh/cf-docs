@@ -377,6 +377,14 @@ curl-X POST \
   }'
 ```
 
+> Response:
+```json
+{
+"app_id":"SOME_APP_ID"
+}
+```
+
+
 `POST {{url}}/apps/details/applications`
 
 **Application Metadata**
