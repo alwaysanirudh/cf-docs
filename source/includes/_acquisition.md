@@ -18,6 +18,14 @@ curl -X POST \
   }'
 ```
 
+> Response:
+
+``` json
+{
+"app_id":"SOME_USER_ID"
+}
+```
+
 `POST {{url}}/users/create_user`
 
 **Parameters**
@@ -378,7 +386,8 @@ curl-X POST \
 ```
 
 > Response:
-```json
+
+``` json
 {
 "app_id":"SOME_APP_ID"
 }
@@ -548,3 +557,41 @@ curl-X POST \
 | branch          | string  | Applicant’s repayment bank branch name                      |
 | entry_code      | integer |                                                             |
 | ifsc_code       | string  | Applicant’s repayment bank IFSC code                        |
+
+
+## Callbacks
+Once an app_id is created. CF will post to your configured Callbacks on registered events.
+For now configuration of Callbacks and registration of events is offline.
+
+` eg: {your_url}}/serviceName`
+
+> Request:
+
+```json
+
+{
+    "app_id": "jatin",
+    "offer_type": "string",
+    "amount": "string",
+    "tenure": "string",
+    "interest":"string"
+}'
+```
+
+
+**Parameters**
+
+| Name      | Type   | Description                            |
+| --------  | ------ | -------------------------------------  |
+| app_id    | string | Application Id                         |
+| offer_type| string | in_principal_approval, final_approval  |
+| amount    | string | Amount                                 |
+| tenure    | string | Tenure of the loan                     |
+| interest  | string | Interest of the loan                   |
+
+**Events**
+
+| Name                    | Description                       |
+| --------------------    | --------------------------------- |
+| in_principal_approval   |                                   |
+| final_approval          |                                   |

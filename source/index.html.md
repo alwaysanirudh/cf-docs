@@ -5,16 +5,19 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://www.capitalfloat.com/'>Capital Float</a>
+
+  - <h2>Contact us:</h2>
+  - <p>cfdevelopment@capitalfloat.com</p>
 
 includes:
   - authentication
-  - checkout
   - acquisition
   - token_sharing
   - disbursal
   - repayment
+  - checkout
   - master_values
+
 
 
 search: true
