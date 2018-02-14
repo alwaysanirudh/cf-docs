@@ -561,16 +561,16 @@ curl-X POST \
 
 ## Callbacks
 Once an app_id is created. CF will post to your configured Callbacks on registered events.
-For now configuration of Callbacks and registration of events is offline.
+For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
 
-` eg: {your_url}}/serviceName`
+` eg: {{your_domain}}/capitalfloat/callback/1`
 
 > Request:
 
 ```json
 
 {
-    "app_id": "jatin",
+    "app_id": "string",
     "offer_type": "string",
     "amount": "string",
     "tenure": "string",
