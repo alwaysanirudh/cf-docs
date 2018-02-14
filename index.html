@@ -225,17 +225,6 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#checkout-financing" class="toc-h1 toc-link" data-title="checkout-financing">Checkout Financing</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#web-redirection" class="toc-h2 toc-link" data-title="web-redirection">Web Redirection</a>
-                  </li>
-                  <li>
-                    <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#acquisition-via-api" class="toc-h1 toc-link" data-title="acquisition-via-api">Acquisition via API</a>
               <ul class="toc-list-h2">
                   <li>
@@ -243,6 +232,9 @@
                   </li>
                   <li>
                     <a href="#create-application" class="toc-h2 toc-link" data-title="create-application">Create Application</a>
+                  </li>
+                  <li>
+                    <a href="#callbacks" class="toc-h2 toc-link" data-title="callbacks">Callbacks</a>
                   </li>
               </ul>
           </li>
@@ -308,6 +300,17 @@
               </ul>
           </li>
           <li>
+            <a href="#checkout-financing" class="toc-h1 toc-link" data-title="checkout-financing">Checkout Financing</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#web-redirection" class="toc-h2 toc-link" data-title="web-redirection">Web Redirection</a>
+                  </li>
+                  <li>
+                    <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#master-key-reference" class="toc-h1 toc-link" data-title="master-key-reference">Master Key Reference</a>
               <ul class="toc-list-h2">
                   <li>
@@ -350,7 +353,8 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.capitalfloat.com/'>Capital Float</a></li>
+            <li><h2>Contact us:</h2></li>
+            <li><p>cfdevelopment@capitalfloat.com</p></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -413,12 +417,6 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </tbody></table>
 
 <p>To make a REST API call, you must include request headers including the Authorization header with an access token.</p>
-<h1 id='checkout-financing'>Checkout Financing</h1>
-<p>Coming Soon</p>
-<h2 id='web-redirection'>Web Redirection</h2>
-<p>Coming Soon</p>
-<h2 id='sdks'>SDKs</h2>
-<p>Coming Soon</p>
 <h1 id='acquisition-via-api'>Acquisition via API</h1><h2 id='create-user'>Create User</h2>
 <p>A user is created on Capital Float&#39;s system prior to applying for a loan application</p>
 
@@ -436,6 +434,13 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
     "city": "string"
   }'</span>
 </code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"app_id"</span><span class="p">:</span><span class="s2">"SOME_USER_ID"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code>POST {{url}}/users/create_user</code></p>
 
 <p><strong>Parameters</strong></p>
@@ -816,14 +821,12 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
   }'</span>
 </code></pre>
 <blockquote>
-<p>Response:
-<code>json
-{
-&quot;app_id&quot;:&quot;SOME_APP_ID&quot;
-}
-</code></p>
+<p>Response:</p>
 </blockquote>
-
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"app_id"</span><span class="p">:</span><span class="s2">"SOME_APP_ID"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p><code>POST {{url}}/apps/details/applications</code></p>
 
 <p><strong>Application Metadata</strong></p>
@@ -1523,6 +1526,77 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>Applicant’s repayment bank IFSC code</td>
 </tr>
 </tbody></table>
+<h2 id='callbacks'>Callbacks</h2>
+<p>Once an app_id is created. CF will post to your configured Callbacks on registered events.
+For now configuration of Callbacks and registration of events is offline.</p>
+
+<p><code>eg: {your_url}}/serviceName</code></p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jatin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offer_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interest"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>string</td>
+<td>Application Id</td>
+</tr>
+<tr>
+<td>offer_type</td>
+<td>string</td>
+<td>in_principal_approval, final_approval</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>tenure</td>
+<td>string</td>
+<td>Tenure of the loan</td>
+</tr>
+<tr>
+<td>interest</td>
+<td>string</td>
+<td>Interest of the loan</td>
+</tr>
+</tbody></table>
+
+<p><strong>Events</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>in_principal_approval</td>
+<td></td>
+</tr>
+<tr>
+<td>final_approval</td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='token-sharing'>Token Sharing</h1><h2 id='acqisition-done-via-api'>Acqisition done via API</h2>
 <blockquote>
 <p>Request</p>
@@ -2005,6 +2079,12 @@ If <code>final_approval</code> is False then the case has been rejected
 <p>Provides outstanding/delinquent amount of the borrower at tranche level.</p>
 
 <p><code>POST {{url}}/vendordashboard/get_due_date_amount</code></p>
+<h1 id='checkout-financing'>Checkout Financing</h1>
+<p>Coming Soon</p>
+<h2 id='web-redirection'>Web Redirection</h2>
+<p>Coming Soon</p>
+<h2 id='sdks'>SDKs</h2>
+<p>Coming Soon</p>
 <h1 id='master-key-reference'>Master Key Reference</h1>
 <p>This section contains the references to all master keys which will be used throughout all API requests.</p>
 <h2 id='application-in-progess-statuses'>Application In Progess Statuses</h2>
