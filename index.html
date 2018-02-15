@@ -606,18 +606,8 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
           {
             "app_id": "string",
             "base_month": 0,
-            "base_month_minus_1": 0,
-            "base_month_minus_10": 0,
-            "base_month_minus_11": 0,
-            "base_month_minus_12": 0,
-            "base_month_minus_2": 0,
-            "base_month_minus_3": 0,
-            "base_month_minus_4": 0,
-            "base_month_minus_5": 0,
-            "base_month_minus_6": 0,
-            "base_month_minus_7": 0,
-            "base_month_minus_8": 0,
-            "base_month_minus_9": 0,
+            "base_month_minus":[{"month":"1","value":"10000"}
+            ]
             "ecosystem_id": 0,
             "months_of_data": 0,
             "xn_type": 0,
@@ -1248,69 +1238,9 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>Base month against which Ecosystem transaction are to be stored</td>
 </tr>
 <tr>
-<td>base_month_minus_1</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -1</td>
-</tr>
-<tr>
-<td>base_month_minus_10</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -10</td>
-</tr>
-<tr>
-<td>base_month_minus_11</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -11</td>
-</tr>
-<tr>
-<td>base_month_minus_12</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -12</td>
-</tr>
-<tr>
-<td>base_month_minus_2</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -2</td>
-</tr>
-<tr>
-<td>base_month_minus_3</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -3</td>
-</tr>
-<tr>
-<td>base_month_minus_4</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -4</td>
-</tr>
-<tr>
-<td>base_month_minus_5</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -5</td>
-</tr>
-<tr>
-<td>base_month_minus_6</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -6</td>
-</tr>
-<tr>
-<td>base_month_minus_7</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -7</td>
-</tr>
-<tr>
-<td>base_month_minus_8</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -8</td>
-</tr>
-<tr>
-<td>base_month_minus_9</td>
-<td>integer</td>
-<td>Ecosystem transaction value for Base Month -9</td>
-</tr>
-<tr>
-<td>months_of_data</td>
-<td>integer</td>
-<td>Number of months of Ecosystem Transactions data</td>
+<td>base_month_minus</td>
+<td>array of objects</td>
+<td>Ecosystem transaction value for Base Month -n</td>
 </tr>
 </tbody></table>
 
@@ -1716,6 +1646,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string",
     "orderID" : "string",
     "amount": "3748973.97"
   }'</span>
@@ -1752,6 +1683,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string",
     "orderID" : "13",
     "otp":"1234"
   }'</span>
@@ -1785,6 +1717,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string"
     "orderID" : "13"
   }'</span>
 </code></pre>
@@ -1808,6 +1741,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string"
     "amount": "88558",
     "orderID": "string",
     "suborderID": "string"
@@ -1840,6 +1774,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string",
     "orderID": "string",
     "amount": "3748973.97"
   }'</span>
@@ -1868,6 +1803,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
+    "app_id": "string",
     "orderID": "string"
   }'</span>
 </code></pre>
@@ -1890,7 +1826,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
-    "email": "testcapitalfloat@gmail.com"
+    "app_id": "string"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1903,20 +1839,20 @@ If <code>final_approval</code> is False then the case has been rejected
     </span><span class="s2">"otpNotVerified"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"agentProfiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"roi"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
         </span><span class="s2">"settledAmountTillDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"settledTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="s2">"delayedTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t.e.s.t.c.a.p.i.t.a.l.f.l.o.a.t@gmail.com"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"totalDelinquentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145152.862215278"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"trancheId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cce5f578-d7d8-4b80-939a-9f50a5f29061"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emailId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"totalDelinquentAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145152.86"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"trancheId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbe5f578-d7d8-4b80-939a-9f50a5f29061"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
             </span><span class="s2">"payments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
             </span><span class="s2">"dueAmt"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"charges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.18</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.86</span><span class="p">,</span><span class="w">
               </span><span class="s2">"interest"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516.67</span><span class="p">,</span><span class="w">
               </span><span class="s2">"principal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -1926,13 +1862,13 @@ If <code>final_approval</code> is False then the case has been rejected
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"thumbnailURL"</span><span class="p">:</span><span class="w">
-                  </span><span class="s2">"https://docs-generic.s3-us-west-2.amazonaws.com/testcapitalfloatgmailcom/paylater/d016bad6-527e-484a-b069-afb23563779d/cce5f578-d7d8-4b80-939a-9f50a5f29061/1499879473493_thumbnail.jpg"</span><span class="w">
+                  </span><span class="s2">"SOME_URL"</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8/12/2017 12:00:00 AM"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="s2">"sanctionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d016bad6-527e-484a-b069-afb23563779d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sanctionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e116bad6-527e-484a-b069-afb23563779d"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"requestedTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="s2">"pendingTranchesForFunding"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"penaltyInterestPa"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.0"</span><span class="p">,</span><span class="w">
@@ -1943,8 +1879,8 @@ If <code>final_approval</code> is False then the case has been rejected
         </span><span class="s2">"totalLimitUtilized"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
         </span><span class="s2">"isOnHold"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"overdueFees"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAN17E00575"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amountNotPaidAfterDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA17E00000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amountNotPaidAfterDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.86</span><span class="p">,</span><span class="w">
         </span><span class="s2">"otpNotVerified"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"availableLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">716543</span><span class="p">,</span><span class="w">
         </span><span class="s2">"creditLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">876543</span><span class="p">,</span><span class="w">
@@ -1956,26 +1892,26 @@ If <code>final_approval</code> is False then the case has been rejected
         </span><span class="s2">"overduePrincipal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
         </span><span class="s2">"onHoldReason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.18</span><span class="p">,</span><span class="w">
         </span><span class="s2">"dueTranches"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"pendingTranchesForFunding"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deepak Elec Pvt Ltd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abc Pvt Ltd"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"agent_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"settledAmountTillDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.8622152778</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"settledAmountTillDate"</span><span class="p">:</span><span class="w"> </span><span class="mf">145152.86</span><span class="p">,</span><span class="w">
     </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cfBankIfsc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RATN0000156"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"overduePrincipal"</span><span class="p">:</span><span class="w"> </span><span class="mi">140000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.189999999973</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"overdueCharges"</span><span class="p">:</span><span class="w"> </span><span class="mf">3636.18</span><span class="p">,</span><span class="w">
     </span><span class="s2">"overdueInterest"</span><span class="p">:</span><span class="w"> </span><span class="mf">1516.67</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VACAFLT08483"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VACAFLT00000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cfBankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RBL"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
