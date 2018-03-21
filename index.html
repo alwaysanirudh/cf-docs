@@ -338,9 +338,6 @@
                     <a href="#loan-product-types" class="toc-h2 toc-link" data-title="loan-product-types">Loan Product Types</a>
                   </li>
                   <li>
-                    <a href="#individual-business-relationship-types" class="toc-h2 toc-link" data-title="individual-business-relationship-types">Individual Business Relationship Types</a>
-                  </li>
-                  <li>
                     <a href="#individual-marital-statuses" class="toc-h2 toc-link" data-title="individual-marital-statuses">Individual Marital Statuses</a>
                   </li>
                   <li>
@@ -348,6 +345,30 @@
                   </li>
                   <li>
                     <a href="#bank-account-contexts" class="toc-h2 toc-link" data-title="bank-account-contexts">Bank Account Contexts</a>
+                  </li>
+                  <li>
+                    <a href="#operate-as" class="toc-h2 toc-link" data-title="operate-as">Operate As</a>
+                  </li>
+                  <li>
+                    <a href="#nature-of-business" class="toc-h2 toc-link" data-title="nature-of-business">Nature of Business</a>
+                  </li>
+                  <li>
+                    <a href="#main-product-category" class="toc-h2 toc-link" data-title="main-product-category">Main Product Category</a>
+                  </li>
+                  <li>
+                    <a href="#contact-context" class="toc-h2 toc-link" data-title="contact-context">Contact Context</a>
+                  </li>
+                  <li>
+                    <a href="#entity-type" class="toc-h2 toc-link" data-title="entity-type">Entity Type</a>
+                  </li>
+                  <li>
+                    <a href="#qualification" class="toc-h2 toc-link" data-title="qualification">Qualification</a>
+                  </li>
+                  <li>
+                    <a href="#individual-business-relationship" class="toc-h2 toc-link" data-title="individual-business-relationship">Individual - Business Relationship</a>
+                  </li>
+                  <li>
+                    <a href="#individual-main-applicant-relationship" class="toc-h2 toc-link" data-title="individual-main-applicant-relationship">Individual - Main applicant Relationship</a>
                   </li>
               </ul>
           </li>
@@ -438,7 +459,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"app_id"</span><span class="p">:</span><span class="s2">"SOME_USER_ID"</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6d190e91-195f-47b5-bf79-fb86c0792f20"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/users/create_user</code></p>
@@ -480,7 +501,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl-X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/apps/details/applications <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/applications <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -814,10 +835,10 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"app_id"</span><span class="p">:</span><span class="s2">"SOME_APP_ID"</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6d190e91-195f-47b5-bf79-fb86c0792f20"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/apps/details/applications</code></p>
+<p><code>POST {{url}}/applications</code></p>
 
 <p><strong>Application Metadata</strong></p>
 
@@ -1465,8 +1486,7 @@ For now configuration of Callbacks and registration of events is offline. Share 
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-</span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"offer_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2453,50 +2473,6 @@ If <code>final_approval</code> is False then the case has been rejected
 <td>AB</td>
 </tr>
 </tbody></table>
-<h2 id='individual-business-relationship-types'>Individual Business Relationship Types</h2>
-<table><thead>
-<tr>
-<th>id</th>
-<th>label</th>
-<th>name</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>NA</td>
-<td>NA</td>
-</tr>
-<tr>
-<td>100</td>
-<td>Manager</td>
-<td>MANAGER</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Promoter</td>
-<td>PROMOTER</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Director</td>
-<td>DIRECTOR</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Trustee</td>
-<td>TRUSTEE</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Proprietor</td>
-<td>PROPRIETOR</td>
-</tr>
-<tr>
-<td>600</td>
-<td>Partner</td>
-<td>PARTNER</td>
-</tr>
-</tbody></table>
 <h2 id='individual-marital-statuses'>Individual Marital Statuses</h2>
 <table><thead>
 <tr>
@@ -2602,6 +2578,543 @@ If <code>final_approval</code> is False then the case has been rejected
 <td>200</td>
 <td>Repayment Account</td>
 <td>REPAYMENT_ACCOUNT</td>
+</tr>
+</tbody></table>
+<h2 id='operate-as'>Operate As</h2>
+<p><code>business_details.operate_as</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Other</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Sole Proprietorship</td>
+<td>SOLE_PROPRIETORSHIP</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Partnership</td>
+<td>PARTNERSHIP</td>
+</tr>
+<tr>
+<td>300</td>
+<td>LLP</td>
+<td>LLP</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Private Limited</td>
+<td>PRIVATE_LIMITED</td>
+</tr>
+<tr>
+<td>500</td>
+<td>LLC</td>
+<td>LLC</td>
+</tr>
+<tr>
+<td>600</td>
+<td>One Director Company</td>
+<td>ONE_DIRECTOR_COMPANY</td>
+</tr>
+<tr>
+<td>700</td>
+<td>Co-operative Society</td>
+<td>CO_OPERATIVE_SOCIETY</td>
+</tr>
+<tr>
+<td>800</td>
+<td>Government</td>
+<td>GOVERNMENT</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Hindu Undivided family</td>
+<td>HINDU_UNDIVIDED_FAMILY</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Not Classified</td>
+<td>NOT_CLASSIFIED</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>Public Limited</td>
+<td>PUBLIC_LIMITED</td>
+</tr>
+<tr>
+<td>1150</td>
+<td>Limited Company (Unlisted)</td>
+<td>PUBLIC_LIMITED_UNLISTED</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>Self help group</td>
+<td>SELF_HELP_GROUP</td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Trust</td>
+<td>TRUST</td>
+</tr>
+</tbody></table>
+<h2 id='nature-of-business'>Nature of Business</h2>
+<p><code>business_details.nature_of_business</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Distribution/Trading</td>
+<td>DISTRIBUTION_TRADING</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Services</td>
+<td>SERVICES</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Manufacturing</td>
+<td>MANUFACTURING</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Retailer</td>
+<td>RETAILER</td>
+</tr>
+</tbody></table>
+<h2 id='main-product-category'>Main Product Category</h2>
+<p><code>business_details.main_product_category</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Apparels</td>
+<td>Apparels</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Appliances</td>
+<td>Appliances</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Automotive</td>
+<td>Automotive</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Baby Care</td>
+<td>Baby Care</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bags and Luggage</td>
+<td>Bags and Luggage</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Beauty and Personal Care</td>
+<td>Beauty and Personal Care</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Books</td>
+<td>Books</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cameras and Accessories</td>
+<td>Cameras and Accessories</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Eyewear</td>
+<td>Eyewear</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Fashion Accessories</td>
+<td>Fashion Accessories</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Footwear</td>
+<td>Footwear</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Fragrances</td>
+<td>Fragrances</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Furniture</td>
+<td>Furniture</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Gaming</td>
+<td>Gaming</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Gifting Events</td>
+<td>Gifting Events</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Hardware &amp; Sanitary Fittings</td>
+<td>Hardware &amp; Sanitary Fittings</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Health, Wellness &amp; Medicine</td>
+<td>Health, Wellness &amp; Medicine</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Hobbies</td>
+<td>Hobbies</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Home Decor</td>
+<td>Home Decor</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Home Furnishing</td>
+<td>Home Furnishing</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Home Improvement</td>
+<td>Home Improvement</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Jewellery</td>
+<td>Jewellery</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Kids Wear</td>
+<td>Kids Wear</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Kitchenware</td>
+<td>Kitchenware</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Mobiles and Tablets</td>
+<td>Mobiles and Tablets</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Movies and Music</td>
+<td>Movies and Music</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Musical Instruments</td>
+<td>Musical Instruments</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Mens Ethnic Wear</td>
+<td>Mens Ethnic Wear</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Nutrition &amp; Supplements</td>
+<td>Nutrition &amp; Supplements</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Office Equipment</td>
+<td>Office Equipment</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Online Education</td>
+<td>Online Education</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Sports &amp; Fitness</td>
+<td>Sports &amp; Fitness</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Stationery</td>
+<td>Stationery</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Toys &amp; Games</td>
+<td>Toys &amp; Games</td>
+</tr>
+<tr>
+<td>36</td>
+<td>TVs, Audio and Video</td>
+<td>TVs, Audio and Video</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Watches</td>
+<td>Watches</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Women Ethnic Wear</td>
+<td>Women Ethnic Wear</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Other</td>
+<td>Other</td>
+</tr>
+</tbody></table>
+<h2 id='contact-context'>Contact Context</h2>
+<p><code>business_details.contact_context</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Undefined</td>
+<td>UNDEFINED</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Primary</td>
+<td>PRIMARY</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Finance Contact Point</td>
+<td>FINANCE_CONTACT</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Collection&#39;s contact</td>
+<td>COLLECTIONS_CONTACT</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Address owner&#39;s contact</td>
+<td>ADDRESS_CONTACT</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Alternate contact</td>
+<td>ALTERNATE</td>
+</tr>
+<tr>
+<td>600</td>
+<td>first choice</td>
+<td>FIRST_CHOICE</td>
+</tr>
+</tbody></table>
+<h2 id='entity-type'>Entity Type</h2>
+<p><code>business_details.entity_type</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>100</td>
+<td>Business</td>
+<td>BUSINESS</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Individual</td>
+<td>INDIVIDUAL</td>
+</tr>
+</tbody></table>
+<h2 id='qualification'>Qualification</h2>
+<p><code>individual_details.qualification</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>None</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>10th Pass</td>
+<td>_10TH</td>
+</tr>
+<tr>
+<td>200</td>
+<td>12th Pass</td>
+<td>_12TH</td>
+</tr>
+<tr>
+<td>250</td>
+<td>Diploma</td>
+<td>DIPLOMA</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Graduate</td>
+<td>GRADUATE</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Post Graduate</td>
+<td>POST_GRADUATE</td>
+</tr>
+<tr>
+<td>500</td>
+<td>PHD/Doctorate</td>
+<td>PHD</td>
+</tr>
+</tbody></table>
+<h2 id='individual-business-relationship'>Individual - Business Relationship</h2>
+<p>Relationship of the individual with the business</p>
+
+<p><code>individual_details.bu_relationship_type</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Manager</td>
+<td>MANAGER</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Promoter</td>
+<td>PROMOTER</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Director</td>
+<td>DIRECTOR</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Trustee</td>
+<td>TRUSTEE</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Proprietor</td>
+<td>PROPRIETOR</td>
+</tr>
+<tr>
+<td>600</td>
+<td>Partner</td>
+<td>PARTNER</td>
+</tr>
+</tbody></table>
+<h2 id='individual-main-applicant-relationship'>Individual - Main applicant Relationship</h2>
+<p>Relationship of the individual with the main applicant</p>
+
+<p><code>individual_details.individual_relationship_type</code></p>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>label</th>
+<th>name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>100</td>
+<td>Father</td>
+<td>FATHER</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Mother</td>
+<td>MOTHER</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Husband</td>
+<td>HUSBAND</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Wife</td>
+<td>WIFE</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Son</td>
+<td>SON</td>
+</tr>
+<tr>
+<td>600</td>
+<td>Daughter</td>
+<td>DAUGHTER</td>
 </tr>
 </tbody></table>
 
