@@ -116,18 +116,6 @@ This section contains the references to all master keys which will be used throu
 | 1100 | FF    | FF   |
 | 1200 | AB    | AB   |
 
-## Individual Business Relationship Types
-
-| id  | label      | name       |
-| --- | ---------- | ---------- |
-| 0   | NA         | NA         |
-| 100 | Manager    | MANAGER    |
-| 200 | Promoter   | PROMOTER   |
-| 300 | Director   | DIRECTOR   |
-| 400 | Trustee    | TRUSTEE    |
-| 500 | Proprietor | PROPRIETOR |
-| 600 | Partner    | PARTNER    |
-
 ## Individual Marital Statuses
 
 | id  | label    | name      |
@@ -158,3 +146,152 @@ This section contains the references to all master keys which will be used throu
 | 0   | Not defined       | NONE              |
 | 100 | Disbursal Account | DISBURSAL_ACCOUNT |
 | 200 | Repayment Account | REPAYMENT_ACCOUNT |
+
+## Operate As
+
+`business_details.operate_as`
+
+| id   | label                      | name                    |
+| ---- | -------------------------- | ----------------------- |
+| 0    | Other                      | OTHER                   |
+| 100  | Sole Proprietorship        | SOLE_PROPRIETORSHIP     |
+| 200  | Partnership                | PARTNERSHIP             |
+| 300  | LLP                        | LLP                     |
+| 400  | Private Limited            | PRIVATE_LIMITED         |
+| 500  | LLC                        | LLC                     |
+| 600  | One Director Company       | ONE_DIRECTOR_COMPANY    |
+| 700  | Co-operative Society       | CO_OPERATIVE_SOCIETY    |
+| 800  | Government                 | GOVERNMENT              |
+| 900  | Hindu Undivided family     | HINDU_UNDIVIDED_FAMILY  |
+| 1000 | Not Classified             | NOT_CLASSIFIED          |
+| 1100 | Public Limited             | PUBLIC_LIMITED          |
+| 1150 | Limited Company (Unlisted) | PUBLIC_LIMITED_UNLISTED |
+| 1200 | Self help group            | SELF_HELP_GROUP         |
+| 1300 | Trust                      | TRUST                   |
+
+## Nature of Business
+
+`business_details.nature_of_business`
+
+| id  | label                | name                 |
+| --- | -------------------- | -------------------- |
+| 0   | NA                   | NA                   |
+| 100 | Distribution/Trading | DISTRIBUTION_TRADING |
+| 200 | Services             | SERVICES             |
+| 300 | Manufacturing        | MANUFACTURING        |
+| 400 | Retailer             | RETAILER             |
+
+## Main Product Category
+
+`business_details.main_product_category`
+
+| id  | label                        | name                         |
+| --- | ---------------------------- | ---------------------------- |
+| 1   | NA                           | NA                           |
+| 2   | Apparels                     | Apparels                     |
+| 3   | Appliances                   | Appliances                   |
+| 4   | Automotive                   | Automotive                   |
+| 5   | Baby Care                    | Baby Care                    |
+| 6   | Bags and Luggage             | Bags and Luggage             |
+| 7   | Beauty and Personal Care     | Beauty and Personal Care     |
+| 8   | Books                        | Books                        |
+| 9   | Cameras and Accessories      | Cameras and Accessories      |
+| 10  | Eyewear                      | Eyewear                      |
+| 11  | Fashion Accessories          | Fashion Accessories          |
+| 12  | Footwear                     | Footwear                     |
+| 13  | Fragrances                   | Fragrances                   |
+| 14  | Furniture                    | Furniture                    |
+| 15  | Gaming                       | Gaming                       |
+| 16  | Gifting Events               | Gifting Events               |
+| 17  | Hardware & Sanitary Fittings | Hardware & Sanitary Fittings |
+| 18  | Health, Wellness & Medicine  | Health, Wellness & Medicine  |
+| 19  | Hobbies                      | Hobbies                      |
+| 20  | Home Decor                   | Home Decor                   |
+| 21  | Home Furnishing              | Home Furnishing              |
+| 22  | Home Improvement             | Home Improvement             |
+| 23  | Jewellery                    | Jewellery                    |
+| 24  | Kids Wear                    | Kids Wear                    |
+| 25  | Kitchenware                  | Kitchenware                  |
+| 26  | Mobiles and Tablets          | Mobiles and Tablets          |
+| 27  | Movies and Music             | Movies and Music             |
+| 28  | Musical Instruments          | Musical Instruments          |
+| 29  | Mens Ethnic Wear             | Mens Ethnic Wear             |
+| 30  | Nutrition & Supplements      | Nutrition & Supplements      |
+| 31  | Office Equipment             | Office Equipment             |
+| 32  | Online Education             | Online Education             |
+| 33  | Sports & Fitness             | Sports & Fitness             |
+| 34  | Stationery                   | Stationery                   |
+| 35  | Toys & Games                 | Toys & Games                 |
+| 36  | TVs, Audio and Video         | TVs, Audio and Video         |
+| 37  | Watches                      | Watches                      |
+| 38  | Women Ethnic Wear            | Women Ethnic Wear            |
+| 39  | Other                        | Other                        |
+
+## Contact Context
+
+`business_details.contact_context`
+
+| id  | label                   | name                |
+| --- | ----------------------- | ------------------- |
+| 0   | Undefined               | UNDEFINED           |
+| 100 | Primary                 | PRIMARY             |
+| 200 | Finance Contact Point   | FINANCE_CONTACT     |
+| 300 | Collection's contact    | COLLECTIONS_CONTACT |
+| 400 | Address owner's contact | ADDRESS_CONTACT     |
+| 500 | Alternate contact       | ALTERNATE           |
+| 600 | first choice            | FIRST_CHOICE        |
+
+## Entity Type
+
+`business_details.entity_type`
+
+| id  | label      | name       |
+| --- | ---------- | ---------- |
+| 100 | Business   | BUSINESS   |
+| 200 | Individual | INDIVIDUAL |
+
+## Qualification
+
+`individual_details.qualification`
+
+| id  | label         | name          |
+| --- | ------------- | ------------- |
+| 0   | None          | NA            |
+| 100 | 10th Pass     | \_10TH        |
+| 200 | 12th Pass     | \_12TH        |
+| 250 | Diploma       | DIPLOMA       |
+| 300 | Graduate      | GRADUATE      |
+| 400 | Post Graduate | POST_GRADUATE |
+| 500 | PHD/Doctorate | PHD           |
+
+## Individual - Business Relationship
+
+Relationship of the individual with the business
+
+`individual_details.bu_relationship_type`
+
+| id  | label      | name       |
+| --- | ---------- | ---------- |
+| 0   | NA         | NA         |
+| 100 | Manager    | MANAGER    |
+| 200 | Promoter   | PROMOTER   |
+| 300 | Director   | DIRECTOR   |
+| 400 | Trustee    | TRUSTEE    |
+| 500 | Proprietor | PROPRIETOR |
+| 600 | Partner    | PARTNER    |
+
+## Individual - Main applicant Relationship
+
+Relationship of the individual with the main applicant
+
+`individual_details.individual_relationship_type`
+
+| id  | label    | name     |
+| --- | -------- | -------- |
+| 0   | NA       | NA       |
+| 100 | Father   | FATHER   |
+| 200 | Mother   | MOTHER   |
+| 300 | Husband  | HUSBAND  |
+| 400 | Wife     | WIFE     |
+| 500 | Son      | SON      |
+| 600 | Daughter | DAUGHTER |
