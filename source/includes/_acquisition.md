@@ -1,43 +1,5 @@
 # Acquisition via API
 
-## Create User
-
-A user is created on Capital Float's system prior to applying for a loan application
-
-> Request:
-
-```shell
-curl -X POST \
-  {{url}}/users/create_user \
-  -H "Content-type: application/json"  \
-  -H 'Authorization: YOUR_TOKEN' \
-  -d '{
-    "email": "string",
-    "phone": "string",
-    "username": "string",
-    "city": "string"
-  }'
-```
-
-> Response:
-
-```json
-{
-  "app_id": "6d190e91-195f-47b5-bf79-fb86c0792f20"
-}
-```
-
-`POST {{url}}/users/create_user`
-
-**Parameters**
-
-| Name     | Type   | Description         |
-| -------- | ------ | ------------------- |
-| email    | string | User's email        |
-| phone    | string | User's phone        |
-| username | string | User's username     |
-| city     | string | User's current city |
-
 ## Create Application
 
 Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.
@@ -536,6 +498,58 @@ curl-X POST \
 | branch          | string  | Applicant’s repayment bank branch name                      |
 | entry_code      | integer |                                                             |
 | ifsc_code       | string  | Applicant’s repayment bank IFSC code                        |
+
+## Create User
+
+A user is created on Capital Float's system prior to applying for a loan application
+
+> Request:
+
+```shell
+curl -X POST \
+  {{url}}/users/ \
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+  -d '{
+    "email": "string",
+    "phone": "string",
+    "username": "string",
+    "city": "string"
+    "app_id": "string"
+  }'
+```
+
+> Response:
+
+If the request was successful
+
+```json
+{
+  "status": 1
+}
+```
+
+If the request was denied
+
+```json
+{
+  "status": -1,
+  "message": "Phone cannot be empty",
+  "error_code": 400
+}
+```
+
+`POST {{url}}/users/`
+
+**Parameters**
+
+| Name     | Type   | Description                     |
+| -------- | ------ | ------------------------------- |
+| email    | string | User's email                    |
+| phone    | string | User's phone                    |
+| username | string | User's username                 |
+| city     | string | User's current city             |
+| app_id   | string | app_id from application created |
 
 ## Callbacks
 
