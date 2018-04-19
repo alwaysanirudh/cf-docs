@@ -1,5 +1,114 @@
 # Disbursal
 
+## Common Error codes
+
+> Response:
+
+```json
+# Common error codes (message text might change but meaning remains same)
+
+{
+    "status": -1,
+    "message": "sanction with sanctionID 'string' doesn't exist"
+}
+{
+    "status": -2,
+    "message": "invalid loan type"
+}
+{
+    "status": -3,
+    "message": "sanction credit limit is exceeding"
+}
+{
+    "status": -4,
+    "message": "sanction credit limit is empty"
+}
+{
+    "status": -5,
+    "message": "number format exception"
+}
+{
+    "status": -6,
+    "message": "tranche amount is not integer"
+}
+{
+    "status": -7,
+    "message": "tranche limit is null"
+}
+{
+    "status": -8,
+    "message": "lms limit is empty"
+}
+{
+    "status": -9,
+    "message": "tranche amount exceeding lms limit"
+}
+{
+    "status": -10,
+    "message": "unable to create tranche"
+}
+{
+    "status": -11,
+    "message": "bad json"
+}
+{
+    "status": -12,
+    "message": "blocked order not found"
+}
+{
+    "status": -13,
+    "message": "duplicate blocked order"
+}
+{
+    "status": -14,
+    "message": "tranche not found"
+}
+{
+    "status": -15,
+    "message": "tranche not open to all"
+}
+{
+    "status": -16,
+    "message": "investor already exists"
+}
+{
+    "status": -17,
+    "message": "investor not found"
+}
+{
+    "status": -18,
+    "message": "investor amount roi invalid"
+}
+{
+    "status": -19,
+    "message": "investor portal not found"
+}
+{
+    "status": -20,
+    "message": "scheduled disbursal not set"
+}
+{
+    "status": -21,
+    "message": "disbursal schedule date not set"
+}
+{
+    "status": -22,
+    "message": "disbursal schedule date is in past"
+}
+{
+    "status": -23,
+    "message": "otp not verified"
+}
+{
+    "status": -24,
+    "message": "amount not blocked"
+}
+{
+    "status": -25,
+    "message": "amount not unblocked"
+}
+```
+
 ## Block Amount
 
 > Request:
@@ -11,7 +120,7 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string",
-    "orderID" : "string",
+    "order_id" : "string",
     "amount": "3748973.97"
   }'
 ```
@@ -23,17 +132,52 @@ curl -X POST \
 
 {
   "status": 1,
-  "orderID": "string",
-  "message": ""
+  "order_id": "string",
+  "message": "string"
 }
 
-# use the orderID in this response to create tranche from this block
+# use the order_id in this response to create tranche from this block
 
-# Fail
-
+# Error status codes
 {
-  "status": -1,
-  "message": ""
+    "status": -100,
+    "message": "Payload is missing amount or app_id or order_id"
+}
+{
+    "status": -200,
+    "message": "No partner found for current user"
+}
+{
+    "status": -300,
+    "message": "Amount cannot be negative. Please provide a proper value"
+}
+{
+    "status": -400,
+    "message": "App not found"
+}
+{
+    "status": -500,
+    "message": "Not authorized to view this app"
+}
+{
+    "status": -600,
+    "message": "Borrower not found"
+}
+{
+    "status": -700,
+    "message": "Vendor not found"
+}
+{
+    "status": -800,
+    "message": "Sanction not found"
+}
+{
+    "status": -900,
+    "message": "Tranche creation has been suspended for the borrower. Please consult Capital Float"
+}
+{
+    "status": -1000,
+    "message": "The request could not be processed. Please consult Capital Float"
 }
 ```
 
@@ -54,8 +198,8 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string",
-    "orderID" : "13",
-    "otp":"1234"
+    "order_id" : "string",
+    "otp":"string"
   }'
 ```
 
@@ -70,12 +214,24 @@ curl -X POST \
 
 # Error status codes :
 {
-  "status": -9,
-  "message": "OTP not matching"
+  "status": -100,
+  "message": "Payload is missing amount or app_id or order_id"
 }
 {
-  "status": -13,
-  "message" :"Block not found"
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Sanction not found for the app"
 }
 ```
 
@@ -92,7 +248,7 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string"
-    "orderID" : "13"
+    "order_id" : "13"
   }'
 ```
 
@@ -103,7 +259,33 @@ curl -X POST \
 
 {
   "status": "1",
-  "message": "Sent OTP successfully"
+  "message": "OTP sent successfully"
+}
+
+# Error status codes :
+{
+  "status": -100,
+  "message": "Payload is missing app_id or order_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Borrower not found"
+}
+{
+  "status": -600,
+  "message" :"Sanction not found"
 }
 ```
 
@@ -115,14 +297,14 @@ curl -X POST \
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/createtranchevendor \
+  {{url}}/paylater/createtranche \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string"
-    "amount": "88558",
-    "orderID": "string",
-    "suborderID": "string"
+    "amount": "string",
+    "order_id": "string",
+    "suborder_id": "string"
   }'
 ```
 
@@ -132,15 +314,59 @@ curl -X POST \
 # Success
 {
 "status": 1,
-"trancheID": "string",
+"tranche_id": "string",
 "message": ""
 }
 # Use this trancheID for reference to this tranche
 
 # Failure
 {
-"status": -1,
-"message": ""
+  "status": -100,
+  "message": "Payload is missing amount or app_id or order_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Borrower not found"
+}
+{
+  "status": -600,
+  "message" :"Vendor not found"
+}
+{
+  "status": -700,
+  "message" :"Sanction not found"
+}
+{
+  "status": -900,
+  "message" :"The request could not be processed. Please consult Capital Float"
+}
+{
+  "status": -1000,
+  "message" :"Bank not found"
+}
+{
+  "status": -1100,
+  "message" :"Vendor bank details not found"
+}
+{
+  "status": -1200,
+  "message" :"The request could not be processed. Please consult Capital Float"
+}
+{
+  "status": -1300,
+  "message" :"The request could not be processed. Please consult Capital Float"
 }
 ```
 
@@ -157,7 +383,7 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string",
-    "orderID": "string",
+    "order_id": "string",
     "amount": "3748973.97"
   }'
 ```
@@ -167,13 +393,45 @@ curl -X POST \
 ```json
 # Success
 {
-"status": 1,
-"message": ""
+  "status": 1,
+  "message": ""
 }
 # Failure
 {
-"status": -1,
-"message": ""
+  "status": -100,
+  "message": "Payload is missing amount or app_id or order_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Sanction not found"
+}
+{
+  "status": -600,
+  "message" :"Borrower not found"
+}
+{
+  "status": -700,
+  "message" :"Vendor not found"
+}
+{
+  "status": -800,
+  "message" :"Vendor config not found"
+}
+{
+  "status": -900,
+  "message" :"The request could not be processed. Please consult Capital Float"
 }
 ```
 
@@ -190,17 +448,48 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string",
-    "orderID": "string"
+    "order_id": "string"
   }'
 ```
 
 > Response :
 
 ```json
+# Success
 {
   "status": 1,
-  "orderID": "string",
+  "order_id": "string",
   "balance": ""
+}
+
+# Failure
+{
+  "status": -100,
+  "message": "Payload is missing app_id or order_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Sanction not found"
+}
+{
+  "status": -600,
+  "message" :"Vendor not found"
+}
+{
+  "status": -700,
+  "message" :"The request could not be processed. Please consult Capital Float"
 }
 ```
 
@@ -252,8 +541,7 @@ curl -X POST \
             "invoiceUrls": [
               {
                 "caption": "1234",
-                "thumbnailURL":
-                  "SOME_URL"
+                "thumbnailURL": "SOME_URL"
               }
             ],
             "dueDate": "8/12/2017 12:00:00 AM"
@@ -310,3 +598,61 @@ curl -X POST \
 ```
 
 `POST {{url}}/paylater/agent_info`
+
+## Fetch Profile Available Limit
+
+> Request:
+
+```shell
+curl -X POST \
+  {{url}}/paylater/profile_available_limit \
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+  -d '{
+    "app_id": "string"
+  }'
+```
+
+> Response :
+
+```json
+# Success
+{
+  "status": 1,
+  "available_limit": "string",
+  "app_id": "string"
+}
+
+# Failure
+{
+  "status": -100,
+  "message": "Payload is missing app_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Sanction not found"
+}
+{
+  "status": -600,
+  "message" :"Vendor not found"
+}
+{
+  "status": -700,
+  "app_id": "string",
+  "message" :"The request could not be processed. Please consult Capital Float"
+}
+```
+
+`POST {{url}}/paylater/profile_available_limit`
