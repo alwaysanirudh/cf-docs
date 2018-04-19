@@ -236,6 +236,9 @@
                   <li>
                     <a href="#callbacks" class="toc-h2 toc-link" data-title="callbacks">Callbacks</a>
                   </li>
+                  <li>
+                    <a href="#fetch-application-and-profile-status" class="toc-h2 toc-link" data-title="fetch-application-and-profile-status">Fetch Application and Profile Status</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -261,6 +264,9 @@
             <a href="#disbursal" class="toc-h1 toc-link" data-title="disbursal">Disbursal</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#common-error-codes" class="toc-h2 toc-link" data-title="common-error-codes">Common Error codes</a>
+                  </li>
+                  <li>
                     <a href="#block-amount" class="toc-h2 toc-link" data-title="block-amount">Block Amount</a>
                   </li>
                   <li>
@@ -285,6 +291,9 @@
                   </li>
                   <li>
                     <a href="#fetch-borrower-details" class="toc-h2 toc-link" data-title="fetch-borrower-details">Fetch Borrower Details</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-profile-available-limit" class="toc-h2 toc-link" data-title="fetch-profile-available-limit">Fetch Profile Available Limit</a>
                   </li>
               </ul>
           </li>
@@ -1562,6 +1571,168 @@ For now configuration of Callbacks and registration of events is offline. Share 
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='fetch-application-and-profile-status'>Fetch Application and Profile Status</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/application/status<span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sub_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0|1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"suspend_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Failure in fetching sanction status"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/application/status</code></p>
+
+<p><strong>Possible app status</strong></p>
+
+<table><thead>
+<tr>
+<th>app_status</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>not defined</td>
+</tr>
+<tr>
+<td>Offer Generated</td>
+</tr>
+<tr>
+<td>App in progress</td>
+</tr>
+<tr>
+<td>App Submitted</td>
+</tr>
+<tr>
+<td>COH Decision Pending</td>
+</tr>
+<tr>
+<td>Request for login</td>
+</tr>
+<tr>
+<td>File logged-in</td>
+</tr>
+<tr>
+<td>Cam in Progress</td>
+</tr>
+<tr>
+<td>Cam Completed</td>
+</tr>
+<tr>
+<td>Pd in Progress</td>
+</tr>
+<tr>
+<td>Pd Completed</td>
+</tr>
+<tr>
+<td>Approved</td>
+</tr>
+<tr>
+<td>Rejected</td>
+</tr>
+<tr>
+<td>Disbursed</td>
+</tr>
+<tr>
+<td>KYC Done</td>
+</tr>
+<tr>
+<td>CIBIL Pulled</td>
+</tr>
+<tr>
+<td>Loan Agreement Done</td>
+</tr>
+<tr>
+<td>NACH Done</td>
+</tr>
+<tr>
+<td>DOC UPLOAD Done</td>
+</tr>
+</tbody></table>
+
+<p><strong>Possible profile suspension reason</strong></p>
+
+<table><thead>
+<tr>
+<th>suspend_reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Due to delinquency / RTR (temporary)</td>
+</tr>
+<tr>
+<td>Due to delinquency / RTR (permanent)</td>
+</tr>
+<tr>
+<td>Customer Requested</td>
+</tr>
+<tr>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td>Line Expired</td>
+</tr>
+<tr>
+<td>Potential Fraud</td>
+</tr>
+<tr>
+<td>Confirmed Fraud</td>
+</tr>
+<tr>
+<td>Sold</td>
+</tr>
+<tr>
+<td>Partner Requested</td>
+</tr>
+<tr>
+<td>Delinquent on other CF loan</td>
+</tr>
+<tr>
+<td>Closed by collections</td>
+</tr>
+<tr>
+<td>Partnership Shutdown</td>
+</tr>
+<tr>
+<td>Profile fees are due</td>
+</tr>
+</tbody></table>
 <h1 id='token-sharing'>Token Sharing</h1><h2 id='acqisition-done-via-api'>Acqisition done via API</h2>
 <blockquote>
 <p>Request</p>
@@ -1672,7 +1843,113 @@ If <code>final_approval</code> is False then the case has been rejected
 </ul>
 <h2 id='token-status'>Token Status</h2>
 <p>Coming Soon</p>
-<h1 id='disbursal'>Disbursal</h1><h2 id='block-amount'>Block Amount</h2>
+<h1 id='disbursal'>Disbursal</h1><h2 id='common-error-codes'>Common Error codes</h2>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Common</span><span class="w"> </span><span class="err">error</span><span class="w"> </span><span class="err">codes</span><span class="w"> </span><span class="err">(message</span><span class="w"> </span><span class="err">text</span><span class="w"> </span><span class="err">might</span><span class="w"> </span><span class="err">change</span><span class="w"> </span><span class="err">but</span><span class="w"> </span><span class="err">meaning</span><span class="w"> </span><span class="err">remains</span><span class="w"> </span><span class="err">same)</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sanction with sanctionID 'string' doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid loan type"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sanction credit limit is exceeding"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sanction credit limit is empty"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"number format exception"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranche amount is not integer"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-7</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranche limit is null"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lms limit is empty"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranche amount exceeding lms limit"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unable to create tranche"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-11</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bad json"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-12</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blocked order not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-13</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duplicate blocked order"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-14</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranche not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-15</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tranche not open to all"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-16</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"investor already exists"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-17</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"investor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-18</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"investor amount roi invalid"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-19</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"investor portal not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduled disbursal not set"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-21</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disbursal schedule date not set"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-22</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disbursal schedule date is in past"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-23</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"otp not verified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-24</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount not blocked"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-25</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amount not unblocked"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='block-amount'>Block Amount</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -1682,7 +1959,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string",
-    "orderID" : "string",
+    "order_id" : "string",
     "amount": "3748973.97"
   }'</span>
 </code></pre>
@@ -1693,17 +1970,52 @@ If <code>final_approval</code> is False then the case has been rejected
 
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">orderID</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">create</span><span class="w"> </span><span class="err">tranche</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">block</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">use</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order_id</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">create</span><span class="w"> </span><span class="err">tranche</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">block</span><span class="w">
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">Fail</span><span class="w">
-
+</span><span class="err">#</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">codes</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing amount or app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amount cannot be negative. Please provide a proper value"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Borrower not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-800</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-900</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tranche creation has been suspended for the borrower. Please consult Capital Float"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/block</code></p>
@@ -1719,8 +2031,8 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string",
-    "orderID" : "13",
-    "otp":"1234"
+    "order_id" : "string",
+    "otp":"string"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1734,12 +2046,24 @@ If <code>final_approval</code> is False then the case has been rejected
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">codes</span><span class="w"> </span><span class="p">:</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-9</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP not matching"</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing amount or app_id or order_id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-13</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Block not found"</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found for the app"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/verify_block_otp</code></p>
@@ -1753,7 +2077,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string"
-    "orderID" : "13"
+    "order_id" : "13"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1763,7 +2087,33 @@ If <code>final_approval</code> is False then the case has been rejected
 
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sent OTP successfully"</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP sent successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Error</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">codes</span><span class="w"> </span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Borrower not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/resend_block_otp</code></p>
@@ -1772,14 +2122,14 @@ If <code>final_approval</code> is False then the case has been rejected
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/paylater/createtranchevendor <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/createtranche <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string"
-    "amount": "88558",
-    "orderID": "string",
-    "suborderID": "string"
+    "amount": "string",
+    "order_id": "string",
+    "suborder_id": "string"
   }'</span>
 </code></pre>
 <blockquote>
@@ -1788,15 +2138,59 @@ If <code>final_approval</code> is False then the case has been rejected
 <pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
 </span><span class="p">{</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-</span><span class="s2">"trancheID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"tranche_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
 </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="err">#</span><span class="w"> </span><span class="err">Use</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">trancheID</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">reference</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">tranche</span><span class="w">
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing amount or app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Borrower not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-900</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Bank not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor bank details not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/createtranchevendor</code></p>
@@ -1810,7 +2204,7 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string",
-    "orderID": "string",
+    "order_id": "string",
     "amount": "3748973.97"
   }'</span>
 </code></pre>
@@ -1819,13 +2213,45 @@ If <code>final_approval</code> is False then the case has been rejected
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
 </span><span class="p">{</span><span class="w">
-</span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-</span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing amount or app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Borrower not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-800</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor config not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-900</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/cancel</code></p>
@@ -1839,16 +2265,47 @@ If <code>final_approval</code> is False then the case has been rejected
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
     "app_id": "string",
-    "orderID": "string"
+    "order_id": "string"
   }'</span>
 </code></pre>
 <blockquote>
 <p>Response :</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"orderID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/bal</code></p>
@@ -1896,8 +2353,7 @@ If <code>final_approval</code> is False then the case has been rejected
             </span><span class="s2">"invoiceUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
               </span><span class="p">{</span><span class="w">
                 </span><span class="s2">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"thumbnailURL"</span><span class="p">:</span><span class="w">
-                  </span><span class="s2">"SOME_URL"</span><span class="w">
+                </span><span class="s2">"thumbnailURL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOME_URL"</span><span class="w">
               </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8/12/2017 12:00:00 AM"</span><span class="w">
@@ -1953,6 +2409,60 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/agent_info</code></p>
+<h2 id='fetch-profile-available-limit'>Fetch Profile Available Limit</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/profile_available_limit <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"available_limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/profile_available_limit</code></p>
 <h1 id='repayment'>Repayment</h1>
 <p>Using these API&#39;s, you can check the status of an upcoming payment</p>
 <h2 id='repayment-info'>Repayment Info</h2>
