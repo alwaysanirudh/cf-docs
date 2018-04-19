@@ -586,3 +586,97 @@ For now configuration of Callbacks and registration of events is offline. Share 
 | --------------------- | ----------- |
 | in_principal_approval |             |
 | final_approval        |             |
+
+## Fetch Application and Profile Status
+
+> Request:
+
+```shell
+curl -X POST \
+  {{url}}/application/status\
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+  -d '{
+    "app_id": "string"
+  }'
+```
+
+> Response :
+
+```json
+# Success
+{
+  "status": 1,
+  "app_status": "string",
+  "app_id": "string",
+  "sub_type": "string",
+  "is_active": "0|1",
+  "suspend_reason": "string"
+}
+
+# Failure
+{
+  "status": -100,
+  "message": "Payload is missing app_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message": "App not found"
+}
+{
+  "status": -400,
+  "message": "Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message":"Failure in fetching sanction status"
+}
+```
+
+`POST {{url}}/application/status`
+
+**Possible app status**
+
+| app_status           |
+| -------------------- |
+| not defined          |
+| Offer Generated      |
+| App in progress      |
+| App Submitted        |
+| COH Decision Pending |
+| Request for login    |
+| File logged-in       |
+| Cam in Progress      |
+| Cam Completed        |
+| Pd in Progress       |
+| Pd Completed         |
+| Approved             |
+| Rejected             |
+| Disbursed            |
+| KYC Done             |
+| CIBIL Pulled         |
+| Loan Agreement Done  |
+| NACH Done            |
+| DOC UPLOAD Done      |
+
+**Possible profile suspension reason**
+
+| app_status                           |
+| ------------------------------------ |
+| Due to delinquency / RTR (temporary) |
+| Due to delinquency / RTR (permanent) |
+| Customer Requested                   |
+| Deprecated                           |
+| Line Expired                         |
+| Potential Fraud                      |
+| Confirmed Fraud                      |
+| Sold                                 |
+| Partner Requested                    |
+| Delinquent on other CF loan          |
+| Closed by collections                |
+| Partnership Shutdown                 |
+| Profile fees are due                 |
