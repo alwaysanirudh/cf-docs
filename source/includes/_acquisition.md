@@ -665,7 +665,7 @@ curl -X POST \
 
 **Possible profile suspension reason**
 
-| app_status                           |
+| suspend_reason                       |
 | ------------------------------------ |
 | Due to delinquency / RTR (temporary) |
 | Due to delinquency / RTR (permanent) |
