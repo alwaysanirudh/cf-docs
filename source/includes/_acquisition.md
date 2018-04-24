@@ -587,7 +587,7 @@ For now configuration of Callbacks and registration of events is offline. Share 
 | in_principal_approval |             |
 | final_approval        |             |
 
-## Fetch Application and Profile Status
+## Application/Profile Status
 
 > Request:
 
