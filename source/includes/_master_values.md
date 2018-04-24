@@ -116,6 +116,20 @@ This section contains the references to all master keys which will be used throu
 | 1100 | FF    | FF   |
 | 1200 | AB    | AB   |
 
+## Individual Application Context
+
+`individual_details.application_context`
+
+| id  | label          | name             |
+| --- | -------------- | ---------------- |
+| 0   | Not defined    | NA               |
+| 10  | Main applicant | MAIN_APPLICANT   |
+| 20  | Co-Applicant   | CO_APPLICANT     |
+| 30  | Nominee        | NOMINEE          |
+| 40  | Guarantor      | GUARANTOR        |
+| 50  | Reference      | REFERENCE        |
+| 60  | Servicee       | SERVICE_RECEIVER |
+
 ## Individual Marital Statuses
 
 | id  | label    | name      |
