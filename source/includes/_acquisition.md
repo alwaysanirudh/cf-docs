@@ -501,19 +501,18 @@ curl-X POST \
 
 ## Create User
 
-A user is created on Capital Float's system prior to applying for a loan application
+A user needs to be created on Capital Float's system for a loan application
 
 > Request:
 
 ```shell
 curl -X POST \
-  {{url}}/users/ \
+  {{url}}/users \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
-    "email": "string",
-    "phone": "string",
     "username": "string",
+    "phone": "string",
     "city": "string"
     "app_id": "string"
   }'
@@ -521,33 +520,30 @@ curl -X POST \
 
 > Response:
 
+```json
 If the request was successful
 
-```json
 {
-  "status": 1
+  "status": 200,
+  "message": "user successfully created"
 }
-```
 
 If the request was denied
 
-```json
 {
-  "status": -1,
-  "message": "Phone cannot be empty",
-  "error_code": 400
+  "status": 400,
+  "message": "username, phone, app_id are mandatory parameters"
 }
 ```
 
-`POST {{url}}/users/`
+`POST {{url}}/users`
 
 **Parameters**
 
 | Name     | Type   | Description                     |
 | -------- | ------ | ------------------------------- |
-| email    | string | User's email                    |
+| username | string | User's username/email           |
 | phone    | string | User's phone                    |
-| username | string | User's username                 |
 | city     | string | User's current city             |
 | app_id   | string | app_id from application created |
 
