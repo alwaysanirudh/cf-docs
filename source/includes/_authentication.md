@@ -16,7 +16,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 
 ```shell
 curl -X POST \
-  {{url}}/auth \
+  {{url}}/authentication \
   -H "Content-type: application/json" \
   -d '{
     "API_KEY": "<API_KEY>",
@@ -34,7 +34,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/users/token`
+`POST {{url}}/authentication`
 
 | Parameter  | Description                |
 | ---------- | -------------------------- |
