@@ -397,9 +397,9 @@
 
 <p>The REST APIs allows you to share application data of your agents and also to perform different actions for PayLater profiles. This page list out all the APIs provided by Capital Float for different use cases like acquiring agent data for loan processing, token sharing for agents onboarded directly by the fleet on street, confirmation/rejection of loan application by CF, creating a block, creating a tranche from block.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> in the request body to acquire an access token.</p>
+<p>To get an access token, you must get an partner account created with Capital Float, then Capital Float will generate a set of <code>API_KEY</code> and <code>API_SECRET</code> for your app for both the sandbox and live environments. Then, you pass the <code>API_KEY</code> and <code>API_SECRET</code> in the request body to acquire an access token.</p>
 
-<p>The authorisation server issues an access token in exchange for your <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code>. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.</p>
+<p>The authorisation server issues an access token in exchange for your <code>API_KEY</code> and <code>API_SECRET</code>. You use the access token for authentication when you make REST API requests by passing it in the Authorization Header.</p>
 
 <p>You can manage your credentials in the Dashboard. All API requests must be made over HTTPS. Any requests made over HTTP will fail.</p>
 
@@ -413,18 +413,19 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/users/token <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/auth <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
-    "client_id": "&lt;CLIENT_ID&gt;",
-    "client_secret": "&lt;CLIENT_SECRET&gt;"
+    "API_KEY": "&lt;API_KEY&gt;",
+    "API_SECRET": "&lt;API_SECRET&gt;"
   }'</span>
 </code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"57ed301af04bf35b40f255feb5ef469ab2f046aff14"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w">
+    </span><span class="s2">"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOltdLCJpc3MiOiJzYWZlLmNhcGl0YWxmbG9hdC5jb20iLCJqdGkiOiJlZTRjZDNjMi1lNmU5LTQ3MTAtOWUwMy02NzRlYzFhMjc2MjQiLCJ1c2VyIjp7ImluaXRpYXaN1R9pZCI6MjA2MjMxLCJwYXJ0bmVyX2lkIjo3NiwiY2xpZW50X2lkIjoiMDkwMGRhYjA3NzRmY2YyNjk2OWVmOTE2NzBhMjM1OWMifSwiZXhwIjoxNTI3MTMzNTgyLCJpYXQiOjE1MjQ1NDE1ODIsIm5iZiI6MTUyNDU0MTU4Mn0.x1929FAPE4OxCaMRTKUaoQhSCZ3VhNz3CWatg6LE1IyYRczIoYqLSYXwz3iL3BmwQfdFCrgAYqn-u3CUTxRHpQ"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -437,12 +438,12 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </tr>
 </thead><tbody>
 <tr>
-<td>client_id</td>
-<td>Client ID shared with you</td>
+<td>API_KEY</td>
+<td>API_KEY shared with you</td>
 </tr>
 <tr>
-<td>client_secret</td>
-<td>Client Secret shared with you</td>
+<td>API_SECRET</td>
+<td>API_SECRET shared with you</td>
 </tr>
 </tbody></table>
 
