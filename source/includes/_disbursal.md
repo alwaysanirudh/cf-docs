@@ -1,114 +1,5 @@
 # Disbursal
 
-## Common Error codes
-
-> Response:
-
-```json
-# Common error codes (message text might change but meaning remains same)
-
-{
-    "status": -1,
-    "message": "sanction with sanctionID 'string' doesn't exist"
-}
-{
-    "status": -2,
-    "message": "invalid loan type"
-}
-{
-    "status": -3,
-    "message": "sanction credit limit is exceeding"
-}
-{
-    "status": -4,
-    "message": "sanction credit limit is empty"
-}
-{
-    "status": -5,
-    "message": "number format exception"
-}
-{
-    "status": -6,
-    "message": "tranche amount is not integer"
-}
-{
-    "status": -7,
-    "message": "tranche limit is null"
-}
-{
-    "status": -8,
-    "message": "lms limit is empty"
-}
-{
-    "status": -9,
-    "message": "tranche amount exceeding lms limit"
-}
-{
-    "status": -10,
-    "message": "unable to create tranche"
-}
-{
-    "status": -11,
-    "message": "bad json"
-}
-{
-    "status": -12,
-    "message": "blocked order not found"
-}
-{
-    "status": -13,
-    "message": "duplicate blocked order"
-}
-{
-    "status": -14,
-    "message": "tranche not found"
-}
-{
-    "status": -15,
-    "message": "tranche not open to all"
-}
-{
-    "status": -16,
-    "message": "investor already exists"
-}
-{
-    "status": -17,
-    "message": "investor not found"
-}
-{
-    "status": -18,
-    "message": "investor amount roi invalid"
-}
-{
-    "status": -19,
-    "message": "investor portal not found"
-}
-{
-    "status": -20,
-    "message": "scheduled disbursal not set"
-}
-{
-    "status": -21,
-    "message": "disbursal schedule date not set"
-}
-{
-    "status": -22,
-    "message": "disbursal schedule date is in past"
-}
-{
-    "status": -23,
-    "message": "otp not verified"
-}
-{
-    "status": -24,
-    "message": "amount not blocked"
-}
-{
-    "status": -25,
-    "message": "amount not unblocked"
-}
-```
-
 ## Block Amount
 
 > Request:
@@ -193,7 +84,7 @@ When a request to create a block is triggered, the otp is being sent via sms and
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/verify_block_otp \
+  {{url}}/paylater/verify_block \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -235,7 +126,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/verify_block_otp`
+`POST {{url}}/paylater/verify_block`
 
 ### Resend OTP
 
@@ -297,7 +188,7 @@ curl -X POST \
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/createtranche \
+  {{url}}/paylater/tranche \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -370,7 +261,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/createtranchevendor`
+`POST {{url}}/paylater/tranche`
 
 ## Remove Block Amount
 
@@ -443,7 +334,7 @@ curl -X POST \
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/bal \
+  {{url}}/paylater/balance \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -493,7 +384,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/bal`
+`POST {{url}}/paylater/balance`
 
 ## Fetch Borrower Details
 
@@ -656,3 +547,112 @@ curl -X POST \
 ```
 
 `POST {{url}}/paylater/profile_available_limit`
+
+## Common Error codes
+
+> Response:
+
+```json
+# Common error codes (message text might change but meaning remains same)
+
+{
+    "status": -1,
+    "message": "sanction with sanctionID 'string' doesn't exist"
+}
+{
+    "status": -2,
+    "message": "invalid loan type"
+}
+{
+    "status": -3,
+    "message": "sanction credit limit is exceeding"
+}
+{
+    "status": -4,
+    "message": "sanction credit limit is empty"
+}
+{
+    "status": -5,
+    "message": "number format exception"
+}
+{
+    "status": -6,
+    "message": "tranche amount is not integer"
+}
+{
+    "status": -7,
+    "message": "tranche limit is null"
+}
+{
+    "status": -8,
+    "message": "lms limit is empty"
+}
+{
+    "status": -9,
+    "message": "tranche amount exceeding lms limit"
+}
+{
+    "status": -10,
+    "message": "unable to create tranche"
+}
+{
+    "status": -11,
+    "message": "bad json"
+}
+{
+    "status": -12,
+    "message": "blocked order not found"
+}
+{
+    "status": -13,
+    "message": "duplicate blocked order"
+}
+{
+    "status": -14,
+    "message": "tranche not found"
+}
+{
+    "status": -15,
+    "message": "tranche not open to all"
+}
+{
+    "status": -16,
+    "message": "investor already exists"
+}
+{
+    "status": -17,
+    "message": "investor not found"
+}
+{
+    "status": -18,
+    "message": "investor amount roi invalid"
+}
+{
+    "status": -19,
+    "message": "investor portal not found"
+}
+{
+    "status": -20,
+    "message": "scheduled disbursal not set"
+}
+{
+    "status": -21,
+    "message": "disbursal schedule date not set"
+}
+{
+    "status": -22,
+    "message": "disbursal schedule date is in past"
+}
+{
+    "status": -23,
+    "message": "otp not verified"
+}
+{
+    "status": -24,
+    "message": "amount not blocked"
+}
+{
+    "status": -25,
+    "message": "amount not unblocked"
+}
+```
