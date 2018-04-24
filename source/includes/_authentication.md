@@ -19,8 +19,8 @@ curl -X POST \
   {{url}}/authentication \
   -H "Content-type: application/json" \
   -d '{
-    "API_KEY": "<API_KEY>",
-    "API_SECRET": "<API_SECRET>"
+    "api_key": "<API_KEY>",
+    "api_secret": "<API_SECRET>"
   }'
 ```
 
@@ -38,7 +38,7 @@ curl -X POST \
 
 | Parameter  | Description                |
 | ---------- | -------------------------- |
-| API_KEY    | API_KEY shared with you    |
-| API_SECRET | API_SECRET shared with you |
+| api_key    | API_KEY shared with you    |
+| api_secret | API_SECRET shared with you |
 
 To make a REST API call, you must include request headers including the Authorization header with an access token.
