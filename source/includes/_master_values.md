@@ -295,3 +295,13 @@ Relationship of the individual with the main applicant
 | 400 | Wife     | WIFE     |
 | 500 | Son      | SON      |
 | 600 | Daughter | DAUGHTER |
+
+## Contact Type
+
+`contact_details.contact_type`
+
+| id  | label    | name     |
+| --- | -------- | -------- |
+| 100 | email    | EMAIL    |
+| 200 | mobile   | MOBILE   |
+| 300 | landline | LANDLINE |
