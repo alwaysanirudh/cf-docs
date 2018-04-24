@@ -413,7 +413,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/auth <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/authentication <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
     "API_KEY": "&lt;API_KEY&gt;",
@@ -429,7 +429,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
   </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/users/token</code></p>
+<p><code>POST {{url}}/authentication</code></p>
 
 <table><thead>
 <tr>
