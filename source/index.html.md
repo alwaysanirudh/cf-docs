@@ -16,6 +16,7 @@ includes:
   - disbursal
   - repayment
   - checkout
+  - documents
   - master_values
 
 
