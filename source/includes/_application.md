@@ -210,23 +210,41 @@ For now configuration of Callbacks and registration of events is offline. Share 
 
 ```json
 {
-    "app_id": "string",
-    "offer_type": "string",
-    "amount": "string",
-    "tenure": "string",
-    "interest":"string"
-}'
+  "app_id": "string",
+  "offer_type": "string",
+  "sanctionedRoi": "string",
+  "minDocFee": "string",
+  "maxDocFee": "string",
+  "pfAmount": "string",
+  "productTrack": "string",
+  "loanProdType": "string",
+  "loanAmount": "string",
+  "emi": "string",
+  "daysPerCycle": "string",
+  "isReducing": "0|1",
+  "sanctionedPf": "string",
+  "tenure": "string"
+}
 ```
 
 **Parameters**
 
-| Name       | Type   | Description                           |
-| ---------- | ------ | ------------------------------------- |
-| app_id     | string | Application Id                        |
-| offer_type | string | in_principal_approval, final_approval |
-| amount     | string | Amount                                |
-| tenure     | string | Tenure of the loan                    |
-| interest   | string | Interest of the loan                  |
+| Name          | Type   | Description                           |
+| ------------- | ------ | ------------------------------------- |
+| app_id        | string | Application Id                        |
+| offer_type    | string | in_principal_approval, final_approval |
+| sanctionedRoi | string | Rate of interest                      |
+| minDocFee     | string | Minimum Doc Fee                       |
+| maxDocFee     | string | Maximum Doc Fee                       |
+| pfAmount      | string | Processing Fee                        |
+| productTrack  | string | Product track                         |
+| loanProdType  | string | Loan Type                             |
+| loanAmount    | string | Loan amount                           |
+| emi           | string | EMI                                   |
+| daysPerCycle  | string | Days per Cycle                        |
+| isReducing    | string | Interest type reducing                |
+| sanctionedPf  | string | Processing Fee %                      |
+| tenure        | string | Loan Tenure                           |
 
 **Events**
 
