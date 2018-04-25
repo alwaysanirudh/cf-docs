@@ -245,10 +245,3 @@ For now configuration of Callbacks and registration of events is offline. Share 
 | isReducing    | string | Interest type reducing                |
 | sanctionedPf  | string | Processing Fee %                      |
 | tenure        | string | Loan Tenure                           |
-
-**Events**
-
-| Name                  | Description |
-| --------------------- | ----------- |
-| in_principal_approval |             |
-| final_approval        |             |
