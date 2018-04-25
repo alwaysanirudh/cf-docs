@@ -51,3 +51,5 @@ Error responses
   "message" :"Sanction not found"
 }
 ```
+
+`GET {{url}}/documents/sanction`

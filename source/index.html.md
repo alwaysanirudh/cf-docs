@@ -12,11 +12,11 @@ toc_footers:
 includes:
   - authentication
   - acquisition
+  - documents
   - token_sharing
   - disbursal
   - repayment
   - checkout
-  - documents
   - master_values
 
 
