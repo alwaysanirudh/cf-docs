@@ -242,6 +242,14 @@
               </ul>
           </li>
           <li>
+            <a href="#documents" class="toc-h1 toc-link" data-title="documents">Documents</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sanction-docs" class="toc-h2 toc-link" data-title="sanction-docs">Sanction Docs</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#token-sharing" class="toc-h1 toc-link" data-title="token-sharing">Token Sharing</a>
               <ul class="toc-list-h2">
                   <li>
@@ -316,14 +324,6 @@
                   </li>
                   <li>
                     <a href="#sdks" class="toc-h2 toc-link" data-title="sdks">SDKs</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#documents" class="toc-h1 toc-link" data-title="documents">Documents</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#sanction-docs" class="toc-h2 toc-link" data-title="sanction-docs">Sanction Docs</a>
                   </li>
               </ul>
           </li>
@@ -1777,6 +1777,56 @@ For now configuration of Callbacks and registration of events is offline. Share 
 <td>Profile fees are due</td>
 </tr>
 </tbody></table>
+<h1 id='documents'>Documents</h1><h2 id='sanction-docs'>Sanction Docs</h2>
+<p>Get sanction docs by app_id</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/documents/sanction <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">successful</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"sanction_letter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nach_mandate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"lss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"loan_agreement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Error</span><span class="w"> </span><span class="err">responses</span><span class="w">
+</span><span class="err">-</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET {{url}}/documents/sanction</code></p>
 <h1 id='token-sharing'>Token Sharing</h1><h2 id='acqisition-done-via-api'>Acqisition done via API</h2>
 <blockquote>
 <p>Request</p>
@@ -2610,55 +2660,7 @@ If <code>final_approval</code> is False then the case has been rejected
 <p>Coming Soon</p>
 <h2 id='sdks'>SDKs</h2>
 <p>Coming Soon</p>
-<h1 id='documents'>Documents</h1><h2 id='sanction-docs'>Sanction Docs</h2>
-<p>Get sanction docs by app_id</p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/documents/sanction <span class="se">\</span>
-  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
-  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
-  -d <span class="s1">'{
-    "app_id": "string"
-  }'</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">successful</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"sanction_letter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"nach_mandate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"lss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"loan_agreement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">Error</span><span class="w"> </span><span class="err">responses</span><span class="w">
-</span><span class="err">-</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='master-key-reference'>Master Key Reference</h1>
+<h1 id='master-key-reference'>Master Key Reference</h1>
 <p>This section contains the references to all master keys which will be used throughout all API requests.</p>
 <h2 id='application-in-progess-statuses'>Application In Progess Statuses</h2>
 <table><thead>
