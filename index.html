@@ -267,13 +267,13 @@
                     <a href="#block-amount" class="toc-h2 toc-link" data-title="block-amount">Block Amount</a>
                   </li>
                   <li>
-                    <a href="#otp-confirmation" class="toc-h2 toc-link" data-title="otp-confirmation">OTP Confirmation</a>
+                    <a href="#verify-block" class="toc-h2 toc-link" data-title="verify-block">Verify Block</a>
                       <ul class="toc-list-h3">
                           <li>
                             <a href="#verify-block-otp" class="toc-h3 toc-link" data-title="Disbursal">Verify Block OTP</a>
                           </li>
                           <li>
-                            <a href="#resend-otp" class="toc-h3 toc-link" data-title="Disbursal">Resend OTP</a>
+                            <a href="#resend-block-otp" class="toc-h3 toc-link" data-title="Disbursal">Resend Block OTP</a>
                           </li>
                       </ul>
                   </li>
@@ -281,19 +281,19 @@
                     <a href="#create-tranche" class="toc-h2 toc-link" data-title="create-tranche">Create Tranche</a>
                   </li>
                   <li>
-                    <a href="#remove-block-amount" class="toc-h2 toc-link" data-title="remove-block-amount">Remove Block Amount</a>
+                    <a href="#block-balance" class="toc-h2 toc-link" data-title="block-balance">Block Balance</a>
                   </li>
                   <li>
-                    <a href="#fetch-block-balance" class="toc-h2 toc-link" data-title="fetch-block-balance">Fetch Block Balance</a>
+                    <a href="#cancel-blocked-amount" class="toc-h2 toc-link" data-title="cancel-blocked-amount">Cancel Blocked Amount</a>
                   </li>
                   <li>
-                    <a href="#fetch-borrower-details" class="toc-h2 toc-link" data-title="fetch-borrower-details">Fetch Borrower Details</a>
+                    <a href="#borrower-details" class="toc-h2 toc-link" data-title="borrower-details">Borrower Details</a>
                   </li>
                   <li>
-                    <a href="#fetch-profile-available-limit" class="toc-h2 toc-link" data-title="fetch-profile-available-limit">Fetch Profile Available Limit</a>
+                    <a href="#available-limit" class="toc-h2 toc-link" data-title="available-limit">Available Limit</a>
                   </li>
                   <li>
-                    <a href="#common-error-codes" class="toc-h2 toc-link" data-title="common-error-codes">Common Error codes</a>
+                    <a href="#error-codes" class="toc-h2 toc-link" data-title="error-codes">Error Codes</a>
                   </li>
               </ul>
           </li>
@@ -1916,14 +1916,14 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/block</code></p>
-<h2 id='otp-confirmation'>OTP Confirmation</h2>
+<h2 id='verify-block'>Verify Block</h2>
 <p>When a request to create a block is triggered, the otp is being sent via sms and email .</p>
 <h3 id='verify-block-otp'>Verify Block OTP</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/paylater/verify_block <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/block/verify_otp <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1963,13 +1963,13 @@ If <code>final_approval</code> is False then the case has been rejected
   </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found for the app"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/paylater/verify_block</code></p>
-<h3 id='resend-otp'>Resend OTP</h3>
+<p><code>POST {{url}}/paylater/block/verify_otp</code></p>
+<h3 id='resend-block-otp'>Resend Block OTP</h3>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/paylater/resend_block_otp <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/block/resend_otp <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -2013,7 +2013,7 @@ If <code>final_approval</code> is False then the case has been rejected
   </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/paylater/resend_block_otp</code></p>
+<p><code>POST {{url}}/paylater/block/resend_otp</code></p>
 <h2 id='create-tranche'>Create Tranche</h2>
 <blockquote>
 <p>Request:</p>
@@ -2091,7 +2091,61 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/tranche</code></p>
-<h2 id='remove-block-amount'>Remove Block Amount</h2>
+<h2 id='block-balance'>Block Balance</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/paylater/balance <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string",
+    "order_id": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id or order_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/paylater/balance</code></p>
+<h2 id='cancel-blocked-amount'>Cancel Blocked Amount</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -2152,61 +2206,7 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/cancel</code></p>
-<h2 id='fetch-block-balance'>Fetch Block Balance</h2>
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/paylater/balance <span class="se">\</span>
-  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
-  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
-  -d <span class="s1">'{
-    "app_id": "string",
-    "order_id": "string"
-  }'</span>
-</code></pre>
-<blockquote>
-<p>Response :</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id or order_id"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No partner found for current user"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"App not found"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Not authorized to view this app"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Sanction not found"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-600</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"Vendor not found"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-700</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="s2">"The request could not be processed. Please consult Capital Float"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>POST {{url}}/paylater/balance</code></p>
-<h2 id='fetch-borrower-details'>Fetch Borrower Details</h2>
+<h2 id='borrower-details'>Borrower Details</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -2306,7 +2306,7 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/agent_info</code></p>
-<h2 id='fetch-profile-available-limit'>Fetch Profile Available Limit</h2>
+<h2 id='available-limit'>Available Limit</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -2360,7 +2360,7 @@ If <code>final_approval</code> is False then the case has been rejected
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/paylater/profile_available_limit</code></p>
-<h2 id='common-error-codes'>Common Error codes</h2>
+<h2 id='error-codes'>Error Codes</h2>
 <blockquote>
 <p>Response:</p>
 </blockquote>
