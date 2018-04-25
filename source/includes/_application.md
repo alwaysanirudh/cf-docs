@@ -210,12 +210,21 @@ For now configuration of Callbacks and registration of events is offline. Share 
 
 ```json
 {
-    "app_id": "string",
-    "offer_type": "string",
-    "amount": "string",
-    "tenure": "string",
-    "interest":"string"
-}'
+  "app_id": "string",
+  "offer_type": "string",
+  "sanctionedRoi": "string",
+  "minDocFee": "string",
+  "maxDocFee": "string",
+  "pfAmount": "string",
+  "productTrack": "string",
+  "loanProdType": "string",
+  "loanAmount": "string",
+  "emi": "string",
+  "daysPerCycle": "string",
+  "isReducing": "0|1",
+  "sanctionedPf": "string",
+  "tenure": "string"
+}
 ```
 
 **Parameters**
