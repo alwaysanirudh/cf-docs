@@ -225,7 +225,7 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
           </li>
           <li>
-            <a href="#acquisition-via-api" class="toc-h1 toc-link" data-title="acquisition-via-api">Acquisition via API</a>
+            <a href="#acquisition" class="toc-h1 toc-link" data-title="acquisition">Acquisition</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-application" class="toc-h2 toc-link" data-title="create-application">Create Application</a>
@@ -233,11 +233,19 @@
                   <li>
                     <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#application-flow" class="toc-h1 toc-link" data-title="application-flow">Application Flow</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#callbacks" class="toc-h2 toc-link" data-title="callbacks">Callbacks</a>
+                    <a href="#application-status" class="toc-h2 toc-link" data-title="application-status">Application Status</a>
                   </li>
                   <li>
-                    <a href="#application-profile-status" class="toc-h2 toc-link" data-title="application-profile-status">Application/Profile Status</a>
+                    <a href="#update-bank-details" class="toc-h2 toc-link" data-title="update-bank-details">Update Bank Details</a>
+                  </li>
+                  <li>
+                    <a href="#application-callbacks" class="toc-h2 toc-link" data-title="application-callbacks">Application Callbacks</a>
                   </li>
               </ul>
           </li>
@@ -463,7 +471,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </tbody></table>
 
 <p>To make a REST API call, you must include request headers including the Authorization header with an access token.</p>
-<h1 id='acquisition-via-api'>Acquisition via API</h1><h2 id='create-application'>Create Application</h2>
+<h1 id='acquisition'>Acquisition</h1><h2 id='create-application'>Create Application</h2>
 <p>Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.</p>
 
 <blockquote>
@@ -1512,82 +1520,12 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>app_id from application created</td>
 </tr>
 </tbody></table>
-<h2 id='callbacks'>Callbacks</h2>
-<p>Once an app_id is created. CF will post to your configured Callbacks on registered events.
-For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.</p>
-
-<p><code>eg: {{your_domain}}/capitalfloat/callback/1</code></p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"offer_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"interest"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="err">'</span><span class="w">
-</span></code></pre>
-<p><strong>Parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>app_id</td>
-<td>string</td>
-<td>Application Id</td>
-</tr>
-<tr>
-<td>offer_type</td>
-<td>string</td>
-<td>in_principal_approval, final_approval</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>string</td>
-<td>Amount</td>
-</tr>
-<tr>
-<td>tenure</td>
-<td>string</td>
-<td>Tenure of the loan</td>
-</tr>
-<tr>
-<td>interest</td>
-<td>string</td>
-<td>Interest of the loan</td>
-</tr>
-</tbody></table>
-
-<p><strong>Events</strong></p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>in_principal_approval</td>
-<td></td>
-</tr>
-<tr>
-<td>final_approval</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='application-profile-status'>Application/Profile Status</h2>
+<h1 id='application-flow'>Application Flow</h1><h2 id='application-status'>Application Status</h2>
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/application/status<span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/applications/status<span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1598,9 +1536,11 @@ For now configuration of Callbacks and registration of events is offline. Share 
 <p>Response :</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+
+</span><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">application</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">approved</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">Offer</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"sub_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -1621,8 +1561,10 @@ For now configuration of Callbacks and registration of events is offline. Share 
     </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+</span><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">application</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">rejected.</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">reject</span><span class="w"> </span><span class="err">reason</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">provide</span><span class="w"> </span><span class="err">whenever</span><span class="w"> </span><span class="err">necessary</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"reject_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
@@ -1650,7 +1592,7 @@ For now configuration of Callbacks and registration of events is offline. Share 
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Failure in fetching sanction status"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/application/status</code></p>
+<p><code>POST {{url}}/applications/status</code></p>
 
 <p><strong>Possible app status</strong></p>
 
@@ -1777,6 +1719,235 @@ For now configuration of Callbacks and registration of events is offline. Share 
 <td>Profile fees are due</td>
 </tr>
 </tbody></table>
+<h2 id='update-bank-details'>Update Bank Details</h2>
+<p>This is Repayment/Disbursal bank account for the loan application.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/applications/bank_details<span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string",
+    "code": "string"
+    "accountNumber": "string"
+    "bankName": "string"
+    "branchName": "string"
+    "accountHolderName": "string"
+    "verified": "string",
+    "city": "string"
+    "isBankLinkedToAadhaar": "string"
+    "accountType": "string"
+    "modeOfOperation": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/applications/bank_details</code></p>
+
+<p><strong>Possible app status</strong></p>
+
+<table><thead>
+<tr>
+<th>app_status</th>
+<th>app_status_label</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>App in progress</td>
+</tr>
+<tr>
+<td>300</td>
+<td>App Submitted</td>
+</tr>
+<tr>
+<td>450</td>
+<td>COH Decision Pending</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Request for login</td>
+</tr>
+<tr>
+<td>600</td>
+<td>File logged-in</td>
+</tr>
+<tr>
+<td>700</td>
+<td>Cam in Progress</td>
+</tr>
+<tr>
+<td>800</td>
+<td>Cam Completed</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Pd in Progress</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Pd Completed</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>Approved</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>Rejected</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Disbursed</td>
+</tr>
+<tr>
+<td>11000</td>
+<td>KYC Done</td>
+</tr>
+<tr>
+<td>12000</td>
+<td>CIBIL Pulled</td>
+</tr>
+<tr>
+<td>14000</td>
+<td>Loan Agreement Done</td>
+</tr>
+<tr>
+<td>15000</td>
+<td>NACH Done</td>
+</tr>
+<tr>
+<td>16000</td>
+<td>DOC UPLOAD Done</td>
+</tr>
+</tbody></table>
+
+<p><strong>Possible profile suspension reason</strong></p>
+
+<table><thead>
+<tr>
+<th>suspend_reason</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Due to delinquency / RTR (temporary)</td>
+</tr>
+<tr>
+<td>Due to delinquency / RTR (permanent)</td>
+</tr>
+<tr>
+<td>Customer Requested</td>
+</tr>
+<tr>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td>Line Expired</td>
+</tr>
+<tr>
+<td>Potential Fraud</td>
+</tr>
+<tr>
+<td>Confirmed Fraud</td>
+</tr>
+<tr>
+<td>Sold</td>
+</tr>
+<tr>
+<td>Partner Requested</td>
+</tr>
+<tr>
+<td>Delinquent on other CF loan</td>
+</tr>
+<tr>
+<td>Closed by collections</td>
+</tr>
+<tr>
+<td>Partnership Shutdown</td>
+</tr>
+<tr>
+<td>Profile fees are due</td>
+</tr>
+</tbody></table>
+<h2 id='application-callbacks'>Application Callbacks</h2>
+<p>Once an app_id is created. CF will post to your configured Callbacks on registered events.
+For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.</p>
+
+<p><code>eg: {{your_domain}}/capitalfloat/callback</code></p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offer_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interest"</span><span class="p">:</span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>app_id</td>
+<td>string</td>
+<td>Application Id</td>
+</tr>
+<tr>
+<td>offer_type</td>
+<td>string</td>
+<td>in_principal_approval, final_approval</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>string</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>tenure</td>
+<td>string</td>
+<td>Tenure of the loan</td>
+</tr>
+<tr>
+<td>interest</td>
+<td>string</td>
+<td>Interest of the loan</td>
+</tr>
+</tbody></table>
+
+<p><strong>Events</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>in_principal_approval</td>
+<td></td>
+</tr>
+<tr>
+<td>final_approval</td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='documents'>Documents</h1><h2 id='sanction-docs'>Sanction Docs</h2>
 <p>Get sanction docs by app_id</p>
 
@@ -1855,9 +2026,9 @@ For now configuration of Callbacks and registration of events is offline. Share 
   </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Refer the <a href="#acquisition-via-api">acquisition via API</a> section.</p>
+<p>Refer the <a href="#acquisition">acquisition via API</a> section.</p>
 
-<p><code>POST {{url}}/apps/token</code></p>
+<p><code>POST {{url}}/application/token</code></p>
 
 <aside class="notice">
 If <code>final_approval</code> is True then the case has been disbursed and <code>x_partner_token</code> will contain the token in this case
