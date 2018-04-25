@@ -496,7 +496,7 @@ curl -X POST \
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/profile_available_limit \
+  {{url}}/paylater/profile_limit \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -546,7 +546,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/profile_available_limit`
+`POST {{url}}/paylater/profile_limit`
 
 ## Error Codes
 

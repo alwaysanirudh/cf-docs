@@ -8,7 +8,7 @@ Get sanction docs by app_id
 
 ```shell
 curl -X POST \
-  {{url}}/documents/ \
+  {{url}}/documents/sanction \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -18,20 +18,18 @@ curl -X POST \
 
 > Response:
 
+```json
 If the request was successful
 
-```json
 {
-    "sanction_letter": "string",
-    "nach_mandate": "string",
-    "lss": "string",
-    "loan_agreement": "string"
+  "sanction_letter": "string",
+  "nach_mandate": "string",
+  "lss": "string",
+  "loan_agreement": "string"
 }
-```
 
 Error responses
-
-```json
+-
 {
   "status": -100,
   "message": "Payload is missing app_id"
