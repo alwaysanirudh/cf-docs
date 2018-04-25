@@ -31,9 +31,9 @@ curl-X POST \
 }
 ```
 
-Refer the [acquisition via API](#acquisition-via-api) section.
+Refer the [acquisition via API](#acquisition) section.
 
-`POST {{url}}/apps/token`
+`POST {{url}}/application/token`
 
 <aside class="notice">
 If <code>final_approval</code> is True then the case has been disbursed and <code>x_partner_token</code> will contain the token in this case

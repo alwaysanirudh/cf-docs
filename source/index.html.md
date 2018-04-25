@@ -12,6 +12,7 @@ toc_footers:
 includes:
   - authentication
   - acquisition
+  - application
   - documents
   - token_sharing
   - disbursal
