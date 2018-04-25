@@ -74,7 +74,7 @@ curl -X POST \
 
 `POST {{url}}/paylater/block`
 
-## OTP Confirmation
+## Verify Block
 
 When a request to create a block is triggered, the otp is being sent via sms and email .
 
@@ -84,7 +84,7 @@ When a request to create a block is triggered, the otp is being sent via sms and
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/verify_block \
+  {{url}}/paylater/block/verify_otp \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -126,15 +126,15 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/verify_block`
+`POST {{url}}/paylater/block/verify_otp`
 
-### Resend OTP
+### Resend Block OTP
 
 > Request:
 
 ```shell
 curl -X POST \
-  {{url}}/paylater/resend_block_otp \
+  {{url}}/paylater/block/resend_otp \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -180,7 +180,7 @@ curl -X POST \
 }
 ```
 
-`POST {{url}}/paylater/resend_block_otp`
+`POST {{url}}/paylater/block/resend_otp`
 
 ## Create Tranche
 
@@ -263,7 +263,65 @@ curl -X POST \
 
 `POST {{url}}/paylater/tranche`
 
-## Remove Block Amount
+## Block Balance
+
+> Request:
+
+```shell
+curl -X POST \
+  {{url}}/paylater/balance \
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+  -d '{
+    "app_id": "string",
+    "order_id": "string"
+  }'
+```
+
+> Response :
+
+```json
+# Success
+{
+  "status": 1,
+  "order_id": "string",
+  "balance": ""
+}
+
+# Failure
+{
+  "status": -100,
+  "message": "Payload is missing app_id or order_id"
+}
+{
+  "status": -200,
+  "message": "No partner found for current user"
+}
+{
+  "status": -300,
+  "message" :"App not found"
+}
+{
+  "status": -400,
+  "message" :"Not authorized to view this app"
+}
+{
+  "status": -500,
+  "message" :"Sanction not found"
+}
+{
+  "status": -600,
+  "message" :"Vendor not found"
+}
+{
+  "status": -700,
+  "message" :"The request could not be processed. Please consult Capital Float"
+}
+```
+
+`POST {{url}}/paylater/balance`
+
+## Cancel Blocked Amount
 
 > Request:
 
@@ -328,65 +386,7 @@ curl -X POST \
 
 `POST {{url}}/paylater/cancel`
 
-## Fetch Block Balance
-
-> Request:
-
-```shell
-curl -X POST \
-  {{url}}/paylater/balance \
-  -H "Content-type: application/json"  \
-  -H 'Authorization: YOUR_TOKEN' \
-  -d '{
-    "app_id": "string",
-    "order_id": "string"
-  }'
-```
-
-> Response :
-
-```json
-# Success
-{
-  "status": 1,
-  "order_id": "string",
-  "balance": ""
-}
-
-# Failure
-{
-  "status": -100,
-  "message": "Payload is missing app_id or order_id"
-}
-{
-  "status": -200,
-  "message": "No partner found for current user"
-}
-{
-  "status": -300,
-  "message" :"App not found"
-}
-{
-  "status": -400,
-  "message" :"Not authorized to view this app"
-}
-{
-  "status": -500,
-  "message" :"Sanction not found"
-}
-{
-  "status": -600,
-  "message" :"Vendor not found"
-}
-{
-  "status": -700,
-  "message" :"The request could not be processed. Please consult Capital Float"
-}
-```
-
-`POST {{url}}/paylater/balance`
-
-## Fetch Borrower Details
+## Borrower Details
 
 > Request:
 
@@ -490,7 +490,7 @@ curl -X POST \
 
 `POST {{url}}/paylater/agent_info`
 
-## Fetch Profile Available Limit
+## Available Limit
 
 > Request:
 
@@ -548,7 +548,7 @@ curl -X POST \
 
 `POST {{url}}/paylater/profile_available_limit`
 
-## Common Error codes
+## Error Codes
 
 > Response:
 
