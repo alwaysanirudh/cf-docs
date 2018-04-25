@@ -1479,8 +1479,9 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
   -d <span class="s1">'{
     "username": "string",
     "phone": "string",
-    "city": "string"
-    "app_id": "string"
+    "city": "string",
+    "app_id": "string",
+    "send_welcome_mail": 0
   }'</span>
 </code></pre>
 <blockquote>
@@ -1530,6 +1531,11 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>app_id</td>
 <td>string</td>
 <td>app_id from application created</td>
+</tr>
+<tr>
+<td>send_welcome_mail</td>
+<td>integer</td>
+<td>Send welcome Email to user (0/1)</td>
 </tr>
 </tbody></table>
 <h1 id='application-flow'>Application Flow</h1><h2 id='application-status'>Application Status</h2>
