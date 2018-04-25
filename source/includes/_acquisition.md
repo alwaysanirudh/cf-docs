@@ -603,11 +603,32 @@ curl -X POST \
 # Success
 {
   "status": 1,
-  "app_status": "string",
+  "app_status": 200,
+  "app_status_label": "string",
   "app_id": "string",
   "sub_type": "string",
   "is_active": "0|1",
-  "suspend_reason": "string"
+  "suspend_reason": "string",
+  "offer": {
+    "sanctionedRoi": "string",
+    "minDocFee": "string",
+    "maxDocFee": "string",
+    "pfAmount": "string",
+    "productTrack": "string",
+    "loanProdType": "string",
+    "loanAmount": "string",
+    "emi": "string",
+    "daysPerCycle": "string",
+    "isReducing": "0|1",
+    "sanctionedPf": "string",
+    "tenure": "string"
+  }
+}
+{
+  "status": 1,
+  "app_status": "string",
+  "app_id": "string",
+  "reject_reason": "string"
 }
 
 # Failure
@@ -637,27 +658,25 @@ curl -X POST \
 
 **Possible app status**
 
-| app_status           |
-| -------------------- |
-| not defined          |
-| Offer Generated      |
-| App in progress      |
-| App Submitted        |
-| COH Decision Pending |
-| Request for login    |
-| File logged-in       |
-| Cam in Progress      |
-| Cam Completed        |
-| Pd in Progress       |
-| Pd Completed         |
-| Approved             |
-| Rejected             |
-| Disbursed            |
-| KYC Done             |
-| CIBIL Pulled         |
-| Loan Agreement Done  |
-| NACH Done            |
-| DOC UPLOAD Done      |
+| app_status | app_status_label     |
+| ---------- | -------------------- |
+| 200        | App in progress      |
+| 300        | App Submitted        |
+| 450        | COH Decision Pending |
+| 500        | Request for login    |
+| 600        | File logged-in       |
+| 700        | Cam in Progress      |
+| 800        | Cam Completed        |
+| 900        | Pd in Progress       |
+| 1000       | Pd Completed         |
+| 1100       | Approved             |
+| 1200       | Rejected             |
+| 10000      | Disbursed            |
+| 11000      | KYC Done             |
+| 12000      | CIBIL Pulled         |
+| 14000      | Loan Agreement Done  |
+| 15000      | NACH Done            |
+| 16000      | DOC UPLOAD Done      |
 
 **Possible profile suspension reason**
 
