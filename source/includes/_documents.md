@@ -37,7 +37,7 @@ If the request was successful
 
 ## Doc List
 
-Fetch files by appid
+Fetch docs by appid
 
 > Request:
 
