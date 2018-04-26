@@ -8,6 +8,41 @@ Fetch files by appid
 
 ```shell
 curl -X GET \
+  {{url}}/documents/files?appid={{appid}} \
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+```
+
+> Response:
+
+```json
+If the request was successful
+
+{
+  "sresp": [
+    {
+      "path": "string",
+      "size": 1,
+      "name": "string",
+      "tags": [
+        "string"
+      ]
+    }
+  ],
+  "status": 1
+}
+```
+
+`GET {{url}}/documents/files?appid={{appid}}`
+
+## Doc List
+
+Fetch files by appid
+
+> Request:
+
+```shell
+curl -X GET \
   {{url}}/documents/list?appid={{appid}} \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
@@ -70,7 +105,7 @@ If the request was successful
 }
 ```
 
-`POST {{url}}/documents/list`
+`POST {{url}}/documents`
 
 ## View File
 
@@ -85,7 +120,7 @@ curl -X GET \
   -H 'Authorization: YOUR_TOKEN' \
 ```
 
-`GET {{url}}/documents/list?appid={{appid}}`
+`GET {{url}}/documents?file_path={{file_path}}`
 
 ## Sanction Docs
 
