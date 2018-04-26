@@ -242,7 +242,7 @@
                     <a href="#application-status" class="toc-h2 toc-link" data-title="application-status">Application Status</a>
                   </li>
                   <li>
-                    <a href="#update-bank-details" class="toc-h2 toc-link" data-title="update-bank-details">Update Bank Details</a>
+                    <a href="#bank-details" class="toc-h2 toc-link" data-title="bank-details">Bank Details</a>
                   </li>
                   <li>
                     <a href="#application-callbacks" class="toc-h2 toc-link" data-title="application-callbacks">Application Callbacks</a>
@@ -256,13 +256,13 @@
                     <a href="#fetch-files" class="toc-h2 toc-link" data-title="fetch-files">Fetch files</a>
                   </li>
                   <li>
+                    <a href="#document-list" class="toc-h2 toc-link" data-title="document-list">Document List</a>
+                  </li>
+                  <li>
                     <a href="#upload-file" class="toc-h2 toc-link" data-title="upload-file">Upload File</a>
                   </li>
                   <li>
                     <a href="#view-file" class="toc-h2 toc-link" data-title="view-file">View File</a>
-                  </li>
-                  <li>
-                    <a href="#upload-file-2" class="toc-h2 toc-link" data-title="upload-file">Upload File</a>
                   </li>
                   <li>
                     <a href="#sanction-docs" class="toc-h2 toc-link" data-title="sanction-docs">Sanction Docs</a>
@@ -1737,8 +1737,8 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <td>Profile fees are due</td>
 </tr>
 </tbody></table>
-<h2 id='update-bank-details'>Update Bank Details</h2>
-<p>This is Repayment/Disbursal bank account for the loan application.</p>
+<h2 id='bank-details'>Bank Details</h2>
+<p>This API can be used to Repayment/Disbursal bank account for the loan application.</p>
 
 <blockquote>
 <p>Request:</p>
@@ -1771,136 +1771,10 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/applications/bank_details</code></p>
-
-<p><strong>Possible app status</strong></p>
-
-<table><thead>
-<tr>
-<th>app_status</th>
-<th>app_status_label</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>App in progress</td>
-</tr>
-<tr>
-<td>300</td>
-<td>App Submitted</td>
-</tr>
-<tr>
-<td>450</td>
-<td>COH Decision Pending</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Request for login</td>
-</tr>
-<tr>
-<td>600</td>
-<td>File logged-in</td>
-</tr>
-<tr>
-<td>700</td>
-<td>Cam in Progress</td>
-</tr>
-<tr>
-<td>800</td>
-<td>Cam Completed</td>
-</tr>
-<tr>
-<td>900</td>
-<td>Pd in Progress</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>Pd Completed</td>
-</tr>
-<tr>
-<td>1100</td>
-<td>Approved</td>
-</tr>
-<tr>
-<td>1200</td>
-<td>Rejected</td>
-</tr>
-<tr>
-<td>10000</td>
-<td>Disbursed</td>
-</tr>
-<tr>
-<td>11000</td>
-<td>KYC Done</td>
-</tr>
-<tr>
-<td>12000</td>
-<td>CIBIL Pulled</td>
-</tr>
-<tr>
-<td>14000</td>
-<td>Loan Agreement Done</td>
-</tr>
-<tr>
-<td>15000</td>
-<td>NACH Done</td>
-</tr>
-<tr>
-<td>16000</td>
-<td>DOC UPLOAD Done</td>
-</tr>
-</tbody></table>
-
-<p><strong>Possible profile suspension reason</strong></p>
-
-<table><thead>
-<tr>
-<th>suspend_reason</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Due to delinquency / RTR (temporary)</td>
-</tr>
-<tr>
-<td>Due to delinquency / RTR (permanent)</td>
-</tr>
-<tr>
-<td>Customer Requested</td>
-</tr>
-<tr>
-<td>Deprecated</td>
-</tr>
-<tr>
-<td>Line Expired</td>
-</tr>
-<tr>
-<td>Potential Fraud</td>
-</tr>
-<tr>
-<td>Confirmed Fraud</td>
-</tr>
-<tr>
-<td>Sold</td>
-</tr>
-<tr>
-<td>Partner Requested</td>
-</tr>
-<tr>
-<td>Delinquent on other CF loan</td>
-</tr>
-<tr>
-<td>Closed by collections</td>
-</tr>
-<tr>
-<td>Partnership Shutdown</td>
-</tr>
-<tr>
-<td>Profile fees are due</td>
-</tr>
-</tbody></table>
 <h2 id='application-callbacks'>Application Callbacks</h2>
 <p>Once an app_id is created. CF will post to your configured Callbacks on registered events.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.</p>
@@ -2008,13 +1882,14 @@ For now configuration of Callbacks and registration of events is offline. Share 
 </tr>
 </tbody></table>
 <h1 id='documents'>Documents</h1><h2 id='fetch-files'>Fetch files</h2>
-<p>Fetch files by appid</p>
+<p>Fetch files uploaded for an application.
+NOTE: If documents for a application were never uploaded; this API needs to be called first. It will create the document sections if they are not created.</p>
 
 <blockquote>
 <p>Request:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/documents/list?appid<span class="o">={{</span>appid<span class="o">}}</span> <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/documents/files?appid<span class="o">={{</span>appid<span class="o">}}</span> <span class="se">\</span>
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
 </code></pre>
@@ -2039,6 +1914,71 @@ For now configuration of Callbacks and registration of events is offline. Share 
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>GET {{url}}/documents/files?appid={{appid}}</code></p>
+<h2 id='document-list'>Document List</h2>
+<p>View document list for an application. This also returns the files in each doc section if they were uploaded.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/documents/list?appid<span class="o">={{</span>appid<span class="o">}}</span> <span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">successful</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"Company KYC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Co:ownership_proof"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Co:Recent Utility/Landline bill"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"co:vintage"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Co:Partnership Deed"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Co:PAN Copy"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Ops Documents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:app_address_osv_pr_osv_384852"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:sancton_letter_section"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:NACH_mandate"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:app_address_osv_pr_osv_384851"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:company_address_proof_osv"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:app_id_osv_pr_osv_384852"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:app_id_osv_pr_osv_384851"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:company_pan_osv"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:pdc"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"EXTRA_DOCS:loan_agreement"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Company Financials"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Co:VAT/ST Returns (Apr'13-Current)"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Co:Last 12 months Bank Stmts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Co:Current loans-Sanction letters"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"Promoter KYC"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Pr:ownership_proof_pr_384852"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Pr:ownership_proof_pr_384851"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Pr:Utility/Mobile Bills_pr_384851"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Pr:Utility/Mobile Bills_pr_384852"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"Pr:PAN Copies_pr_384851"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"path_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7a77e35-82f0-442c-bf20-8ce9b681af98/1c6977bf-9857-45f5-9a0b-a5314894220c.png"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"extra_tag_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-25 07:28:52"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pr:PAN Copies_pr_384851"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"synced"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"extra_tag_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1597546</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pan.png"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"Pr:PAN Copies_pr_384852"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>GET {{url}}/documents/list?appid={{appid}}</code></p>
@@ -2070,9 +2010,9 @@ For now configuration of Callbacks and registration of events is offline. Share 
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><code>POST {{url}}/documents/list</code></p>
+<p><code>POST {{url}}/documents</code></p>
 <h2 id='view-file'>View File</h2>
-<p>Get File by file_path</p>
+<p>View an uploaded file</p>
 
 <blockquote>
 <p>Request:</p>
@@ -2082,38 +2022,9 @@ For now configuration of Callbacks and registration of events is offline. Share 
   -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
   -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
 </code></pre>
-<p><code>GET {{url}}/documents/list?appid={{appid}}</code></p>
-<h2 id='upload-file-2'>Upload File</h2>
-<p>Fetch files by appid</p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
-  <span class="o">{{</span>url<span class="o">}}</span>/documents <span class="se">\</span>
-  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="se">\</span>
-  -F <span class="nv">appid</span><span class="o">=</span>af2118a7-9333-4c36-88d2-b4afdaa682fb <span class="se">\</span>
-  -F <span class="s1">'tags=Co:Recent Utility/Landline bill'</span> <span class="se">\</span>
-  -F <span class="s1">'file=@/filepath/pan.png'</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">request</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">successful</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-    </span><span class="s2">"sresp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><code>GET {{url}}/documents/list?appid={{appid}}</code></p>
+<p><code>GET {{url}}/documents?file_path={{file_path}}</code></p>
 <h2 id='sanction-docs'>Sanction Docs</h2>
-<p>Get sanction docs by app_id</p>
+<p>Get sanction docs of an application</p>
 
 <blockquote>
 <p>Request:</p>
