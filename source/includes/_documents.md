@@ -87,39 +87,6 @@ curl -X GET \
 
 `GET {{url}}/documents/list?appid={{appid}}`
 
-## Upload File
-
-Fetch files by appid
-
-> Request:
-
-```shell
-curl -X POST \
-  {{url}}/documents \
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
-  -F appid=af2118a7-9333-4c36-88d2-b4afdaa682fb \
-  -F 'tags=Co:Recent Utility/Landline bill' \
-  -F 'file=@/filepath/pan.png'
-```
-
-> Response:
-
-```json
-If the request was successful
-
-{
-    "sresp": "string",
-    "status": 1,
-    "meta": {
-        "path": "string",
-        "id": 0,
-        "filename": "string"
-    }
-}
-```
-
-`GET {{url}}/documents/list?appid={{appid}}`
-
 ## Sanction Docs
 
 Get sanction docs by app_id
