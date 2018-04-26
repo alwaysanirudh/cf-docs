@@ -117,9 +117,9 @@ If the application is rejected. The reject reason will be provide whenever neces
 | Partnership Shutdown                 |
 | Profile fees are due                 |
 
-## Update Bank Details
+## Bank Details
 
-This is Repayment/Disbursal bank account for the loan application.
+This API can be used to Repayment/Disbursal bank account for the loan application.
 
 > Request:
 
@@ -153,51 +153,11 @@ curl -X POST \
 
 # Failure
 {
-  "status": 200
+  "status": 400
 }
 ```
 
 `POST {{url}}/applications/bank_details`
-
-**Possible app status**
-
-| app_status | app_status_label     |
-| ---------- | -------------------- |
-| 200        | App in progress      |
-| 300        | App Submitted        |
-| 450        | COH Decision Pending |
-| 500        | Request for login    |
-| 600        | File logged-in       |
-| 700        | Cam in Progress      |
-| 800        | Cam Completed        |
-| 900        | Pd in Progress       |
-| 1000       | Pd Completed         |
-| 1100       | Approved             |
-| 1200       | Rejected             |
-| 10000      | Disbursed            |
-| 11000      | KYC Done             |
-| 12000      | CIBIL Pulled         |
-| 14000      | Loan Agreement Done  |
-| 15000      | NACH Done            |
-| 16000      | DOC UPLOAD Done      |
-
-**Possible profile suspension reason**
-
-| suspend_reason                       |
-| ------------------------------------ |
-| Due to delinquency / RTR (temporary) |
-| Due to delinquency / RTR (permanent) |
-| Customer Requested                   |
-| Deprecated                           |
-| Line Expired                         |
-| Potential Fraud                      |
-| Confirmed Fraud                      |
-| Sold                                 |
-| Partner Requested                    |
-| Delinquent on other CF loan          |
-| Closed by collections                |
-| Partnership Shutdown                 |
-| Profile fees are due                 |
 
 ## Application Callbacks
 
