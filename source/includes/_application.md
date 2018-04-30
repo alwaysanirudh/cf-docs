@@ -120,20 +120,20 @@ If the application is rejected. The reject reason will be provide whenever neces
 
 **Loan offer Parameters**
 
-| Name          | Type   | Description                           |
-| ------------- | ------ | ------------------------------------- |
-| sanctionedRoi | string | Rate of interest                      |
-| minDocFee     | string | Minimum Doc Fee                       |
-| maxDocFee     | string | Maximum Doc Fee                       |
-| pfAmount      | string | Processing Fee                        |
-| productTrack  | string | Product track                         |
-| loanProdType  | string | Loan Type                             |
-| loanAmount    | string | Loan amount                           |
-| emi           | string | EMI                                   |
-| daysPerCycle  | string | Days per Cycle                        |
-| isReducing    | string | Interest type reducing                |
-| sanctionedPf  | string | Processing Fee %                      |
-| tenure        | string | Loan Tenure                           |
+| Name          | Type   | Description            |
+| ------------- | ------ | ---------------------- |
+| sanctionedRoi | string | Rate of interest       |
+| minDocFee     | string | Minimum Doc Fee        |
+| maxDocFee     | string | Maximum Doc Fee        |
+| pfAmount      | string | Processing Fee         |
+| productTrack  | string | Product track          |
+| loanProdType  | string | Loan Type              |
+| loanAmount    | string | Loan amount            |
+| emi           | string | EMI                    |
+| daysPerCycle  | string | Days per Cycle         |
+| isReducing    | string | Interest type reducing |
+| sanctionedPf  | string | Processing Fee %       |
+| tenure        | string | Loan Tenure            |
 
 ## Bank Details
 
@@ -181,7 +181,7 @@ curl -X POST \
 
 Once an app_id is created. CF will post to your configured Callbacks on registered events.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
-For details please refer [http://docs.capitalfloat.io/#application-status](http://docs.capitalfloat.io/#application-status)
+For details please refer [#application-status](#application-status)
 
 `eg: {{your_domain}}/capitalfloat/callback`
 
