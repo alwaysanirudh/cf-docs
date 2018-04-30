@@ -98,6 +98,7 @@ If the application is rejected. The reject reason will be provide whenever neces
 | 14000      | Loan Agreement Done  |
 | 15000      | NACH Done            |
 | 16000      | DOC UPLOAD Done      |
+| 20000      | Customer Acceptance  |
 
 **Possible profile suspension reason**
 
@@ -116,6 +117,23 @@ If the application is rejected. The reject reason will be provide whenever neces
 | Closed by collections                |
 | Partnership Shutdown                 |
 | Profile fees are due                 |
+
+**Loan offer Parameters**
+
+| Name          | Type   | Description                           |
+| ------------- | ------ | ------------------------------------- |
+| sanctionedRoi | string | Rate of interest                      |
+| minDocFee     | string | Minimum Doc Fee                       |
+| maxDocFee     | string | Maximum Doc Fee                       |
+| pfAmount      | string | Processing Fee                        |
+| productTrack  | string | Product track                         |
+| loanProdType  | string | Loan Type                             |
+| loanAmount    | string | Loan amount                           |
+| emi           | string | EMI                                   |
+| daysPerCycle  | string | Days per Cycle                        |
+| isReducing    | string | Interest type reducing                |
+| sanctionedPf  | string | Processing Fee %                      |
+| tenure        | string | Loan Tenure                           |
 
 ## Bank Details
 
@@ -163,6 +181,7 @@ curl -X POST \
 
 Once an app_id is created. CF will post to your configured Callbacks on registered events.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
+For details please refer [http://docs.capitalfloat.io/#application-status](http://docs.capitalfloat.io/#application-status)
 
 `eg: {{your_domain}}/capitalfloat/callback`
 
@@ -170,38 +189,26 @@ For now configuration of Callbacks and registration of events is offline. Share 
 
 ```json
 {
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
   "app_id": "string",
-  "offer_type": "string",
-  "sanctionedRoi": "string",
-  "minDocFee": "string",
-  "maxDocFee": "string",
-  "pfAmount": "string",
-  "productTrack": "string",
-  "loanProdType": "string",
-  "loanAmount": "string",
-  "emi": "string",
-  "daysPerCycle": "string",
-  "isReducing": "0|1",
-  "sanctionedPf": "string",
-  "tenure": "string"
+  "sub_type": "string",
+  "is_active": "0|1",
+  "suspend_reason": "string",
+  "offer": {
+    "sanctionedRoi": "string",
+    "minDocFee": "string",
+    "maxDocFee": "string",
+    "pfAmount": "string",
+    "productTrack": "string",
+    "loanProdType": "string",
+    "loanAmount": "string",
+    "emi": "string",
+    "daysPerCycle": "string",
+    "isReducing": "0|1",
+    "sanctionedPf": "string",
+    "tenure": "string"
+  }
 }
 ```
-
-**Parameters**
-
-| Name          | Type   | Description                           |
-| ------------- | ------ | ------------------------------------- |
-| app_id        | string | Application Id                        |
-| offer_type    | string | in_principal_approval, final_approval |
-| sanctionedRoi | string | Rate of interest                      |
-| minDocFee     | string | Minimum Doc Fee                       |
-| maxDocFee     | string | Maximum Doc Fee                       |
-| pfAmount      | string | Processing Fee                        |
-| productTrack  | string | Product track                         |
-| loanProdType  | string | Loan Type                             |
-| loanAmount    | string | Loan amount                           |
-| emi           | string | EMI                                   |
-| daysPerCycle  | string | Days per Cycle                        |
-| isReducing    | string | Interest type reducing                |
-| sanctionedPf  | string | Processing Fee %                      |
-| tenure        | string | Loan Tenure                           |
