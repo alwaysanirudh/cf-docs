@@ -515,7 +515,7 @@ curl -X POST \
     "phone": "string",
     "city": "string",
     "app_id": "string",
-    "send_welcome_mail": 0
+    "send_welcome_email": 1
   }'
 ```
 
@@ -541,10 +541,10 @@ If the request was denied
 
 **Parameters**
 
-| Name              | Type    | Description                      |
-| ----------------- | ------- | -------------------------------- |
-| username          | string  | User's username/email            |
-| phone             | string  | User's phone                     |
-| city              | string  | User's current city              |
-| app_id            | string  | app_id from application created  |
-| send_welcome_mail | integer | Send welcome Email to user (0/1) |
+| Name               | Type    | Mandatory | Description                      |
+| ------------------ | ------- | --------- | -------------------------------- |
+| username           | string  | Yes       | User's username/email            |
+| phone              | string  | Yes       | User's phone                     |
+| app_id             | string  | Yes       | app_id from application created  |
+| city               | string  | No        | User's current city              |
+| send_welcome_email | integer | No        | Send welcome Email to user (0/1) |
