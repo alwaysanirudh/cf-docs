@@ -181,7 +181,7 @@ curl -X POST \
 
 Once an app_id is created. CF will post to your configured Callbacks on registered events.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
-For details please refer [#application-status](#application-status)
+For details please refer [application-status](#application-status)
 
 `eg: {{your_domain}}/capitalfloat/callback`
 
