@@ -228,10 +228,10 @@ For details please refer [application-status](#application-status)
      "creditAccountBalance": 0,
      "amountDue": 0,
      "shortfall": 0,
-     "mode": "",
-     "refNum1": "",
-     "refNum2": "",
-     "refNum3": ""
+     "mode": "string",
+     "refNum1": "string",
+     "refNum2": "string",
+     "refNum3": "string"
   }
 }
 ```
