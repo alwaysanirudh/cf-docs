@@ -211,4 +211,45 @@ For details please refer [application-status](#application-status)
     "tenure": "string"
   }
 }
+
+
+# Callback on repayment
+{
+  "status": 200,
+  "app_status": 10000,
+  "app_status_label": "Disbursed",
+  "app_id": "string",
+  "repayment": {
+     "amountPaid": 0,
+     "chargesPaid": 0,
+     "interestPaid": 0,
+     "principalPaid": 0,
+     "feesPaid": 0,
+     "creditAccountBalance": 0,
+     "amountDue": 0,
+     "shortfall": 0,
+     "mode": "",
+     "refNum1": "",
+     "refNum2": "",
+     "refNum3": ""
+  }
+}
 ```
+
+**Possible payment modes**
+
+| mode   |
+| ------ |
+| Cash   |
+| NEFT   |
+| RTGS   |
+| IMPS   |
+| IFT    |
+| UPI    |
+| PDC    |
+| NACH   |
+| Cheque |
+| AEPS   |
+| DD     |
+| DDM    |
+| ENACH  |
