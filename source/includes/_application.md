@@ -236,7 +236,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-**Possible payment modes**
+**Possible modes**
 
 | mode   |
 | ------ |
