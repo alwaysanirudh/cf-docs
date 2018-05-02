@@ -220,6 +220,8 @@ For details please refer [application-status](#application-status)
   "app_status_label": "Disbursed",
   "app_id": "string",
   "repayment": {
+     "merchantId": "string",
+     "merchantName": "string",
      "amountPaid": 0,
      "chargesPaid": 0,
      "interestPaid": 0,
