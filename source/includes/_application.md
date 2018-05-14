@@ -83,6 +83,7 @@ If the application is rejected. The reject reason will be provide whenever neces
 | ---------- | -------------------- |
 | 200        | App in progress      |
 | 300        | App Submitted        |
+| 400        | App Verified         |
 | 450        | COH Decision Pending |
 | 500        | Request for login    |
 | 600        | File logged-in       |
