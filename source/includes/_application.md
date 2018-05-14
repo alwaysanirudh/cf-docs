@@ -177,6 +177,59 @@ curl -X POST \
 
 `POST {{url}}/applications/bank_details`
 
+## Mark task done
+
+> Request:
+
+```shell
+curl -X POST \
+  {{url}}/applications/{{task}}\
+  -H "Content-type: application/json"  \
+  -H 'Authorization: YOUR_TOKEN' \
+  -d '{
+    "app_id": "string"
+  }'
+```
+
+> Response :
+
+```json
+# Success
+
+If task is marked as done
+{
+  "status": 200,
+  "message": "Task Updated"
+}
+
+# Failure
+{
+  "status": -100,
+  "message": "Payload is missing app_id"
+}
+{
+  "status": -200,
+  "message": "App not found"
+}
+{
+  "status": -300,
+  "message": "Not authorized to view this app"
+}
+{
+  "status": -400,
+  "message":"Task Update Failed"
+}
+```
+
+`POST {{url}}/applications/{{task}}`
+
+**Possible workflow tasks**
+
+| task                |
+| ------------------- |
+| customer_acceptance |
+| login_request       |
+
 ## Application Callbacks
 
 Once an app_id is created. CF will post to your configured Callbacks on registered events.
