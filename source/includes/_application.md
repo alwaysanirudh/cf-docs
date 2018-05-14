@@ -177,7 +177,7 @@ curl -X POST \
 
 `POST {{url}}/applications/bank_details`
 
-## Mark task done
+## Application Tasks
 
 > Request:
 
@@ -222,8 +222,6 @@ If task is marked as done
 ```
 
 `POST {{url}}/applications/{{task}}`
-
-**Possible workflow tasks**
 
 | task                |
 | ------------------- |
