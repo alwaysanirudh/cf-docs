@@ -245,6 +245,9 @@
                     <a href="#bank-details" class="toc-h2 toc-link" data-title="bank-details">Bank Details</a>
                   </li>
                   <li>
+                    <a href="#application-tasks" class="toc-h2 toc-link" data-title="application-tasks">Application Tasks</a>
+                  </li>
+                  <li>
                     <a href="#application-callbacks" class="toc-h2 toc-link" data-title="application-callbacks">Application Callbacks</a>
                   </li>
               </ul>
@@ -1856,6 +1859,61 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/applications/bank_details</code></p>
+<h2 id='application-tasks'>Application Tasks</h2>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  <span class="o">{{</span>url<span class="o">}}</span>/applications/<span class="o">{{</span>task<span class="o">}}</span><span class="se">\</span>
+  -H <span class="s2">"Content-type: application/json"</span>  <span class="se">\</span>
+  -H <span class="s1">'Authorization: YOUR_TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "app_id": "string"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Response :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Success</span><span class="w">
+
+</span><span class="err">If</span><span class="w"> </span><span class="err">task</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">marked</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">done</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task Updated"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">#</span><span class="w"> </span><span class="err">Failure</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-100</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payload is missing app_id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"App not found"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-300</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not authorized to view this app"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">-400</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Task Update Failed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code>POST {{url}}/applications/{{task}}</code></p>
+
+<table><thead>
+<tr>
+<th>task</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customer_acceptance</td>
+</tr>
+<tr>
+<td>login_request</td>
+</tr>
+</tbody></table>
 <h2 id='application-callbacks'>Application Callbacks</h2>
 <p>Once an app_id is created. CF will post to your configured Callbacks on registered events.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
