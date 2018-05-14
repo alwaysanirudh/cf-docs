@@ -29,9 +29,10 @@ If the application if approved with Offer
   "is_active": "0|1",
   "suspend_reason": "string",
   "offer": {
-    "sanctionedRoi": "string",
     "minDocFee": "string",
     "maxDocFee": "string",
+    "maxRoi": "string",
+    "minRoi": "string",
     "pfAmount": "string",
     "productTrack": "string",
     "loanProdType": "string",
