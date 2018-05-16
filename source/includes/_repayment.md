@@ -8,7 +8,7 @@ Using these API's, you can check the upcoming payments
 
 ```shell
 curl -X POST \
-  {{url}}/application/repayment_info \
+  {{url}}/applications/repayment_info \
   -H "Content-type: application/json"  \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
@@ -62,4 +62,4 @@ curl -X POST \
 
 This API provides repayment info by app_id.
 
-`POST {{url}}/application/repayment_info`
+`POST {{url}}/applications/repayment_info`
