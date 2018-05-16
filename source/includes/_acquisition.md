@@ -16,10 +16,8 @@ curl-X POST \
       {
         "acc_context": 0,
         "acc_holder_name": "string",
-        "acc_id": 0,
         "acc_no": "string",
         "acc_type": "string",
-        "app_id": "string",
         "bank_name": "string",
         "branch": "string",
         "entry_code": 0,
@@ -31,27 +29,18 @@ curl-X POST \
         "address_list": [
           {
             "address": "string",
-            "address_id": 0,
             "address_owner": "string",
             "address_type": 0,
-            "app_id": "string",
             "city": "string",
             "contact_list": [
               {
-                "address_id": 0,
-                "app_id": "string",
                 "contact_context": 0,
-                "contact_id": 0,
                 "contact_information": "string",
-                "contact_type": 0,
-                "entity_id": 0,
-                "entity_type": 0
+                "contact_type": 0
               }
             ],
             "country": 0,
             "district": "string",
-            "entity_id": 0,
-            "entity_type": 0,
             "is_active": 0,
             "is_fi_needed": 0,
             "landmark": "string",
@@ -64,22 +53,15 @@ curl-X POST \
             "state": "string"
           }
         ],
-        "app_id": "string",
         "application_context": 0,
-        "business_id": 0,
         "business_profile": "string",
         "ca_number": "string",
         "cibil_request_id": "string",
         "contacts_list": [
           {
-            "address_id": 0,
-            "app_id": "string",
             "contact_context": 0,
-            "contact_id": 0,
             "contact_information": "string",
-            "contact_type": 0,
-            "entity_id": 0,
-            "entity_type": 0
+            "contact_type": 0
           }
         ],
         "incorporation_date": "2018-02-05",
@@ -91,10 +73,7 @@ curl-X POST \
         "operation_start_date": "2018-02-05",
         "poi_list": [
           {
-            "app_id": "string",
             "created_time": 0,
-            "entity_id": 0,
-            "entity_type": 0,
             "id_information": "string",
             "id_type": 0,
             "last_modified_time": 0,
@@ -108,7 +87,6 @@ curl-X POST \
       }
     ],
     "business_financials": {
-      "app_id": "string",
       "auto_loan": 0,
       "base_year": 0,
       "home_loan": 0,
@@ -126,16 +104,13 @@ curl-X POST \
     },
     "ecosystem_details": [
       {
-        "app_id": "string",
         "branch_code": "string",
         "customer_id": "string",
         "ecosystem_id": 0,
         "ecosystem_xns_list": [
           {
-            "app_id": "string",
             "base_month": 0,
-            "base_month_minus":[{"month":"1","value":"10000"}
-            ]
+            "base_month_minus":[{"month":"1","value":"10000"}]
             "ecosystem_id": 0,
             "months_of_data": 0,
             "xn_type": 0,
@@ -158,7 +133,6 @@ curl-X POST \
     ],
     "fund_use_details": [
       {
-        "app_id": "string",
         "end_use_id": 0,
         "estimated_cost": 0,
         "loan_amount_required": 0,
@@ -196,12 +170,9 @@ curl-X POST \
             "address_id": 0,
             "address_owner": "string",
             "address_type": 0,
-            "app_id": "string",
             "city": "string",
             "contact_list": [
               {
-                "address_id": 0,
-                "app_id": "string",
                 "contact_context": 0,
                 "contact_id": 0,
                 "contact_information": "string",
@@ -226,21 +197,17 @@ curl-X POST \
             "state": "string"
           }
         ],
-        "app_id": "string",
         "application_context": 0,
         "birth_date": "2018-02-05",
         "bu_relationship_type": 0,
         "bu_share_percent": 0,
-        "business_id": 0,
         "cibil_consent_flag": 0,
         "cibil_consent_mode": 0,
         "cibil_request_id": "string",
         "contacts_list": [
           {
             "address_id": 0,
-            "app_id": "string",
             "contact_context": 0,
-            "contact_id": 0,
             "contact_information": "string",
             "contact_type": 0,
             "entity_id": 0,
@@ -261,7 +228,6 @@ curl-X POST \
         "mother_name": "string",
         "poi_list": [
           {
-            "app_id": "string",
             "created_time": 0,
             "entity_id": 0,
             "entity_type": 0,
@@ -275,12 +241,7 @@ curl-X POST \
         "work_ex": 0
       }
     ],
-    "loan_offer_output": {
-      "status": "string",
-      "offer": {}
-    },
     "metadata": {
-      "app_id": "string",
       "app_request_id": "string",
       "app_source_name": "string",
       "application_lifecycle_id": 0,
@@ -308,29 +269,10 @@ curl-X POST \
       "third_party_reference_id": "string",
       "version": "string"
     },
-    "renewal_response": {
-      "app_id": {
-        "id_new": "string",
-        "id_old": "string"
-      },
-      "business_id_change_list": [
-        {
-          "id_new": "string",
-          "id_old": "string"
-        }
-      ],
-      "individual_id_change_list": [
-        {
-          "id_new": "string",
-          "id_old": "string"
-        }
-      ]
-    },
     "user_pool_details_models": [
       {
         "name": "string",
         "pool_context": 0,
-        "pool_id": 0,
         "user_id": 0,
         "user_pool_id": 0,
         "username": "string"
