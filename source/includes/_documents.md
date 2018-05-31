@@ -121,7 +121,8 @@ curl -X POST \
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
   -F appid=af2118a7-9333-4c36-88d2-b4afdaa682fb \
   -F 'tags=Co:Recent Utility/Landline bill' \
-  -F 'file=@/filepath/pan.png'
+  -F 'file=@/filepath/pan.png' \
+  -F 'password=pass1234'
 ```
 
 > Response:
