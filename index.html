@@ -498,10 +498,8 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
       {
         "acc_context": 0,
         "acc_holder_name": "string",
-        "acc_id": 0,
         "acc_no": "string",
         "acc_type": "string",
-        "app_id": "string",
         "bank_name": "string",
         "branch": "string",
         "entry_code": 0,
@@ -513,27 +511,18 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
         "address_list": [
           {
             "address": "string",
-            "address_id": 0,
             "address_owner": "string",
             "address_type": 0,
-            "app_id": "string",
             "city": "string",
             "contact_list": [
               {
-                "address_id": 0,
-                "app_id": "string",
                 "contact_context": 0,
-                "contact_id": 0,
                 "contact_information": "string",
-                "contact_type": 0,
-                "entity_id": 0,
-                "entity_type": 0
+                "contact_type": 0
               }
             ],
             "country": 0,
             "district": "string",
-            "entity_id": 0,
-            "entity_type": 0,
             "is_active": 0,
             "is_fi_needed": 0,
             "landmark": "string",
@@ -546,22 +535,15 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
             "state": "string"
           }
         ],
-        "app_id": "string",
         "application_context": 0,
-        "business_id": 0,
         "business_profile": "string",
         "ca_number": "string",
         "cibil_request_id": "string",
         "contacts_list": [
           {
-            "address_id": 0,
-            "app_id": "string",
             "contact_context": 0,
-            "contact_id": 0,
             "contact_information": "string",
-            "contact_type": 0,
-            "entity_id": 0,
-            "entity_type": 0
+            "contact_type": 0
           }
         ],
         "incorporation_date": "2018-02-05",
@@ -573,10 +555,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
         "operation_start_date": "2018-02-05",
         "poi_list": [
           {
-            "app_id": "string",
             "created_time": 0,
-            "entity_id": 0,
-            "entity_type": 0,
             "id_information": "string",
             "id_type": 0,
             "last_modified_time": 0,
@@ -590,7 +569,6 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
       }
     ],
     "business_financials": {
-      "app_id": "string",
       "auto_loan": 0,
       "base_year": 0,
       "home_loan": 0,
@@ -608,16 +586,13 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
     },
     "ecosystem_details": [
       {
-        "app_id": "string",
         "branch_code": "string",
         "customer_id": "string",
         "ecosystem_id": 0,
         "ecosystem_xns_list": [
           {
-            "app_id": "string",
             "base_month": 0,
-            "base_month_minus":[{"month":"1","value":"10000"}
-            ]
+            "base_month_minus":[{"month":"1","value":"10000"}]
             "ecosystem_id": 0,
             "months_of_data": 0,
             "xn_type": 0,
@@ -640,7 +615,6 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
     ],
     "fund_use_details": [
       {
-        "app_id": "string",
         "end_use_id": 0,
         "estimated_cost": 0,
         "loan_amount_required": 0,
@@ -678,12 +652,9 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
             "address_id": 0,
             "address_owner": "string",
             "address_type": 0,
-            "app_id": "string",
             "city": "string",
             "contact_list": [
               {
-                "address_id": 0,
-                "app_id": "string",
                 "contact_context": 0,
                 "contact_id": 0,
                 "contact_information": "string",
@@ -708,21 +679,17 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
             "state": "string"
           }
         ],
-        "app_id": "string",
         "application_context": 0,
         "birth_date": "2018-02-05",
         "bu_relationship_type": 0,
         "bu_share_percent": 0,
-        "business_id": 0,
         "cibil_consent_flag": 0,
         "cibil_consent_mode": 0,
         "cibil_request_id": "string",
         "contacts_list": [
           {
             "address_id": 0,
-            "app_id": "string",
             "contact_context": 0,
-            "contact_id": 0,
             "contact_information": "string",
             "contact_type": 0,
             "entity_id": 0,
@@ -743,7 +710,6 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
         "mother_name": "string",
         "poi_list": [
           {
-            "app_id": "string",
             "created_time": 0,
             "entity_id": 0,
             "entity_type": 0,
@@ -757,12 +723,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
         "work_ex": 0
       }
     ],
-    "loan_offer_output": {
-      "status": "string",
-      "offer": {}
-    },
     "metadata": {
-      "app_id": "string",
       "app_request_id": "string",
       "app_source_name": "string",
       "application_lifecycle_id": 0,
@@ -790,29 +751,10 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
       "third_party_reference_id": "string",
       "version": "string"
     },
-    "renewal_response": {
-      "app_id": {
-        "id_new": "string",
-        "id_old": "string"
-      },
-      "business_id_change_list": [
-        {
-          "id_new": "string",
-          "id_old": "string"
-        }
-      ],
-      "individual_id_change_list": [
-        {
-          "id_new": "string",
-          "id_old": "string"
-        }
-      ]
-    },
     "user_pool_details_models": [
       {
         "name": "string",
         "pool_context": 0,
-        "pool_id": 0,
         "user_id": 0,
         "user_pool_id": 0,
         "username": "string"
@@ -2134,7 +2076,8 @@ NOTE: If documents for a application were never uploaded; this API needs to be c
   -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="se">\</span>
   -F <span class="nv">appid</span><span class="o">=</span>af2118a7-9333-4c36-88d2-b4afdaa682fb <span class="se">\</span>
   -F <span class="s1">'tags=Co:Recent Utility/Landline bill'</span> <span class="se">\</span>
-  -F <span class="s1">'file=@/filepath/pan.png'</span>
+  -F <span class="s1">'file=@/filepath/pan.png'</span> <span class="se">\</span>
+  -F <span class="s1">'password=pass1234'</span>
 </code></pre>
 <blockquote>
 <p>Response:</p>
@@ -2962,43 +2905,41 @@ If <code>final_approval</code> is False then the case has been rejected
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"sresp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amountDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amountPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amountTransferred"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"annualInterestRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cfAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cfBankIfsc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cfBankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chargesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chargesDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chargesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chequeBounceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"creditAcctBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"daysPerCycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"debitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"disbursedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emiAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"feesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"feesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"interestDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"interestDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"interestPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nameOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"penaltyInterestRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"principalDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"principalPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"principleDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"repaymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"repaymentModeRegistrationStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"shortfall"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amountDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amountPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amountTransferred"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"annualInterestRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cfAccountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cfBankAcctNo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cfBankIfsc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cfBankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"chargesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"chargesDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"chargesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"chequeBounceCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"creditAcctBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"daysPerCycle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"debitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"disbursedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dpd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"emiAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feesDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"feesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interestDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interestDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"interestPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"nameOfBusiness"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"penaltyInterestRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"principalDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"principalPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"principleDueOnDueDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repaymentMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repaymentModeRegistrationStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shortfall"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This API provides repayment info by app_id.</p>
