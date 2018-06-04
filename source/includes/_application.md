@@ -303,6 +303,7 @@ For details please refer [application-status](#application-status)
     "maxDocFee": "string",
     "minRoi": "string",
     "maxRoi": "string",
+    "withHoldingAmt": "string",
     "sanctionedRoi": "string",
     "isReducing": 0,
     "loanProdType": "string"
