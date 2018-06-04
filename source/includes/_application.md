@@ -199,12 +199,20 @@ curl -X POST \
 # Success
 
 If task is marked as done
+for task - customer_acceptance, login_request
 {
   "status": 200,
   "message": "Task Updated"
 }
 
+for task - push_back
+{
+  "status": 200,
+  "message": "Push back successful"
+}
+
 # Failure
+Common error codes
 {
   "status": -100,
   "message": "Payload is missing app_id"
@@ -217,9 +225,25 @@ If task is marked as done
   "status": -300,
   "message": "Not authorized to view this app"
 }
+
+for task - customer_acceptance, login_request
 {
   "status": -400,
   "message":"Task Update Failed"
+}
+
+for task - push_back
+{
+  "status": -400,
+  "message" :"Task List not found"
+}
+{
+  "status": -500,
+  "message" :"Unable to do push back"
+}
+{
+  "status": -600,
+  "message" :"Unable to verify docs"
 }
 ```
 
@@ -229,6 +253,7 @@ If task is marked as done
 | ------------------- |
 | customer_acceptance |
 | login_request       |
+| push_back           |
 
 ## Application Callbacks
 
@@ -241,6 +266,19 @@ For details please refer [application-status](#application-status)
 > Request:
 
 ```json
+# Callback payload before sanction creation
+{
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
+  "app_id": "string",
+  "offer": {
+    "loanAmt": "string"
+  }
+}
+
+
+# Callback payload before disbursal and after sanction creation
 {
   "status": 200,
   "app_status": "string",
@@ -250,18 +288,52 @@ For details please refer [application-status](#application-status)
   "is_active": "0|1",
   "suspend_reason": "string",
   "offer": {
-    "sanctionedRoi": "string",
+    "tenure": "string",
+    "loanAmt": "string",
+    "minEmi": "string",
+    "maxEmi": "string",
+    "tenure": "string",
+    "daysPerCycle": "string",
+    "noOfCycles": "string",
+    "minPf": "string",
+    "maxPf": "string",
+    "sanctionedPf": "string",
+    "minTransactionFee": "string",
     "minDocFee": "string",
     "maxDocFee": "string",
-    "pfAmount": "string",
-    "productTrack": "string",
-    "loanProdType": "string",
-    "loanAmount": "string",
+    "minRoi": "string",
+    "maxRoi": "string",
+    "withHoldingAmt": "string",
+    "sanctionedRoi": "string",
+    "isReducing": 0,
+    "loanProdType": "string"
+  }
+}
+
+
+# Callback payload after disbursal
+{
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
+  "app_id": "string",
+  "sub_type": "string",
+  "is_active": "0|1",
+  "suspend_reason": "string",
+  "offer": {
+    "tenure": "string",
+    "loanAmt": "string",
     "emi": "string",
+    "tenure": "string",
     "daysPerCycle": "string",
-    "isReducing": "0|1",
-    "sanctionedPf": "string",
-    "tenure": "string"
+    "noOfCycles": "string",
+    "finalPfAmt": "string",
+    "finalPremiumAmt": "string",
+    "finalDocFeeAmt": "string",
+    "withHoldingAmt": "string",
+    "roi": "string",
+    "isReducing": 0,
+    "loanProdType": "string"
   }
 }
 
@@ -273,8 +345,6 @@ For details please refer [application-status](#application-status)
   "app_status_label": "Disbursed",
   "app_id": "string",
   "repayment": {
-     "merchantId": "string",
-     "merchantName": "string",
      "amountPaid": 0,
      "chargesPaid": 0,
      "interestPaid": 0,
@@ -289,9 +359,34 @@ For details please refer [application-status](#application-status)
      "refNum3": "string"
   }
 }
+
+
+# Callback on Push Forward
+{
+  "app_status": 500,
+  "app_status_label": "Request for login",
+  "status": 200,
+  "app_id": "string",
+  "push_forward": [
+    {
+      "files": [
+        {
+          "path": "string",
+          "filename": "string"
+        }
+      ],
+      "status": 0,
+      "tag": "string",
+      "id": 0,
+      "comments": [
+          "string"
+      ]
+    }
+  ]
+}
 ```
 
-**Possible modes**
+**Possible modes in repayment callback**
 
 | mode   |
 | ------ |
@@ -308,3 +403,11 @@ For details please refer [application-status](#application-status)
 | DD     |
 | DDM    |
 | ENACH  |
+
+**Possible doc status in push_forward callback**
+
+| status | label      |
+| ------ | ---------- |
+| 0      | QC Pending |
+| 1      | QC Accept  |
+| 2      | QC Reject  |
