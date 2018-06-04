@@ -225,18 +225,12 @@ Common error codes
   "status": -300,
   "message": "Not authorized to view this app"
 }
-
-for task - customer_acceptance, login_request
 {
   "status": -400,
-  "message":"Task Update Failed"
+  "message": "Task Update Failed"
 }
 
 for task - push_back
-{
-  "status": -400,
-  "message" :"Task List not found"
-}
 {
   "status": -500,
   "message" :"Unable to do push back"
