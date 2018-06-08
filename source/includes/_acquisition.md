@@ -457,7 +457,8 @@ curl -X POST \
     "phone": "string",
     "city": "string",
     "app_id": "string",
-    "send_welcome_email": 1
+    "send_welcome_email": 1,
+    "name": "string"
   }'
 ```
 
@@ -485,6 +486,7 @@ If the request was denied
 
 | Name               | Type    | Mandatory | Description                      |
 | ------------------ | ------- | --------- | -------------------------------- |
+| name               | string  | Yes       | User's name                      |
 | username           | string  | Yes       | User's username/email            |
 | phone              | string  | Yes       | User's phone                     |
 | app_id             | string  | Yes       | app_id from application created  |
