@@ -270,7 +270,7 @@ For details please refer [application-status](#application-status)
 > Request:
 
 ```json
-# Callback payload before sanction creation
+# App Verified
 {
   "status": 200,
   "app_status": "string",
@@ -281,16 +281,48 @@ For details please refer [application-status](#application-status)
   }
 }
 
+# Push Forward
+{
+  "app_status": 500,
+  "app_status_label": "Request for login",
+  "app_sub_status": "push_forward",
+  "status": 200,
+  "app_id": "string",
+  "push_forward": [
+    {
+      "files": [
+        {
+          "path": "string",
+          "filename": "string"
+        }
+      ],
+      "status": 0,
+      "is_extra": false,
+      "tag": "string",
+      "description": "string",
+      "id": 0,
+      "comments": [
+          "string"
+      ]
+    }
+  ]
+}
 
-# Callback payload before disbursal and after sanction creation
+# File Login, PD
+{
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
+  "app_id": "string"
+}
+
+# CAM
 {
   "status": 200,
   "app_status": "string",
   "app_status_label": "string",
   "app_id": "string",
   "sub_type": "string",
-  "is_active": "0|1",
-  "suspend_reason": "string",
   "offer": {
     "tenure": "string",
     "loanAmt": "string",
@@ -314,6 +346,74 @@ For details please refer [application-status](#application-status)
   }
 }
 
+# Customer Consent
+{
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
+  "app_sub_status": "customer_consent",
+  "app_id": "string",
+  "sub_type": "string",
+  "offer": {
+    "tenure": "string",
+    "loanAmt": "string",
+    "minEmi": "string",
+    "maxEmi": "string",
+    "tenure": "string",
+    "daysPerCycle": "string",
+    "noOfCycles": "string",
+    "minPf": "string",
+    "maxPf": "string",
+    "sanctionedPf": "string",
+    "minTransactionFee": "string",
+    "minDocFee": "string",
+    "maxDocFee": "string",
+    "minRoi": "string",
+    "maxRoi": "string",
+    "withHoldingAmt": "string",
+    "sanctionedRoi": "string",
+    "isReducing": 0,
+    "loanProdType": "string"
+  }
+}
+
+# Sanction docs
+{
+  "status": 200,
+  "app_status": "string",
+  "app_status_label": "string",
+  "app_sub_status": "sanction_docs",
+  "app_id": "string",
+  "sub_type": "string",
+  "offer": {
+    "tenure": "string",
+    "loanAmt": "string",
+    "minEmi": "string",
+    "maxEmi": "string",
+    "tenure": "string",
+    "daysPerCycle": "string",
+    "noOfCycles": "string",
+    "minPf": "string",
+    "maxPf": "string",
+    "sanctionedPf": "string",
+    "minTransactionFee": "string",
+    "minDocFee": "string",
+    "maxDocFee": "string",
+    "minRoi": "string",
+    "maxRoi": "string",
+    "withHoldingAmt": "string",
+    "sanctionedRoi": "string",
+    "isReducing": 0,
+    "loanProdType": "string"
+  },
+  "sanction_docs": {
+    "sanction_letter": "string",
+    "nach_mandate": "string",
+    "lss": "string",
+    "loan_agreement": "string"
+  },
+}
+
 
 # Callback payload after disbursal
 {
@@ -322,8 +422,9 @@ For details please refer [application-status](#application-status)
   "app_status_label": "string",
   "app_id": "string",
   "sub_type": "string",
-  "is_active": "0|1",
+  "is_active": 0,
   "suspend_reason": "string",
+  "resume_reason": "string",
   "offer": {
     "tenure": "string",
     "loanAmt": "string",
@@ -364,30 +465,6 @@ For details please refer [application-status](#application-status)
   }
 }
 
-
-# Callback on Push Forward
-{
-  "app_status": 500,
-  "app_status_label": "Request for login",
-  "status": 200,
-  "app_id": "string",
-  "push_forward": [
-    {
-      "files": [
-        {
-          "path": "string",
-          "filename": "string"
-        }
-      ],
-      "status": 0,
-      "tag": "string",
-      "id": 0,
-      "comments": [
-          "string"
-      ]
-    }
-  ]
-}
 ```
 
 **Possible modes in repayment callback**
