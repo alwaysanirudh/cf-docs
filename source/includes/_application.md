@@ -273,7 +273,7 @@ For details please refer [application-status](#application-status)
 # App Verified
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string",
   "offer": {
@@ -283,8 +283,8 @@ For details please refer [application-status](#application-status)
 
 # Push Forward
 {
-  "app_status": 500,
-  "app_status_label": "Request for login",
+  "app_status": 0,
+  "app_status_label": "string",
   "app_sub_status": "push_forward",
   "status": 200,
   "app_id": "string",
@@ -311,7 +311,7 @@ For details please refer [application-status](#application-status)
 # File Login, PD
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string"
 }
@@ -319,7 +319,7 @@ For details please refer [application-status](#application-status)
 # CAM
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string",
   "sub_type": "string",
@@ -349,7 +349,7 @@ For details please refer [application-status](#application-status)
 # Customer Consent
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_sub_status": "customer_consent",
   "app_id": "string",
@@ -380,7 +380,7 @@ For details please refer [application-status](#application-status)
 # Sanction docs
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_sub_status": "sanction_docs",
   "app_id": "string",
@@ -418,7 +418,7 @@ For details please refer [application-status](#application-status)
 # Callback payload after disbursal
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string",
   "sub_type": "string",
