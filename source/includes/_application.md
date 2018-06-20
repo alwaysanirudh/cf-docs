@@ -25,23 +25,29 @@ If the application if approved with Offer
   "app_status": "string",
   "app_status_label": "string",
   "app_id": "string",
-  "sub_type": "string",
   "is_active": "0|1",
   "suspend_reason": "string",
+  "resume_reason": "string",
   "offer": {
     "minDocFee": "string",
     "maxDocFee": "string",
     "maxRoi": "string",
     "minRoi": "string",
-    "pfAmount": "string",
+    "minPf": "string",
+    "maxPf": "string",
+    "finalPfAmt": "string",
+    "minTransactionFee": "string",
+    "maxTransactionFee": "string",
+    "withHoldingAmt": "string",
+    "withHoldingPc": "string",
     "productTrack": "string",
     "loanProdType": "string",
-    "loanAmount": "string",
+    "loanAmt": "string",
     "emi": "string",
     "daysPerCycle": "string",
     "isReducing": "0|1",
-    "sanctionedPf": "string",
-    "tenure": "string"
+    "tenure": "string",
+    "noOfCycles": "string"
   }
 }
 
@@ -72,7 +78,11 @@ If the application is rejected. The reject reason will be provide whenever neces
 }
 {
   "status": -500,
-  "message":"Failure in fetching sanction status"
+  "message": "Failure in fetching sanction status"
+}
+{
+  "status": -600,
+  "message": "Request could not be processed"
 }
 ```
 
@@ -122,20 +132,28 @@ If the application is rejected. The reject reason will be provide whenever neces
 
 **Loan offer Parameters**
 
-| Name          | Type   | Description            |
-| ------------- | ------ | ---------------------- |
-| sanctionedRoi | string | Rate of interest       |
-| minDocFee     | string | Minimum Doc Fee        |
-| maxDocFee     | string | Maximum Doc Fee        |
-| pfAmount      | string | Processing Fee         |
-| productTrack  | string | Product track          |
-| loanProdType  | string | Loan Type              |
-| loanAmount    | string | Loan amount            |
-| emi           | string | EMI                    |
-| daysPerCycle  | string | Days per Cycle         |
-| isReducing    | string | Interest type reducing |
-| sanctionedPf  | string | Processing Fee %       |
-| tenure        | string | Loan Tenure            |
+| Name              | Type   | Description              |
+| ----------------- | ------ | ------------------------ |
+| minRoi            | string | Minimum Rate of interest |
+| maxRoi            | string | Maximum Rate of interest |
+| minTransactionFee | string | Minimum Transaction Fee  |
+| maxTransactionFee | string | Maximum Transaction Fee  |
+| minDocFee         | string | Minimum Doc Fee          |
+| maxDocFee         | string | Maximum Doc Fee          |
+| finalDocFeeAmt    | string | Final Doc Fee            |
+| minPf             | string | Minimum Processing Fee % |
+| maxPf             | string | Maximum Processing Fee % |
+| finalPfAmt        | string | Final Process Fee Amount |
+| finalPremiumAmt   | string | Final Premium Amount     |
+| loanProdType      | string | Loan Type                |
+| loanAmt           | string | Loan amount              |
+| emi               | string | EMI                      |
+| daysPerCycle      | string | Days per Cycle           |
+| noOfCycles        | string | No. of Cycles            |
+| isReducing        | string | Interest type reducing   |
+| tenure            | string | Loan Tenure              |
+| withHoldingAmt    | string | Withholding Amount       |
+| withHoldingPc     | string | Withholding %            |
 
 ## Bank Details
 
@@ -273,7 +291,7 @@ For details please refer [application-status](#application-status)
 # App Verified
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 400,
   "app_status_label": "string",
   "app_id": "string",
   "offer": {
@@ -285,7 +303,7 @@ For details please refer [application-status](#application-status)
 {
   "app_status": 500,
   "app_status_label": "Request for login",
-  "app_sub_status": "push_forward",
+  "event": "push_forward",
   "status": 200,
   "app_id": "string",
   "push_forward": [
@@ -311,7 +329,7 @@ For details please refer [application-status](#application-status)
 # File Login, PD
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string"
 }
@@ -319,31 +337,9 @@ For details please refer [application-status](#application-status)
 # CAM
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
-  "app_id": "string",
-  "sub_type": "string",
-  "offer": {
-    "tenure": "string",
-    "loanAmt": "string",
-    "minEmi": "string",
-    "maxEmi": "string",
-    "tenure": "string",
-    "daysPerCycle": "string",
-    "noOfCycles": "string",
-    "minPf": "string",
-    "maxPf": "string",
-    "sanctionedPf": "string",
-    "minTransactionFee": "string",
-    "minDocFee": "string",
-    "maxDocFee": "string",
-    "minRoi": "string",
-    "maxRoi": "string",
-    "withHoldingAmt": "string",
-    "sanctionedRoi": "string",
-    "isReducing": 0,
-    "loanProdType": "string"
-  }
+  "app_id": "string"
 }
 
 # Customer Consent
@@ -351,9 +347,8 @@ For details please refer [application-status](#application-status)
   "status": 200,
   "app_status": "string",
   "app_status_label": "string",
-  "app_sub_status": "customer_consent",
+  "event": "customer_consent",
   "app_id": "string",
-  "sub_type": "string",
   "offer": {
     "tenure": "string",
     "loanAmt": "string",
@@ -364,14 +359,12 @@ For details please refer [application-status](#application-status)
     "noOfCycles": "string",
     "minPf": "string",
     "maxPf": "string",
-    "sanctionedPf": "string",
     "minTransactionFee": "string",
     "minDocFee": "string",
     "maxDocFee": "string",
     "minRoi": "string",
     "maxRoi": "string",
     "withHoldingAmt": "string",
-    "sanctionedRoi": "string",
     "isReducing": 0,
     "loanProdType": "string"
   }
@@ -382,9 +375,8 @@ For details please refer [application-status](#application-status)
   "status": 200,
   "app_status": "string",
   "app_status_label": "string",
-  "app_sub_status": "sanction_docs",
+  "event": "sanction_docs",
   "app_id": "string",
-  "sub_type": "string",
   "offer": {
     "tenure": "string",
     "loanAmt": "string",
@@ -395,14 +387,12 @@ For details please refer [application-status](#application-status)
     "noOfCycles": "string",
     "minPf": "string",
     "maxPf": "string",
-    "sanctionedPf": "string",
     "minTransactionFee": "string",
     "minDocFee": "string",
     "maxDocFee": "string",
     "minRoi": "string",
     "maxRoi": "string",
     "withHoldingAmt": "string",
-    "sanctionedRoi": "string",
     "isReducing": 0,
     "loanProdType": "string"
   },
@@ -415,13 +405,12 @@ For details please refer [application-status](#application-status)
 }
 
 
-# Callback payload after disbursal
+# Callback payload on and after disbursal
 {
   "status": 200,
   "app_status": "string",
   "app_status_label": "string",
   "app_id": "string",
-  "sub_type": "string",
   "is_active": 0,
   "suspend_reason": "string",
   "resume_reason": "string",
@@ -449,6 +438,7 @@ For details please refer [application-status](#application-status)
   "app_status": 10000,
   "app_status_label": "Disbursed",
   "app_id": "string",
+  "is_active": 1,
   "repayment": {
      "amountPaid": 0,
      "chargesPaid": 0,
@@ -465,6 +455,15 @@ For details please refer [application-status](#application-status)
   }
 }
 
+
+# Callback on Rejection
+{
+  "status": 200,
+  "app_status_label": "Rejected",
+  "reject_reason": "string",
+  "app_status": 1200,
+  "app_id": "string"
+}
 ```
 
 **Possible modes in repayment callback**
