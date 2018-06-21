@@ -345,7 +345,7 @@ For details please refer [application-status](#application-status)
 # Customer Consent
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "event": "customer_consent",
   "app_id": "string",
@@ -373,7 +373,7 @@ For details please refer [application-status](#application-status)
 # Sanction docs
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "event": "sanction_docs",
   "app_id": "string",
@@ -408,7 +408,7 @@ For details please refer [application-status](#application-status)
 # Callback payload on and after disbursal
 {
   "status": 200,
-  "app_status": "string",
+  "app_status": 0,
   "app_status_label": "string",
   "app_id": "string",
   "is_active": 0,
