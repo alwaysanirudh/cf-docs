@@ -273,9 +273,10 @@ for task - push_back
 
 | task                |
 | ------------------- |
-| customer_acceptance |
 | login_request       |
 | push_back           |
+| customer_acceptance |
+| sanction_docs       |
 
 ## Application Callbacks
 
