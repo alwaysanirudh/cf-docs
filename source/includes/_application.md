@@ -168,15 +168,15 @@ curl -X POST \
   -H 'Authorization: YOUR_TOKEN' \
   -d '{
     "app_id": "string",
-    "code": "string"
-    "accountNumber": "string"
-    "bankName": "string"
-    "branchName": "string"
-    "accountHolderName": "string"
+    "code": "string",
+    "accountNumber": "string",
+    "bankName": "string",
+    "branchName": "string",
+    "accountHolderName": "string",
     "verified": "string",
-    "city": "string"
-    "isBankLinkedToAadhaar": "string"
-    "accountType": "string"
+    "city": "string",
+    "isBankLinkedToAadhaar": "string",
+    "accountType": "string",
     "modeOfOperation": "string"
   }'
 ```
