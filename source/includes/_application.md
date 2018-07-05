@@ -217,7 +217,7 @@ curl -X POST \
 # Success
 
 If task is marked as done
-for task - customer_acceptance, login_request
+for task - customer_acceptance, login_request, sanction_docs
 {
   "status": 200,
   "message": "Task Updated"
@@ -266,6 +266,12 @@ for task - push_back
 {
   "status": -700,
   "message" :"Unable to do push back"
+}
+
+for task - sanction_docs
+{
+  "status": -600,
+  "message" :"Please verify all sections or mark an exception where required before submitting to Ops !"
 }
 ```
 
