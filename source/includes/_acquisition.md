@@ -299,7 +299,7 @@ curl-X POST \
 | app_request_id           | string  | The Reference ID at your end for posting the application to Capital Float.    |
 | app_source_name          | string  | Source of the application. Refer Master                                       |
 | application_lifecycle_id | integer |                                                                               |
-| aapplication_segment     | integer | Application Segment (example: Individual/Business). Refer Master.             |
+| application_segment      | integer | Application Segment (example: Individual/Business). Refer Master.             |
 | application_type         | integer | Type of application. Refer Master                                             |
 | created_time             | integer | Creation time for application                                                 |
 | fin_calc_year            | date    |                                                                               |
