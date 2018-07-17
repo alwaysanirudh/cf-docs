@@ -249,6 +249,32 @@
                   </li>
                   <li>
                     <a href="#application-callbacks" class="toc-h2 toc-link" data-title="application-callbacks">Application Callbacks</a>
+                      <ul class="toc-list-h3">
+                          <li>
+                            <a href="#app-verified" class="toc-h3 toc-link" data-title="Application Flow">App Verified</a>
+                          </li>
+                          <li>
+                            <a href="#push-forward" class="toc-h3 toc-link" data-title="Application Flow">Push Forward</a>
+                          </li>
+                          <li>
+                            <a href="#file-login-pd-cam" class="toc-h3 toc-link" data-title="Application Flow">File Login, PD, CAM</a>
+                          </li>
+                          <li>
+                            <a href="#customer-consent" class="toc-h3 toc-link" data-title="Application Flow">Customer Consent</a>
+                          </li>
+                          <li>
+                            <a href="#sanction-docs" class="toc-h3 toc-link" data-title="Application Flow">Sanction docs</a>
+                          </li>
+                          <li>
+                            <a href="#disbursal" class="toc-h3 toc-link" data-title="Application Flow">Disbursal</a>
+                          </li>
+                          <li>
+                            <a href="#repayment" class="toc-h3 toc-link" data-title="Application Flow">Repayment</a>
+                          </li>
+                          <li>
+                            <a href="#rejection" class="toc-h3 toc-link" data-title="Application Flow">Rejection</a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </li>
@@ -1608,7 +1634,26 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
     </span><span class="s2">"isReducing"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0|1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"tenure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"noOfCycles"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"push_forward"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_extra"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"string"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="err">If</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">application</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">rejected.</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">reject</span><span class="w"> </span><span class="err">reason</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">provide</span><span class="w"> </span><span class="err">whenever</span><span class="w"> </span><span class="err">necessary</span><span class="w">
@@ -1646,6 +1691,16 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/applications/status</code></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><p><code>event</code> key will be present only when documents have been pushed forward or customer consent request has been raised</p></li>
+<li><p><code>push_forward</code> key will be present only when the value of event key is <code>push_forward</code></p></li>
+<li><p><code>is_active</code>, <code>resume_reason</code> and <code>suspend_reason</code> keys will be present only if the sanction has been disbursed</p></li>
+<li><p><code>offer</code> key will be present if sanction is dibsursed or the app status is &#39;App Verified&#39; or &#39;Approved&#39;</p></li>
+<li><p><strong>Please note that the status api will not have data of events like Repayment and Sanction Docs Generated</strong></p></li>
+</ul>
 
 <p><strong>Possible app status</strong></p>
 
@@ -2029,11 +2084,12 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
 For details please refer <a href="#application-status">application-status</a></p>
 
-<p><code>eg: {{your_domain}}/capitalfloat/callback</code></p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
+<p><code>eg: {{your_domain}}/{{your_endpoint}}</code></p>
+<h3 id='app-verified'>App Verified</h3>
+<ul>
+<li>This callback is posted after auto app verification</li>
+<li>This has the loan amount calculated after running the DE policy</li>
+</ul>
 <pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">App</span><span class="w"> </span><span class="err">Verified</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2044,9 +2100,32 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loanAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='push-forward'>Push Forward</h3>
+<ul>
+<li>The documents where action needs to be taken will be posted here</li>
+<li><p>Possible doc status</p>
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">Push</span><span class="w"> </span><span class="err">Forward</span><span class="w">
-</span><span class="p">{</span><span class="w">
+<table><thead>
+<tr>
+<th>status</th>
+<th>label</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>QC Pending</td>
+</tr>
+<tr>
+<td>1</td>
+<td>QC Accept</td>
+</tr>
+<tr>
+<td>2</td>
+<td>QC Reject</td>
+</tr>
+</tbody></table></li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request for login"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"push_forward"</span><span class="p">,</span><span class="w">
@@ -2071,25 +2150,21 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">File</span><span class="w"> </span><span class="err">Login</span><span class="p">,</span><span class="w"> </span><span class="err">PD</span><span class="w">
-</span><span class="p">{</span><span class="w">
+</span></code></pre><h3 id='file-login-pd-cam'>File Login, PD, CAM</h3>
+<ul>
+<li>These events are identified by the app status</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">CAM</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Customer</span><span class="w"> </span><span class="err">Consent</span><span class="w">
-</span><span class="p">{</span><span class="w">
+</span></code></pre><h3 id='customer-consent'>Customer Consent</h3>
+<ul>
+<li>Latest loan offer from sales is sent in this callback when the customer consent event is triggered</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2111,13 +2186,16 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"minRoi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxRoi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"withHoldingAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withHoldingPc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isReducing"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"loanProdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Sanction</span><span class="w"> </span><span class="err">docs</span><span class="w">
-</span><span class="p">{</span><span class="w">
+</span></code></pre><h3 id='sanction-docs'>Sanction docs</h3>
+<ul>
+<li>Generated sanction docs are sent in this callback, it is triggered after the investors in a sanction are finalized</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2139,6 +2217,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"minRoi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxRoi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"withHoldingAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withHoldingPc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isReducing"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"loanProdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -2149,10 +2228,11 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loan_agreement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Callback</span><span class="w"> </span><span class="err">payload</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">after</span><span class="w"> </span><span class="err">disbursal</span><span class="w">
-</span><span class="p">{</span><span class="w">
+</span></code></pre><h3 id='disbursal'>Disbursal</h3>
+<ul>
+<li>On disbursal the callback will have the final loan offer values and the sanction status</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -2171,47 +2251,16 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"finalPremiumAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"finalDocFeeAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"withHoldingAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"withHoldingPc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"roi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isReducing"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"loanProdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Callback</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">repayment</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disbursed"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"repayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-     </span><span class="s2">"amountPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"chargesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"interestPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"principalPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"feesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"creditAccountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"shortfall"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"refNum1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"refNum2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"refNum3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-
-</span><span class="err">#</span><span class="w"> </span><span class="err">Callback</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">Rejection</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"reject_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p><strong>Possible modes in repayment callback</strong></p>
+</span></code></pre><h3 id='repayment'>Repayment</h3>
+<ul>
+<li><p>When a repayment is applied against a loan in the system this callback will be called, it will have the repayment level splits of principal, interest, charges, fees</p></li>
+<li><p>Possible modes in repayment callback</p>
 
 <table><thead>
 <tr>
@@ -2257,30 +2306,41 @@ For details please refer <a href="#application-status">application-status</a></p
 <tr>
 <td>ENACH</td>
 </tr>
-</tbody></table>
-
-<p><strong>Possible doc status in push_forward callback</strong></p>
-
-<table><thead>
-<tr>
-<th>status</th>
-<th>label</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>0</td>
-<td>QC Pending</td>
-</tr>
-<tr>
-<td>1</td>
-<td>QC Accept</td>
-</tr>
-<tr>
-<td>2</td>
-<td>QC Reject</td>
-</tr>
-</tbody></table>
-<h1 id='documents'>Documents</h1><h2 id='fetch-files'>Fetch files</h2>
+</tbody></table></li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disbursed"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"repayment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+     </span><span class="s2">"amountPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"chargesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"interestPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"principalPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"feesPaid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"creditAccountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"amountDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"shortfall"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"mode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"refNum1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"refNum2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+     </span><span class="s2">"refNum3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='rejection'>Rejection</h3>
+<ul>
+<li>This callback is triggered when an app is rejected, it has the rejection reason of the app</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rejected"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reject_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='documents'>Documents</h1><h2 id='fetch-files'>Fetch files</h2>
 <p>Fetch files uploaded for an application.
 NOTE: If documents for a application were never uploaded; this API needs to be called first. It will create the document sections if they are not created.</p>
 
