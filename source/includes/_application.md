@@ -48,7 +48,26 @@ If the application if approved with Offer
     "isReducing": "0|1",
     "tenure": "string",
     "noOfCycles": "string"
-  }
+  },
+  "push_forward": [
+    {
+      "files": [
+        {
+          "path": "string",
+          "filename": "string"
+        }
+      ],
+      "status": 0,
+      "is_extra": false,
+      "tag": "string",
+      "description": "string",
+      "id": 0,
+      "comments": [
+          "string"
+      ]
+    }
+  ],
+  "event": "string"
 }
 
 If the application is rejected. The reject reason will be provide whenever necessary
@@ -87,6 +106,19 @@ If the application is rejected. The reject reason will be provide whenever neces
 ```
 
 `POST {{url}}/applications/status`
+
+**Notes:**
+
+* `event` key will be present only when documents have been pushed forward or customer consent request has been raised
+
+* `push_forward` key will be present only when the value of event key is `push_forward`
+
+* `is_active`, `resume_reason` and `suspend_reason` keys will be present only if the sanction has been disbursed
+
+* `offer` key will be present if sanction is dibsursed or the app status is 'App Verified' or 'Approved'
+
+* **Please note that the status api will not have data of events like Repayment and Sanction Docs Generated**
+
 
 **Possible app status**
 
@@ -290,9 +322,12 @@ Once an app_id is created. CF will post to your configured Callbacks on register
 For now configuration of Callbacks and registration of events is offline. Share these details with CF representative you are in touch with.
 For details please refer [application-status](#application-status)
 
-`eg: {{your_domain}}/capitalfloat/callback`
+`eg: {{your_domain}}/{{your_endpoint}}`
 
-> Request:
+### App Verified
+
+* This callback is posted after auto app verification
+* This has the loan amount calculated after running the DE policy
 
 ```json
 # App Verified
@@ -305,8 +340,20 @@ For details please refer [application-status](#application-status)
     "loanAmt": "string"
   }
 }
+```
 
-# Push Forward
+### Push Forward
+
+* The documents where action needs to be taken will be posted here
+* Possible doc status
+
+    | status | label      |
+    | ------ | ---------- |
+    | 0      | QC Pending |
+    | 1      | QC Accept  |
+    | 2      | QC Reject  |
+
+```json
 {
   "app_status": 500,
   "app_status_label": "Request for login",
@@ -332,24 +379,25 @@ For details please refer [application-status](#application-status)
     }
   ]
 }
+```
 
-# File Login, PD
+### File Login, PD, CAM
+
+* These events are identified by the app status
+
+```json
 {
   "status": 200,
   "app_status": 0,
   "app_status_label": "string",
   "app_id": "string"
 }
+```
 
-# CAM
-{
-  "status": 200,
-  "app_status": 0,
-  "app_status_label": "string",
-  "app_id": "string"
-}
+### Customer Consent
+* Latest loan offer from sales is sent in this callback when the customer consent event is triggered
 
-# Customer Consent
+```json
 {
   "status": 200,
   "app_status": 0,
@@ -372,12 +420,17 @@ For details please refer [application-status](#application-status)
     "minRoi": "string",
     "maxRoi": "string",
     "withHoldingAmt": "string",
+    "withHoldingPc": "string",
     "isReducing": 0,
     "loanProdType": "string"
   }
 }
+```
 
-# Sanction docs
+### Sanction docs
+* Generated sanction docs are sent in this callback, it is triggered after the investors in a sanction are finalized
+
+```json
 {
   "status": 200,
   "app_status": 0,
@@ -400,6 +453,7 @@ For details please refer [application-status](#application-status)
     "minRoi": "string",
     "maxRoi": "string",
     "withHoldingAmt": "string",
+    "withHoldingPc": "string",
     "isReducing": 0,
     "loanProdType": "string"
   },
@@ -410,9 +464,12 @@ For details please refer [application-status](#application-status)
     "loan_agreement": "string"
   },
 }
+```
 
+### Disbursal
+* On disbursal the callback will have the final loan offer values and the sanction status
 
-# Callback payload on and after disbursal
+```json
 {
   "status": 200,
   "app_status": 0,
@@ -432,14 +489,38 @@ For details please refer [application-status](#application-status)
     "finalPremiumAmt": "string",
     "finalDocFeeAmt": "string",
     "withHoldingAmt": "string",
+    "withHoldingPc": "string",
     "roi": "string",
     "isReducing": 0,
     "loanProdType": "string"
   }
 }
+```
 
 
-# Callback on repayment
+### Repayment
+* When a repayment is applied against a loan in the system this callback will be called, it will have the repayment level splits of principal, interest, charges, fees
+
+* Possible modes in repayment callback
+
+    | mode   |
+    | ------ |
+    | Cash   |
+    | NEFT   |
+    | RTGS   |
+    | IMPS   |
+    | IFT    |
+    | UPI    |
+    | PDC    |
+    | NACH   |
+    | Cheque |
+    | AEPS   |
+    | DD     |
+    | DDM    |
+    | ENACH  |
+
+
+```json
 {
   "status": 200,
   "app_status": 10000,
@@ -461,9 +542,13 @@ For details please refer [application-status](#application-status)
      "refNum3": "string"
   }
 }
+```
 
 
-# Callback on Rejection
+### Rejection
+* This callback is triggered when an app is rejected, it has the rejection reason of the app
+
+```json
 {
   "status": 200,
   "app_status_label": "Rejected",
@@ -472,29 +557,3 @@ For details please refer [application-status](#application-status)
   "app_id": "string"
 }
 ```
-
-**Possible modes in repayment callback**
-
-| mode   |
-| ------ |
-| Cash   |
-| NEFT   |
-| RTGS   |
-| IMPS   |
-| IFT    |
-| UPI    |
-| PDC    |
-| NACH   |
-| Cheque |
-| AEPS   |
-| DD     |
-| DDM    |
-| ENACH  |
-
-**Possible doc status in push_forward callback**
-
-| status | label      |
-| ------ | ---------- |
-| 0      | QC Pending |
-| 1      | QC Accept  |
-| 2      | QC Reject  |
