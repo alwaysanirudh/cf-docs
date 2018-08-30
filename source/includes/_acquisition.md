@@ -288,7 +288,7 @@ curl-X POST \
 
 ```json
 {
-  "app_id": "6d190e91-195f-47b5-bf79-fb86c0792f20",
+  "app_id": "string",
   "status": 200,
   "individual_details": [
     {
@@ -301,14 +301,18 @@ curl-X POST \
 Missing PAN in indiviudal details
 
 {
-    "error": "Bad Request: Missing PAN",
+    "timestamp": 0,
+    "error": "Bad Request",
+    "exception": "Missing PAN",
     "status": 400
 }
 
 Same PAN details sent for multiple promoters
 
 {
-    "error": "Bad Request: Multiple promoters have same PAN",
+    "timestamp": 0,
+    "error": "Bad Request",
+    "exception": "Multiple promoters have same PAN",
     "status": 400
 }
 ```
