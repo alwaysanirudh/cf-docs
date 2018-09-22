@@ -4,6 +4,8 @@
 
 Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.
 
+external_individual_id is optional and activation is required to receive it's mapping with the individual_id
+
 > Request:
 
 ```shell
@@ -164,6 +166,7 @@ curl-X POST \
     ],
     "individual_details": [
       {
+        "external_individual_id": 0,
         "address_list": [
           {
             "address": "string",
@@ -285,7 +288,32 @@ curl-X POST \
 
 ```json
 {
-  "app_id": "6d190e91-195f-47b5-bf79-fb86c0792f20"
+  "app_id": "string",
+  "status": 200,
+  "individual_details": [
+    {
+      "individual_id": 0,
+      "external_individual_id": 0
+    }
+  ]
+}
+
+Missing PAN in indiviudal details
+
+{
+    "timestamp": 0,
+    "error": "Bad Request",
+    "exception": "Missing PAN",
+    "status": 400
+}
+
+Same PAN details sent for multiple promoters
+
+{
+    "timestamp": 0,
+    "error": "Bad Request",
+    "exception": "Multiple promoters have same PAN",
+    "status": 400
 }
 ```
 
