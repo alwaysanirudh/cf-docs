@@ -251,28 +251,28 @@
                     <a href="#application-callbacks" class="toc-h2 toc-link" data-title="application-callbacks">Application Callbacks</a>
                       <ul class="toc-list-h3">
                           <li>
-                            <a href="#app-verified" class="toc-h3 toc-link" data-title="Application Flow">App Verified</a>
+                            <a href="#cb-app-verified" class="toc-h3 toc-link" data-title="Application Flow">[CB] App Verified</a>
                           </li>
                           <li>
-                            <a href="#push-forward" class="toc-h3 toc-link" data-title="Application Flow">Push Forward</a>
+                            <a href="#cb-push-forward" class="toc-h3 toc-link" data-title="Application Flow">[CB] Push Forward</a>
                           </li>
                           <li>
-                            <a href="#file-login-pd-cam" class="toc-h3 toc-link" data-title="Application Flow">File Login, PD, CAM</a>
+                            <a href="#cb-file-login-pd-cam" class="toc-h3 toc-link" data-title="Application Flow">[CB] File Login, PD, CAM</a>
                           </li>
                           <li>
-                            <a href="#customer-consent" class="toc-h3 toc-link" data-title="Application Flow">Customer Consent</a>
+                            <a href="#cb-customer-consent" class="toc-h3 toc-link" data-title="Application Flow">[CB] Customer Consent</a>
                           </li>
                           <li>
-                            <a href="#sanction-docs" class="toc-h3 toc-link" data-title="Application Flow">Sanction docs</a>
+                            <a href="#cb-sanction-docs" class="toc-h3 toc-link" data-title="Application Flow">[CB] Sanction docs</a>
                           </li>
                           <li>
-                            <a href="#disbursal" class="toc-h3 toc-link" data-title="Application Flow">Disbursal</a>
+                            <a href="#cb-disbursal" class="toc-h3 toc-link" data-title="Application Flow">[CB] Disbursal</a>
                           </li>
                           <li>
-                            <a href="#repayment" class="toc-h3 toc-link" data-title="Application Flow">Repayment</a>
+                            <a href="#cb-repayment" class="toc-h3 toc-link" data-title="Application Flow">[CB] Repayment</a>
                           </li>
                           <li>
-                            <a href="#rejection" class="toc-h3 toc-link" data-title="Application Flow">Rejection</a>
+                            <a href="#cb-rejection" class="toc-h3 toc-link" data-title="Application Flow">[CB] Rejection</a>
                           </li>
                       </ul>
                   </li>
@@ -581,6 +581,8 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <h1 id='acquisition'>Acquisition</h1><h2 id='create-application'>Create Application</h2>
 <p>Post user creation, the user can now apply for a loan. The loan application is an exhaustive list which accommodates multiple loan types. Not all fields are required.</p>
 
+<p>external_individual_id is optional and activation is required to receive it&#39;s mapping with the individual_id</p>
+
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -741,6 +743,7 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
     ],
     "individual_details": [
       {
+        "external_individual_id": 0,
         "address_list": [
           {
             "address": "string",
@@ -861,7 +864,32 @@ You must replace <code>YOUR_TOKEN</code> with your access token.
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6d190e91-195f-47b5-bf79-fb86c0792f20"</span><span class="w">
+  </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"individual_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"individual_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"external_individual_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Missing</span><span class="w"> </span><span class="err">PAN</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">indiviudal</span><span class="w"> </span><span class="err">details</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"exception"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing PAN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Same</span><span class="w"> </span><span class="err">PAN</span><span class="w"> </span><span class="err">details</span><span class="w"> </span><span class="err">sent</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">multiple</span><span class="w"> </span><span class="err">promoters</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"exception"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Multiple promoters have same PAN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p><code>POST {{url}}/applications</code></p>
@@ -2085,7 +2113,7 @@ For now configuration of Callbacks and registration of events is offline. Share 
 For details please refer <a href="#application-status">application-status</a></p>
 
 <p><code>eg: {{your_domain}}/{{your_endpoint}}</code></p>
-<h3 id='app-verified'>App Verified</h3>
+<h3 id='cb-app-verified'>[CB] App Verified</h3>
 <ul>
 <li>This callback is posted after auto app verification</li>
 <li>This has the loan amount calculated after running the DE policy</li>
@@ -2100,7 +2128,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loanAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='push-forward'>Push Forward</h3>
+</span></code></pre><h3 id='cb-push-forward'>[CB] Push Forward</h3>
 <ul>
 <li>The documents where action needs to be taken will be posted here</li>
 <li><p>Possible doc status</p>
@@ -2150,7 +2178,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='file-login-pd-cam'>File Login, PD, CAM</h3>
+</span></code></pre><h3 id='cb-file-login-pd-cam'>[CB] File Login, PD, CAM</h3>
 <ul>
 <li>These events are identified by the app status</li>
 </ul>
@@ -2160,7 +2188,7 @@ For details please refer <a href="#application-status">application-status</a></p
   </span><span class="s2">"app_status_label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='customer-consent'>Customer Consent</h3>
+</span></code></pre><h3 id='cb-customer-consent'>[CB] Customer Consent</h3>
 <ul>
 <li>Latest loan offer from sales is sent in this callback when the customer consent event is triggered</li>
 </ul>
@@ -2191,7 +2219,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loanProdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='sanction-docs'>Sanction docs</h3>
+</span></code></pre><h3 id='cb-sanction-docs'>[CB] Sanction docs</h3>
 <ul>
 <li>Generated sanction docs are sent in this callback, it is triggered after the investors in a sanction are finalized</li>
 </ul>
@@ -2228,7 +2256,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loan_agreement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='disbursal'>Disbursal</h3>
+</span></code></pre><h3 id='cb-disbursal'>[CB] Disbursal</h3>
 <ul>
 <li>On disbursal the callback will have the final loan offer values and the sanction status</li>
 </ul>
@@ -2257,7 +2285,7 @@ For details please refer <a href="#application-status">application-status</a></p
     </span><span class="s2">"loanProdType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='repayment'>Repayment</h3>
+</span></code></pre><h3 id='cb-repayment'>[CB] Repayment</h3>
 <ul>
 <li><p>When a repayment is applied against a loan in the system this callback will be called, it will have the repayment level splits of principal, interest, charges, fees</p></li>
 <li><p>Possible modes in repayment callback</p>
@@ -2329,7 +2357,7 @@ For details please refer <a href="#application-status">application-status</a></p
      </span><span class="s2">"refNum3"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='rejection'>Rejection</h3>
+</span></code></pre><h3 id='cb-rejection'>[CB] Rejection</h3>
 <ul>
 <li>This callback is triggered when an app is rejected, it has the rejection reason of the app</li>
 </ul>
