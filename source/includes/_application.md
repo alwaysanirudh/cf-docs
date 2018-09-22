@@ -324,7 +324,7 @@ For details please refer [application-status](#application-status)
 
 `eg: {{your_domain}}/{{your_endpoint}}`
 
-### App Verified
+### [CB] App Verified
 
 * This callback is posted after auto app verification
 * This has the loan amount calculated after running the DE policy
@@ -342,7 +342,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-### Push Forward
+### [CB] Push Forward
 
 * The documents where action needs to be taken will be posted here
 * Possible doc status
@@ -381,7 +381,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-### File Login, PD, CAM
+### [CB] File Login, PD, CAM
 
 * These events are identified by the app status
 
@@ -394,7 +394,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-### Customer Consent
+### [CB] Customer Consent
 * Latest loan offer from sales is sent in this callback when the customer consent event is triggered
 
 ```json
@@ -427,7 +427,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-### Sanction docs
+### [CB] Sanction docs
 * Generated sanction docs are sent in this callback, it is triggered after the investors in a sanction are finalized
 
 ```json
@@ -466,7 +466,7 @@ For details please refer [application-status](#application-status)
 }
 ```
 
-### Disbursal
+### [CB] Disbursal
 * On disbursal the callback will have the final loan offer values and the sanction status
 
 ```json
@@ -498,7 +498,7 @@ For details please refer [application-status](#application-status)
 ```
 
 
-### Repayment
+### [CB] Repayment
 * When a repayment is applied against a loan in the system this callback will be called, it will have the repayment level splits of principal, interest, charges, fees
 
 * Possible modes in repayment callback
@@ -545,7 +545,7 @@ For details please refer [application-status](#application-status)
 ```
 
 
-### Rejection
+### [CB] Rejection
 * This callback is triggered when an app is rejected, it has the rejection reason of the app
 
 ```json
